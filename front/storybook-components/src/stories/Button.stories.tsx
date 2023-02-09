@@ -25,14 +25,21 @@ Secondary.args = {
   label: "Button",
 };
 
-export const Large = Template.bind({});
-Large.args = {
-  large: true,
-  label: "Button",
-};
-
 export const Small = Template.bind({});
 Small.args = {
-  small: true,
-  label: "Button",
+  size: 'small',
+  label: "SMALLButton",
 };
+
+export const Medium = Template.bind({});
+Medium.args = {
+  size: 'medium',
+  label: "MIDButton",
+};
+
+export const Large = Template.bind({});
+Large.args = {
+  size: 'large',
+  label: "LARGEButton",
+};
+

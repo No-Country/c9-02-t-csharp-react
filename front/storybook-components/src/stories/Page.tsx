@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './page.css';
+
 
 type User = {
   name: string;
