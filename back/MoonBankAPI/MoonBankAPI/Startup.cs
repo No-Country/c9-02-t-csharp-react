@@ -1,4 +1,6 @@
-﻿
+﻿using DataAccess;
+using Microsoft.EntityFrameworkCore;
+
 namespace MoonBankAPI
 {
     public class Startup
@@ -16,7 +18,7 @@ namespace MoonBankAPI
             // agregar servicios aquí
 
 
-            //services.AddDbContext<MoonBankContext>(option => option.UseSqlServer(_configuration.GetConnectionString("MoonBankSQL")));
+            services.AddDbContext<MoonBankContext>(option => option.UseSqlServer(_configuration.GetConnectionString("MoonBankSQL")));
 
 
         }
