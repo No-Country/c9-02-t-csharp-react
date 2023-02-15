@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "start": "start-storybook -p 6006",
-    "build": "build-storybook"
+    "build": "build-storybook",
+    "chromatic": "npx chromatic --project-token=de6ecffd54b5"
   },
   "dependencies": {
     "react": "18.2.0",
@@ -27,9 +28,12 @@
     "@types/styled-components": "^5.1.26",
     "@vitejs/plugin-react": "3.1.0",
     "babel-loader": "8.3.0",
+    "chromatic": "^6.17.0",
     "css-loader": "^6.7.3",
     "postcss": "^8.4.21",
     "typescript": "4.9.3",
     "vite": "4.1.0"
-  }
+  },
+  "readme": "ERROR: No README data found!",
+  "_id": "storybook-components@0.0.0"
 }
