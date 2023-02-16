@@ -15,6 +15,7 @@ export const Input = styled.input<Props>`
   border: none;
   border-bottom: 3px solid #083870;
   border-radius: 5px;
+  color: #ffffff;
   font-weight: ${ props => props.fontWeight ? props.fontWeight : '700'};
   font-size: ${ props => props.fontSize ? props.fontSize : '12px'};
   margin: ${props => props.margin};
