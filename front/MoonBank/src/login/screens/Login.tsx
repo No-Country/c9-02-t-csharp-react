@@ -1,13 +1,12 @@
 import {
-  Box,
-  CheckBox,
-  CheckBoxLabel,
-  CheckBoxWrapper,
+  Button,
   Container,
   Input,
   Paper,
-  Text,
+  Text
 } from '../styles-components';
+
+import { SwitchButton } from '../components';
 
 export const Login = () => {
   return (
@@ -18,21 +17,10 @@ export const Login = () => {
         </Text>
         <Input type='text' placeholder='Username' marginBottom='1rem' />
         <Input type='password' placeholder='Password' marginBottom='1rem' />
-        <Input type='text' placeholder='Moon Token' marginBottom='1rem'/>
-        <Box alignContent='center'>
-          <CheckBoxWrapper>
-            <CheckBox id='checkbox' type='checkbox' />
-            <CheckBoxLabel htmlFor='checkbox' />
-          </CheckBoxWrapper>
-          <Text weight='700'>Remember me</Text>
-        </Box>
-
-        <div>
-          <button>Log In</button>
-        </div>
-        <div>
-          <Text size='9px'>Forgot your password? | Forgot your username?</Text>
-        </div>
+        <Input type='text' placeholder='Moon Token' marginBottom='1rem' />
+        <SwitchButton />
+        <Button>Log In</Button>
+        <Text size='12px'>Forgot your password? | Forgot your username?</Text>
       </Paper>
     </Container>
   );
