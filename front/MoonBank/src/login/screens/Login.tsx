@@ -1,3 +1,5 @@
+import '../styles/main.css'
+
 import {
   Button,
   Container,
@@ -15,12 +17,13 @@ export const Login = () => {
         <Text size='20px' weight='700' align='center'>
           Welcome back!
         </Text>
-        <Input type='text' placeholder='Username' marginBottom='1rem' />
+        <Text marginTop='12px' align='center'>The Moon is waiting for your return</Text>
+        <Input type='text' placeholder='Username' marginBottom='1rem' marginTop='1rem' fontSize='12px' />
         <Input type='password' placeholder='Password' marginBottom='1rem' />
         <Input type='text' placeholder='Moon Token' marginBottom='1rem' />
         <SwitchButton />
-        <Button>Log In</Button>
-        <Text size='12px'>Forgot your password? | Forgot your username?</Text>
+        <Button marginTop='1rem'>Log In</Button>
+        <Text size='9px' marginTop='1rem'>Forgot your password? | Forgot your username?</Text>
       </Paper>
     </Container>
   );

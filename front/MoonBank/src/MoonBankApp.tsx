@@ -1,4 +1,4 @@
-import { Login } from "./login/screens/Login"
+import { Login } from "./login/screens"
 
 const App = () =>  {
   

@@ -13,7 +13,7 @@ export const SwitchButton = () => {
         <CheckBox id='checkbox' type='checkbox' />
         <CheckBoxLabel htmlFor='checkbox' />
       </CheckBoxWrapper>
-      <Text weight='700'>Remember me</Text>
+      <Text marginLeft='1rem' weight='700'>Remember me</Text>
     </Box>
   );
 };
