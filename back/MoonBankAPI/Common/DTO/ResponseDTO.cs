@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Common.DTO
 {
-    internal class ResponseDTO
+    public class ResponseDTO
     {
+        public bool Success { get; set; }
+        public object Result { get; set; }
+        public string Message { get; set; }
     }
 }

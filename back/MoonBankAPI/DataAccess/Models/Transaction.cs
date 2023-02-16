@@ -18,26 +18,21 @@ namespace DataAccess.Models
         [EnumDataType(typeof(TypeTransaction))]
         public TypeTransaction TypeTransaction { get; set; }
 
-        [Required]
         [EnumDataType(typeof(TypeDeposit))]
-        public TypeDeposit TypeDeposit { get; set; }
+        public TypeDeposit? TypeDeposit { get; set; }
 
         [Required]
         [DataType(DataType.Date)]
         public DateTime Date { get; set; }
 
-        [Required]
         [Column(TypeName = "DECIMAL(11,2)")]
-        public decimal Amount { get; set; }
+        public decimal? Amount { get; set; }
 
-        [Required]
-        public int IdSourceAccount { get; set; }
+        public int? IdSourceAccount { get; set; }
 
-        [Required]
-        public int IdDestinationAccount { get; set; }
+        public int? IdDestinationAccount { get; set; }
 
-        [Required]
-        public int IdReward { get; set; }
+        public int? IdReward { get; set; }
 
 
 

@@ -1,12 +1,26 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Common.DTO
 {
-    internal class ServiceDTO
+    public class ServiceDTO
     {
+        [Required]
+        public int IdAccountService { get; set; }
+
+        [Required]
+        public string Name { get; set; }
+
+        [Required]
+        public decimal Amount { get; set; }
+
+        [Required]
+        public string ServiceUrlImage { get; set; }
     }
 }

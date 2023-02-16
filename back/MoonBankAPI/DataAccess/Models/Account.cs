@@ -35,15 +35,13 @@ namespace DataAccess.Models
         public string Alias { get; set; }
 
         [Required]
-        public int CBU_CVU { get; set; }
+        public long CBU_CVU { get; set; }
 
         [Required]
         [Column(TypeName = "DECIMAL(11,2)")]
-        public decimal Balance { get; set; }
+        public decimal? Balance { get; set; }
 
         [Required]
         public int RewardPoints { get; set; }
-
-
     }
 }
