@@ -7,7 +7,6 @@ export const Button = styled.button`
   align-items: center;
   background: #083870;
   border-radius: 5px;
-  
   padding: 10px;
   color: #ffffff;
 `;
