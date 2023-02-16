@@ -34,11 +34,12 @@ namespace DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("VARCHAR(50)");
 
-                    b.Property<decimal>("Balance")
+                    b.Property<decimal?>("Balance")
+                        .IsRequired()
                         .HasColumnType("DECIMAL(11,2)");
 
-                    b.Property<int>("CBU_CVU")
-                        .HasColumnType("int");
+                    b.Property<long>("CBU_CVU")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -120,22 +121,22 @@ namespace DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdTransaction"), 1L, 1);
 
-                    b.Property<decimal>("Amount")
+                    b.Property<decimal?>("Amount")
                         .HasColumnType("DECIMAL(11,2)");
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("IdDestinationAccount")
+                    b.Property<int?>("IdDestinationAccount")
                         .HasColumnType("int");
 
-                    b.Property<int>("IdReward")
+                    b.Property<int?>("IdReward")
                         .HasColumnType("int");
 
-                    b.Property<int>("IdSourceAccount")
+                    b.Property<int?>("IdSourceAccount")
                         .HasColumnType("int");
 
-                    b.Property<int>("TypeDeposit")
+                    b.Property<int?>("TypeDeposit")
                         .HasColumnType("int");
 
                     b.Property<int>("TypeTransaction")
@@ -157,20 +158,17 @@ namespace DataAccess.Migrations
                     b.HasOne("DataAccess.Models.Account", "DestinationAccount")
                         .WithMany()
                         .HasForeignKey("IdDestinationAccount")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.NoAction);
 
                     b.HasOne("DataAccess.Models.Reward", "Reward")
                         .WithMany()
                         .HasForeignKey("IdReward")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.NoAction);
 
                     b.HasOne("DataAccess.Models.Account", "SourceAccount")
                         .WithMany()
                         .HasForeignKey("IdSourceAccount")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.NoAction);
 
                     b.Navigation("DestinationAccount");
 
