@@ -1,4 +1,4 @@
-import { Container, Paper, Text } from '../styles-components';
+import { Container, Input, Paper, Text } from '../styles-components';
 
 export const Login = () => {
   return (
@@ -7,9 +7,9 @@ export const Login = () => {
         <Text size='20px' weight='700' align='center'>
           Welcome back!
         </Text>
-        <input type='text' />
-        <input type='password' />
-        <input type='text' />
+        <Input type='text' placeholder='Username' marginBottom='1rem' />
+        <Input type='password' placeholder='Password' marginBottom='1rem' />
+        <Input type='text' placeholder='Moon Token' />
         <div>
           <input type='checkbox' role='switch' />
         </div>
