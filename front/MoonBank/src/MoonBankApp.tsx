@@ -1,8 +1,10 @@
+import { Login } from "./login/screens/Login"
+
 const App = () =>  {
   
   return (
   <div>
-   <h1>Moonbank</h1>
+   <Login />
   </div>
   
   )
