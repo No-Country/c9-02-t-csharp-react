@@ -14,12 +14,12 @@ namespace Services
     public class RewardService : IRewardService
     {
         private readonly MoonBankContext _context;
-        private readonly IRewardRepository rewardRepository;
+        private readonly IRewardRepository _rewardRepository;
 
         public RewardService(MoonBankContext context, IRewardRepository rewardRepository)
         {
             _context = context;
-            this.rewardRepository = rewardRepository;
+            _rewardRepository = rewardRepository;
         }
 
 
@@ -28,7 +28,7 @@ namespace Services
             ResponseDTO response = new ResponseDTO();
             try
             {
-                response.Result = rewardRepository.GetAllRewards();
+                response.Result = _rewardRepository.GetAllRewards();
                 response.Success = true;
             }
             catch (RewardExceptions rewardException)

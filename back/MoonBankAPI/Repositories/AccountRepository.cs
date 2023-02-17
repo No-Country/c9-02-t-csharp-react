@@ -19,14 +19,14 @@ namespace Repositories
             _context = context;
         }
 
-        public AccountDTO Login(string email, string password)
+        public AccountDTO Login(AccountDTO accountDTO)
         {
-            var account = _context.Accounts.FirstOrDefault(x => x.Email == email);
+            var account = _context.Accounts.FirstOrDefault(x => x.Email == accountDTO.Email);
             if (account == null)
             {
                 throw new AccountExceptions("This email doesn´t exists or is not associated with an account.");
             }
-            if (password != null)
+            if (accountDTO.Password != null)
             {
                 throw new AccountExceptions("Password is not valid.");
             }

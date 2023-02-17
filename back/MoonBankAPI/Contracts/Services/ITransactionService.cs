@@ -10,5 +10,7 @@ namespace Contracts.Services
     public interface ITransactionService
     {
         ResponseDTO GetTransactionsHistory(TransactionDTO transactionDTO);
+
+        ResponseDTO MakeTransaction(TransactionDTO transactionDTO);
     }
 }

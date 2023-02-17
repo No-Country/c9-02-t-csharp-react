@@ -14,12 +14,12 @@ namespace Services
     public class ServiceService : IServiceService
     {
         private readonly MoonBankContext _context;
-        private readonly IServiceRepository serviceRepository;
+        private readonly IServiceRepository _serviceRepository;
 
         public ServiceService(MoonBankContext context, IServiceRepository serviceRepository)
         {
             _context = context;
-            this.serviceRepository = serviceRepository;
+            _serviceRepository = serviceRepository;
         }
 
 
@@ -28,7 +28,7 @@ namespace Services
             ResponseDTO response = new ResponseDTO();
             try
             {
-                response.Result = serviceRepository.GetAllServices();
+                response.Result = _serviceRepository.GetAllServices();
                 response.Success = true;
             }
             catch (ServiceExceptions serviceException)

@@ -1,5 +1,9 @@
-﻿using DataAccess;
+﻿using Contracts.Repositories;
+using Contracts.Services;
+using DataAccess;
 using Microsoft.EntityFrameworkCore;
+using Repositories;
+using Services;
 
 namespace MoonBankAPI
 {
@@ -20,7 +24,10 @@ namespace MoonBankAPI
 
             services.AddDbContext<MoonBankContext>(option => option.UseSqlServer(_configuration.GetConnectionString("MoonBankSQL")));
 
-
+            services.AddTransient<IAccountService, AccountService>();
+            services.AddTransient<IRewardRepository, RewardRepository>(); 
+            services.AddTransient<IServiceService, ServiceService>();
+            services.AddTransient<ITransactionRepository, TransactionRepository>();
         }
 
         public void Configure(IApplicationBuilder app)

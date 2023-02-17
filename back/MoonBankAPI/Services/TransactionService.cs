@@ -3,6 +3,7 @@ using Common.Exceptions;
 using Contracts.Repositories;
 using Contracts.Services;
 using DataAccess;
+using Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,12 +15,12 @@ namespace Services
     public class TransactionService : ITransactionService
     {
         private readonly MoonBankContext _context;
-        private readonly ITransactionRepository transactionRepository;
+        private readonly ITransactionRepository _transactionRepository;
 
         public TransactionService(MoonBankContext context, ITransactionRepository transactionRepository)
         {
             _context = context;
-            this.transactionRepository = transactionRepository;
+            _transactionRepository = transactionRepository;
         }
 
 
@@ -28,7 +29,7 @@ namespace Services
             ResponseDTO response = new ResponseDTO();
             try
             {
-                response.Result = transactionRepository.GetTransactionsHistory(transactionDTO);
+                response.Result = _transactionRepository.GetTransactionsHistory(transactionDTO);
                 response.Success = true;
             }
             catch (TransactionExceptions transactionException)
@@ -44,5 +45,24 @@ namespace Services
 
             return response;
         }
+
+        public ResponseDTO MakeTransaction(TransactionDTO transactionDTO)
+        {
+            try
+            {
+                _transactionRepository.MakeTransaction(transactionDTO);
+                return new ResponseDTO { Success = true };
+            }
+            catch (ArgumentException ex)
+            {
+                return new ResponseDTO { Success = false, Message = ex.Message };
+            }
+            catch (Exception ex)
+            {
+                // Log the exception here
+                return new ResponseDTO { Success = false, Message = "An error occurred while processing the transaction." };
+            }
+        }
+
     }
 }

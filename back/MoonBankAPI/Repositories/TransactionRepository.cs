@@ -70,8 +70,6 @@ namespace Repositories
                 default:
 
                     throw new ArgumentException("Invalid transaction type.");
-
-
             }
         }
 

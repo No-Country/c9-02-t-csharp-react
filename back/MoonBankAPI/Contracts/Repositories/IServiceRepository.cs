@@ -10,5 +10,6 @@ namespace Contracts.Repositories
     public interface IServiceRepository
     {
         IList<ServiceDTO> GetAllServices();
+        
     }
 }

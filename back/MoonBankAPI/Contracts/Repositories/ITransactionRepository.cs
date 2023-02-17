@@ -11,5 +11,7 @@ namespace Contracts.Repositories
     public interface ITransactionRepository
     {
         IList<TransactionDTO> GetTransactionsHistory(TransactionDTO transactionDTO);
+
+        void MakeTransaction(TransactionDTO transactionDTO);
     }
 }

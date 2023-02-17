@@ -9,7 +9,7 @@ namespace Contracts.Services
 {
     public interface IAccountService
     {
-        AccountDTO Login(string email, string password);
+        ResponseDTO Login(AccountDTO accountDTO);
 
         // void Register(AccountDTO accountDTO);
     }
