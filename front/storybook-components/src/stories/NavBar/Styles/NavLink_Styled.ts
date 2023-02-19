@@ -11,7 +11,8 @@ export const NavLink_Styled = styled.li`
   font-weight: bold;
   font-size: 20px;
   > .NavPage,
-  > .NavPage--active {
+  > .NavPage--active,
+  > .LogoutBTN {
     display: flex;
     gap: 20px;
     align-items: center;
@@ -31,8 +32,19 @@ export const NavLink_Styled = styled.li`
       color: #d9d9d9;
     }
   }
-  > .NavPage:hover {
+  > .NavPage:hover,
+  > .LogoutBTN:hover {
     background: #18508826;
+  }
+
+  > .LogoutBTN {
+    outline: none;
+    border: none;
+    > span {
+      font-family: 'Montserrat';
+      font-weight: bold;
+      font-size: 20px;
+    }
   }
   > .NavPage--active {
     background: #3060904c;

@@ -20,6 +20,7 @@ import {
 } from 'react-icons/io5';
 import { IconType } from 'react-icons';
 import { StatusIcon } from '../NavLink/NavLinkObjectTypes';
+import NavLogoutButton from '../NavLogoutButton/NavLogoutButton';
 
 const Icons = (OnCurrentPage: IconType, OnNonCurrentPage: IconType) => {
   return { OnCurrentPage, OnNonCurrentPage };
@@ -52,4 +53,11 @@ export const NavListElements = [
   LinkGenerator('/rewards', 'Rewards', Icons(IoGift, IoGiftOutline)),
   <NavSeparator orientation='horizontal' />,
   <NavSeparator orientation='horizontal' />,
+  <NavLogoutButton
+    to='login'
+    label='Logout'
+    confirmedLogoutAction={() => {
+      confirm('Confirm again?');
+    }}
+  />,
 ];
