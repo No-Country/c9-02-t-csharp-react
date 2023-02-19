@@ -12,6 +12,7 @@ export const NavBar_Styled = styled.div<{ headerHeight: string }>`
   @media screen and (min-width: 700px) {
     width: 320px;
   }
-  height: calc(100vh - ${(props) => props.headerHeight});
+  height: ${(props) => props.headerHeight};
   background: #262626;
+  box-shadow: 0 0 10px #483475;
 `;

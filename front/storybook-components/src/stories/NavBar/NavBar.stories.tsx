@@ -8,7 +8,7 @@ export default {
   component: NavBar,
   decorators: [withRouter],
   args: {
-    headerHeight: '55px',
+    headerHeight: 'calc( 100vh - 55px )',
     children: NavListElements,
     name: 'Carlos',
     surname: 'Sorto',
