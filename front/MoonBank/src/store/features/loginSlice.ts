@@ -1,19 +1,31 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { Account } from '../../shared/interfaces';
 
-//! draft slice
-interface LoginState {
+
+interface LoginState extends Account {
   isLoggedIn: boolean;
 }
 const initialState: LoginState = {
   isLoggedIn: false,
+  id: -1,
+  name: "",
+  lastName: "",
+  email: "",
+  password: "",
+  alias:  "",
+  cbu_cvu: 0,
+  balance: 0,
+  rewardPoints: 0,
 };
 
 export const LoginSlice = createSlice({
   name: 'loginForm',
   initialState,
   reducers: {
-    setLogin: (state) => {
+    setLogin: (state, action:PayloadAction<Account>) => {
       state.isLoggedIn = true;
+state = {...initialState,}
+      
     },
   },
 });
