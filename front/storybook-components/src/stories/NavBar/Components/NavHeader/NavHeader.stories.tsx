@@ -21,15 +21,12 @@ export default {
   },
 } as ComponentMeta<typeof NavHeader>;
 
-const Template: ComponentStory<typeof NavHeader> = (args) => (
-  <NavHeader {...args} />
-);
+const Template: ComponentStory<typeof NavHeader> = (args) => <NavHeader {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
   name: 'Carlos',
   surname: 'Sorto',
   credits: 430,
-  userImgURL:
-    'https://upload.wikimedia.org/wikipedia/commons/5/50/User_icon-cp.svg',
+  userImgURL: 'https://upload.wikimedia.org/wikipedia/commons/5/50/User_icon-cp.svg',
 };

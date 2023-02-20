@@ -1,14 +1,14 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 interface ButtonProps {
   primary?: boolean;
   secondary?: boolean;
-  size?: "small" | "medium" | "large";
+  size?: 'small' | 'medium' | 'large';
   label: string;
 }
 
 export const ButtonContainer = styled.button<ButtonProps>`
-  font-family: "Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 700;
   border: 0;
   border-radius: 3em;
@@ -32,7 +32,7 @@ export const ButtonContainer = styled.button<ButtonProps>`
   `}
 
   ${(props) =>
-    props.size === "small" &&
+    props.size === 'small' &&
     `
     font-size: 12px;
     padding: 10px 16px;
@@ -40,7 +40,7 @@ export const ButtonContainer = styled.button<ButtonProps>`
   `}
 
   ${(props) =>
-    props.size === "medium" &&
+    props.size === 'medium' &&
     `
   font-size: 14px;
   padding: 11px 20px;
@@ -48,7 +48,7 @@ export const ButtonContainer = styled.button<ButtonProps>`
   `}
 
   ${(props) =>
-    props.size === "large" &&
+    props.size === 'large' &&
     `
   font-size: 16px;
   padding: 12px 24px;
