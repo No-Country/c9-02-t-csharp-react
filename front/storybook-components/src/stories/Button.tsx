@@ -1,7 +1,4 @@
-import React from 'react';
-import './button.css';
-import { ButtonContainer } from './styles-button';
-
+import { ButtonContainer } from "./styles-button";
 
 interface ButtonProps {
   /**
@@ -10,20 +7,16 @@ interface ButtonProps {
 
   /* default theme */
   primary?: boolean;
-  
+
   /* secondaary theme */
   secondary?: boolean;
-  
-  /* smaller size */
-  small?: boolean;
-    /* medium size */
-  medium?: boolean;
-    /* large size */
-  large?: boolean;
-    /* button text */
+
+  size?: "small" | "medium" | "large";
+
+  /* button text */
   label: string;
-/* Background Color */
-  backgroundColor?: string,
+  /* Background Color */
+  backgroundColor?: string;
   /**
    * Optional click handler
    */
@@ -34,23 +27,20 @@ interface ButtonProps {
  * Primary UI component for user interaction
  */
 export const Button = ({
-  label = 'myButton',
+  label = "myButton",
   primary = false,
-  large = false,
-
-  small = false,
-  medium = false,
-  backgroundColor = '#ffff',
+  size = 'small',
+  backgroundColor = "#ffff",
   ...props
- 
 }: ButtonProps) => {
-  const mode = primary ? 'storybook-button--primary' : 'storybook-button--secondary';
+  const mode = primary
+    ? "storybook-button--primary"
+    : "storybook-button--secondary";
   return (
     <ButtonContainer
-    label='Button label'
+      label="Button label"
       type="button"
-      className={['storybook-button', mode].join(' ')}
-      style={{ backgroundColor }}
+      size={size}
       {...props}
     >
       {label}

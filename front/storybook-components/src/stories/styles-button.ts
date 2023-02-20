@@ -3,9 +3,7 @@ import styled from "styled-components";
 interface ButtonProps {
   primary?: boolean;
   secondary?: boolean;
-  small?: boolean;
-  medium?: boolean;
-  large?: boolean;
+  size?: "small" | "medium" | "large";
   label: string;
 }
 
@@ -18,39 +16,42 @@ export const ButtonContainer = styled.button<ButtonProps>`
   display: inline-block;
   line-height: 1;
 
-  ${({ primary }) =>
-    primary &&
+  ${(props) =>
+    props.primary &&
     `
   color: white;
   background-color: #1ea7fd;
   `}
 
-  ${({ secondary }) =>
-    secondary &&
+  ${(props) =>
+    props.secondary &&
     `
   color: #333;
-  background-color: transparent;
+  background-color: red;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;
   `}
 
-  ${({ small }) =>
-    small &&
+  ${(props) =>
+    props.size === "small" &&
     `
     font-size: 12px;
     padding: 10px 16px;
+    background-color: blue;
   `}
 
-  ${({ medium }) =>
-    medium &&
+  ${(props) =>
+    props.size === "medium" &&
     `
   font-size: 14px;
   padding: 11px 20px;
+  background-color: green;
   `}
 
-  ${({ large }) =>
-    large &&
+  ${(props) =>
+    props.size === "large" &&
     `
   font-size: 16px;
   padding: 12px 24px;
+  background-color: red;
   `}
 `;
