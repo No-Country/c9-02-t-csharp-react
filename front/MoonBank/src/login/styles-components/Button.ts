@@ -21,11 +21,11 @@ export const Button = styled.button<Props>`
   border: none;
   padding: 10px;
   color: #ffffff;
-  font-weight: ${ props => props.fontWeight ? props.fontWeight : '700'};
-  font-size: ${ props => props.fontSize ? props.fontSize : '12px'};
-  margin: ${props => props.margin};
-  margin-left: ${props => props.marginLeft};
-  margin-right: ${props => props.marginRight};
-  margin-bottom: ${props => props.marginBottom};
-  margin-top: ${props => props.marginTop};
+  font-weight: ${(props) => (props.fontWeight ? props.fontWeight : '700')};
+  font-size: ${(props) => (props.fontSize ? props.fontSize : '12px')};
+  margin: ${(props) => props.margin};
+  margin-left: ${(props) => props.marginLeft};
+  margin-right: ${(props) => props.marginRight};
+  margin-bottom: ${(props) => props.marginBottom};
+  margin-top: ${(props) => props.marginTop};
 `;

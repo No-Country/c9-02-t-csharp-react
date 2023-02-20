@@ -1,13 +1,11 @@
-import { Login } from "./login/screens"
+import { Login } from './login/screens';
 
-const App = () =>  {
-  
+const App = () => {
   return (
-  <div>
-   <Login />
-  </div>
-  
-  )
-}
+    <div>
+      <Login />
+    </div>
+  );
+};
 
-export default App
+export default App;

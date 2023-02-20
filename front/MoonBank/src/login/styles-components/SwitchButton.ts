@@ -31,7 +31,7 @@ export const CheckBox = styled.input`
   width: 52px;
   height: 26px;
   &:checked + ${CheckBoxLabel} {
-    background: #7F46A9;
+    background: #7f46a9;
     &::after {
       content: '';
       display: block;

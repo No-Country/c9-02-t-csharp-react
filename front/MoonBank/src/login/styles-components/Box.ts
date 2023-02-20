@@ -1,15 +1,15 @@
 import styled from 'styled-components';
 
 type directions = 'column' | 'row';
-type align = 'flex-start' | 'center' | 'flex-end'
+type align = 'flex-start' | 'center' | 'flex-end';
 interface Props {
   direction?: directions;
-  alignContent?: align,
+  alignContent?: align;
 }
 
 export const Box = styled.div<Props>`
   display: flex;
   flex-direction: ${(props) => props.direction};
   justify-content: center;
-  align-items: ${(props) => props.alignContent};;
+  align-items: ${(props) => props.alignContent};
 `;
