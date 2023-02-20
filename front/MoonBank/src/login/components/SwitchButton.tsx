@@ -8,7 +8,7 @@ import {
 
 export const SwitchButton = () => {
   return (
-    <Box alignContent='center'>
+    <Box alignContent='center' marginBottom='1rem'>
       <CheckBoxWrapper>
         <CheckBox id='checkbox' type='checkbox' />
         <CheckBoxLabel htmlFor='checkbox' />
