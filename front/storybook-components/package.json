@@ -6,11 +6,15 @@
   "scripts": {
     "start": "start-storybook -p 6006",
     "build": "build-storybook",
-    "chromatic": "npx chromatic --project-token=de6ecffd54b5"
+    "chromatic": "npx chromatic --project-token=de6ecffd54b5",
+    "format": "prettier --write ."
   },
   "dependencies": {
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-icons": "4.7.1",
+    "react-router-dom": "6.8.1",
+    "storybook-addon-react-router-v6": "^0.2.1",
     "styled-components": "^5.3.6"
   },
   "devDependencies": {
@@ -31,6 +35,7 @@
     "chromatic": "^6.17.0",
     "css-loader": "^6.7.3",
     "postcss": "^8.4.21",
+    "prettier": "2.8.4",
     "typescript": "4.9.3",
     "vite": "4.1.0"
   },
