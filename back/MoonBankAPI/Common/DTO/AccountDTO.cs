@@ -11,14 +11,13 @@ namespace Common.DTO
 {
     public class AccountDTO
     {
-        [Key]
-        [Required]
+        [Key]        
         public int IdAccount { get; set; }
 
-        [Required]
+        
         public string Name { get; set; }
 
-        [Required]
+        
         public string LastName { get; set; }
 
         [Required]
@@ -27,16 +26,16 @@ namespace Common.DTO
         [Required]
         public string Password { get; set; }
 
-        [Required]
+        
         public string Alias { get; set; }
 
-        [Required]
+        
         public long CBU_CVU { get; set; }
 
-        [Required]
+        
         public decimal? Balance { get; set; }
 
-        [Required]
+        
         public int RewardPoints { get; set; }
     }
 }

@@ -49,7 +49,6 @@ namespace DataAccess.Models
         PayService,
         Transfer,
         Reward
-
     }
 
     public enum TypeDeposit

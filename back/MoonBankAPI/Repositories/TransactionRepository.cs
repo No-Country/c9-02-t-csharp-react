@@ -25,6 +25,7 @@ namespace Repositories
                 .Where(x => x.IdSourceAccount == transactionDTO.IdSourceAccount || x.IdDestinationAccount == transactionDTO.IdDestinationAccount)
                 .Select(x => new TransactionDTO
                 {
+                    IdTransaction = x.IdTransaction,
                     TypeTransaction = (Common.DTO.TypeTransaction)x.TypeTransaction,
                     TypeDeposit = (Common.DTO.TypeDeposit)x.TypeDeposit,
                     Date = x.Date,

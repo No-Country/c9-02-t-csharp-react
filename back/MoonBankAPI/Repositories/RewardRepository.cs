@@ -21,6 +21,7 @@ namespace Repositories
         {
             return _context.Rewards.Where(x => x.IdReward > 0).Select(x => new RewardDTO()
             {
+                IdReward = x.IdReward,
                 Name = x.Name,
                 Points = x.Points,
                 RewardUrlImage = x.RewardUrlImage,

@@ -23,11 +23,11 @@ namespace Services
             _accountRepository = accountRepository;
         }
 
-        public ResponseDTO Login(AccountDTO accountDTO)
+        public ResponseDTO Login(string email, string password)
         {
             try
             {
-                var accountDTOs = _accountRepository.Login(accountDTO);
+                var accountDTO = _accountRepository.Login(email, password);
                 return new ResponseDTO
                 {
                     Success = true,
@@ -55,14 +55,35 @@ namespace Services
             }
         }
 
-        
 
-
-        /*
-        public ResponseDTO Register(string username, string password)
+        public ResponseDTO GetAllAccounts()
         {
-            return null;
-        }    
-       */
+            ResponseDTO response = new ResponseDTO();
+            try
+            {
+                response.Result = _accountRepository.GetAllAccounts();
+                response.Success = true;
+            }
+            catch (AccountExceptions accountException)
+            {
+                response.Message = accountException.Message;
+                response.Success = false;
+            }
+            catch
+            {
+                response.Success = false;
+                response.Message = "An error occurred, we are sorry for what happened";
+            }
+
+            return response;
+        }
     }
+
+    /*
+    public ResponseDTO Register(string username, string password)
+    {
+        return null;
+    }    
+   */
 }
+

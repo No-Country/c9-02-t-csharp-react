@@ -10,7 +10,9 @@ using System.Threading.Tasks;
 namespace Common.DTO
 {
     public class TransactionDTO
-    {
+    {        
+        public int IdTransaction { get; set; }
+
         [Required]
         public TypeTransaction TypeTransaction { get; set; }
 

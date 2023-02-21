@@ -21,13 +21,20 @@ namespace MoonBankAPI
         {
             // agregar servicios aquí
 
-
             services.AddDbContext<MoonBankContext>(option => option.UseSqlServer(_configuration.GetConnectionString("MoonBankSQL")));
 
             services.AddTransient<IAccountService, AccountService>();
+            services.AddTransient<IAccountRepository, AccountRepository>();
+
+            services.AddTransient<IRewardService, RewardService>();
             services.AddTransient<IRewardRepository, RewardRepository>(); 
+
             services.AddTransient<IServiceService, ServiceService>();
+            services.AddTransient<IServiceRepository, ServiceRepository>();
+
+            services.AddTransient<ITransactionService, TransactionService>();
             services.AddTransient<ITransactionRepository, TransactionRepository>();
+            
         }
 
         public void Configure(IApplicationBuilder app)

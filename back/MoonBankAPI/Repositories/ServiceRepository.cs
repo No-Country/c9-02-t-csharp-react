@@ -21,6 +21,7 @@ namespace Repositories
         {
             return _context.Services.Where(x => x.IdAccountService > 0).Select(x => new ServiceDTO()
             {
+                IdAccountService = x.IdAccountService,
                 Name = x.Name,
                 Amount = x.Amount,
                 ServiceUrlImage = x.ServiceUrlImage

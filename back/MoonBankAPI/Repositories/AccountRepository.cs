@@ -19,17 +19,29 @@ namespace Repositories
             _context = context;
         }
 
-        public AccountDTO Login(AccountDTO accountDTO)
+        public IList<AccountDTO> GetAllAccounts()
         {
-            var account = _context.Accounts.FirstOrDefault(x => x.Email == accountDTO.Email);
+            return _context.Accounts.Where(x => x.IdAccount > 0).Select(x => new AccountDTO()
+            {
+                IdAccount = x.IdAccount,
+                Balance = x.Balance
+            }).ToList();
+        }
+
+        /*public AccountDTO Login(AccountDTO accountDTO)
+        {
+            var account = _context.Accounts.FirstOrDefault(x => x.Email == accountDTO.Email);                        
+
             if (account == null)
             {
                 throw new AccountExceptions("This email doesn´t exists or is not associated with an account.");
             }
-            if (accountDTO.Password != null)
+
+            if (accountDTO.Password != account.Password)
             {
                 throw new AccountExceptions("Password is not valid.");
             }
+
 
             return new AccountDTO()
             {
@@ -43,6 +55,58 @@ namespace Repositories
                 RewardPoints = account.RewardPoints,
             };
         }
+
+        */
+
+        public AccountDTO Login(string email, string password)
+        {
+            var account = _context.Accounts.FirstOrDefault(x => x.Email == email);
+
+            if (account == null)
+            {
+                throw new AccountExceptions("This email doesn´t exists or is not associated with an account.");
+            }
+
+            if (password != account.Password)
+            {
+                throw new AccountExceptions("Password is not valid.");
+            }
+
+            return new AccountDTO()
+            {
+                IdAccount = account.IdAccount,
+                Name = account.Name,
+                LastName = account.LastName,
+                Email = account.Email,
+                Password = account.Password,
+                Alias = account.Alias,
+                CBU_CVU = account.CBU_CVU,
+                Balance = account.Balance,
+                RewardPoints = account.RewardPoints,
+            };
+        }
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         /* public void Register(AccountDTO accountDTO)
          {

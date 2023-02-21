@@ -8,11 +8,11 @@ namespace MoonBankAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class RewardController : ControllerBase
+    public class RewardsController : ControllerBase
     {
         private readonly IRewardService _rewardService;
 
-        public RewardController(IRewardService rewardService)
+        public RewardsController(IRewardService rewardService)
         {
             _rewardService = rewardService;
         }

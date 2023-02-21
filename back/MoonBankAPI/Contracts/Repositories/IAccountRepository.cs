@@ -10,7 +10,8 @@ namespace Contracts.Repositories
 {
     public interface IAccountRepository
     {
-        AccountDTO Login(AccountDTO accountDTO);
+        IList<AccountDTO> GetAllAccounts();
+        AccountDTO Login(string email, string password);
 
         //  void Register(AccountDTO accountDTO);
 
