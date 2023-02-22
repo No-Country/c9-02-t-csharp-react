@@ -10,5 +10,12 @@ export const FlexContainer = styled.div`
 `;
 
 export const Header = styled.header`
-
+  background-color: var(--BlackBg);
+  color: var(--White);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 2rem;
+  width: 100%;
 `
