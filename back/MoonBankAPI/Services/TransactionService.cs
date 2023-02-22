@@ -3,6 +3,7 @@ using Common.Exceptions;
 using Contracts.Repositories;
 using Contracts.Services;
 using DataAccess;
+using DataAccess.Models;
 using Repositories;
 using System;
 using System.Collections.Generic;
@@ -51,9 +52,14 @@ namespace Services
             try
             {
                 _transactionRepository.MakeTransaction(transactionDTO);
-                return new ResponseDTO { Success = true };
+                
+                return new ResponseDTO
+                {
+                    Success = true,
+                    Message = $"{transactionDTO.TypeTransaction} Successful."
+                };
             }
-            catch (ArgumentException ex)
+            catch (TransactionExceptions ex)
             {
                 return new ResponseDTO { Success = false, Message = ex.Message };
             }

@@ -1,12 +1,15 @@
 ﻿using Common.DTO;
+using Common.Exceptions;
 using Contracts.Repositories;
 using DataAccess;
 using DataAccess.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Data.SqlTypes;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Transactions;
 
@@ -20,9 +23,9 @@ namespace Repositories
             _context = context;
         }
 
-        public IList<TransactionDTO> GetTransactionsHistory(int idAccount) //retornar error o mensaje si la lista viene vacia
+        public IList<TransactionDTO> GetTransactionsHistory(int idAccount)
         {
-            return _context.Transactions
+            var transactions = _context.Transactions
                 .Where(x => x.IdSourceAccount == idAccount || x.IdDestinationAccount == idAccount)
                 .Select(x => new TransactionDTO
                 {
@@ -36,6 +39,13 @@ namespace Repositories
                     IdReward = x.IdReward
                 })
                 .ToList();
+
+            if (transactions.Count == 0)
+            {
+                throw new TransactionExceptions("No transactions found for the specified account.");
+            }
+
+            return transactions;
         }
 
 
@@ -71,7 +81,7 @@ namespace Repositories
 
                 default:
 
-                    throw new ArgumentException("Invalid transaction type.");
+                    throw new TransactionExceptions("Invalid transaction type.");
             }
         }
 
@@ -79,10 +89,14 @@ namespace Repositories
         {
             var destinationAccount = _context.Accounts.FirstOrDefault(a => a.IdAccount == transactionDTO.IdDestinationAccount);
 
+            if (destinationAccount == null)
+            {
+                throw new TransactionExceptions("Destination Account not found.");
+            }
+
             if (transactionDTO.Amount > 50000)
             {
-                Console.WriteLine("El monto ingresado es mayor a $50000 que es el permitido.");
-                return;
+                throw new TransactionExceptions("The amount entered is greater than $50000, which is the allowed limit.");
             }
 
             destinationAccount.Balance += transactionDTO.Amount;
@@ -96,9 +110,7 @@ namespace Repositories
             };
 
             _context.Transactions.Add(transaction);
-            _context.SaveChanges();
-
-            Console.WriteLine($"Depósito realizado con éxito a la cuenta de: {destinationAccount.Name}");
+            _context.SaveChanges();            
         }
 
         public void PayService(TransactionDTO transactionDTO)
@@ -107,10 +119,19 @@ namespace Repositories
             var sourceAccount = _context.Accounts.FirstOrDefault(a => a.IdAccount == transactionDTO.IdSourceAccount);
             var service = _context.Services.FirstOrDefault(s => s.IdService == transactionDTO.IdService);
 
+            if (sourceAccount == null)
+            {
+                throw new TransactionExceptions("Account not found.");
+            }
+
+            if (service == null)
+            {
+                throw new TransactionExceptions("Service not found.");
+            }
+
             if (service.Amount > sourceAccount.Balance)
             {
-                Console.WriteLine("No tienes suficiente saldo para abonar este servicio.");
-                return;
+                throw new TransactionExceptions("You do not have enough balance to pay for this service.");                
             }
 
             sourceAccount.Balance -= service.Amount;
@@ -120,30 +141,26 @@ namespace Repositories
             {
                 IdService = transactionDTO.IdService,
                 TypeTransaction = DataAccess.Models.TypeTransaction.PayService,
-                Amount = transactionDTO.Amount,
+                Amount = service.Amount,
                 Date = DateTime.Now
             };
 
             _context.Transactions.Add(transaction);
             _context.SaveChanges();
-
-            Console.WriteLine($"Servicio abonado: {service.Name}  ${service.Amount}");
         }
 
         public void MakeTransfer(TransactionDTO transactionDTO)
         {
             if (transactionDTO.Amount > 50000)
             {
-                throw new TransactionException("Monto ingresado mayor al limite permitido");
+                throw new TransactionExceptions("Entered amount exceeds the allowed limit.");
             }
 
             var sourceAccount = _context.Accounts.FirstOrDefault(a => a.IdAccount == transactionDTO.IdSourceAccount);
-
-            // Verificar que no se transfiera a la misma cuenta
+                        
             if (sourceAccount.CBU_CVU == transactionDTO.DestinationAccountCBU_CVU || sourceAccount.Alias == transactionDTO.DestinationAccountAlias)
             {
-                Console.WriteLine("No se puede transferir a la misma cuenta.");
-                return;
+                throw new TransactionExceptions("Cannot transfer to the same account.");
             }
 
             var destinationAccount = _context.Accounts.FirstOrDefault(a => a.CBU_CVU == transactionDTO.DestinationAccountCBU_CVU || a.Alias == transactionDTO.DestinationAccountAlias);
@@ -151,12 +168,12 @@ namespace Repositories
 
             if (destinationAccount == null)
             {
-                throw new TransactionException("Cuenta a transferir inexistente");
+                throw new TransactionExceptions("CBU_CVU or alias is not associated with any account");
             }
 
             if (transactionDTO.Amount > sourceAccount.Balance)
             {
-                throw new TransactionException("Saldo insuficiente");
+                throw new TransactionExceptions("Insufficient balance.");
             }
 
             sourceAccount.Balance -= transactionDTO.Amount;
@@ -174,29 +191,29 @@ namespace Repositories
 
             _context.Transactions.Add(transaction);
             _context.SaveChanges();
-
-            Console.WriteLine($"Transfer to {destinationAccount.Name} success.");
         }
 
         public void RedeemReward(TransactionDTO transactionDTO)
         {
-            var selectedReward = _context.Rewards.FirstOrDefault(r => r.IdReward == transactionDTO.IdReward);
-
-            if (selectedReward == null)
-            {
-                Console.WriteLine("Recompensa no encontrada.");
-                return;
-            }
-
             var sourceAccount = _context.Accounts.FirstOrDefault(a => a.IdAccount == transactionDTO.IdSourceAccount);
+            var reward = _context.Rewards.FirstOrDefault(r => r.IdReward == transactionDTO.IdReward);
 
-            if (selectedReward.Points > sourceAccount.RewardPoints)
+            if (sourceAccount == null)
             {
-                Console.WriteLine("No tienes suficientes puntos para redimir esta recompensa.");
-                return;
+                throw new TransactionExceptions("Account not found.");
             }
 
-            sourceAccount.RewardPoints -= selectedReward.Points;
+            if (reward == null)
+            {                
+                throw new TransactionExceptions("Reward not found.");
+            }
+
+            if (reward.Points > sourceAccount.RewardPoints)
+            {
+                throw new TransactionExceptions("You do not have enough points to redeem this reward.");
+            }
+
+            sourceAccount.RewardPoints -= reward.Points;
 
             var transaction = new DataAccess.Models.Transaction
             {
@@ -209,8 +226,6 @@ namespace Repositories
 
             _context.Transactions.Add(transaction);
             _context.SaveChanges();
-
-            Console.WriteLine($"Recompensa acreditada: {selectedReward.Name}");
         }
 
        

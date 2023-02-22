@@ -44,6 +44,12 @@ namespace DataAccess
                 .HasForeignKey(t => t.IdReward)
                 .OnDelete(DeleteBehavior.NoAction);
 
+            modelBuilder.Entity<Transaction>()
+                .HasOne(t => t.Service)
+                .WithMany()
+                .HasForeignKey(t => t.IdService)
+                .OnDelete(DeleteBehavior.NoAction);
+
         }
 
     }

@@ -40,6 +40,7 @@ namespace DataAccess.Models
         public virtual Account SourceAccount { get; set; }
         public virtual Account DestinationAccount { get; set; }
         public virtual Reward Reward { get; set; }
+        public virtual Service Service { get; set; }
 
     }
 

@@ -59,40 +59,6 @@ namespace Repositories
             };
         }
 
-        
-/*
-        public AccountDTO Login(string email, string password)
-        {
-            var account = _context.Accounts.FirstOrDefault(x => x.Email == email);
-
-            if (account == null)
-            {
-                throw new AccountExceptions("This email doesn´t exists or is not associated with an account.");
-            }
-
-            if (password != account.Password)
-            {
-                throw new AccountExceptions("Password is not valid.");
-            }
-
-            return new AccountDTO()
-            {
-                IdAccount = account.IdAccount,
-                Name = account.Name,
-                LastName = account.LastName,
-                Email = account.Email,
-                Password = account.Password,
-                Alias = account.Alias,
-                CBU_CVU = account.CBU_CVU,
-                Balance = account.Balance,
-                RewardPoints = account.RewardPoints,
-            };
-        }
-        
-*/
-
-
-
 
 
 
