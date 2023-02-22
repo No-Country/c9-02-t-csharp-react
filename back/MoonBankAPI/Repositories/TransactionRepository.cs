@@ -220,7 +220,7 @@ namespace Repositories
                 IdSourceAccount = transactionDTO.IdSourceAccount,
                 TypeTransaction = DataAccess.Models.TypeTransaction.Reward,
                 Amount = 0,
-                IdReward = selectedReward.IdReward,
+                IdReward = reward.IdReward,
                 Date = DateTime.Now
             };
 
