@@ -1,4 +1,4 @@
-import { Button, Input } from '../styles-components';
+import { Button, Input } from '../styled-components';
 
 import { SwitchButton } from './SwitchButton';
 import { useForm } from '../../shared/hooks/useForm';

@@ -10,12 +10,17 @@ interface Props {
   fontWeight?: string;
 }
 
-export const Input = styled.input<Props>`
-  background: #414141;
-  border: none;
-  border-bottom: 3px solid #083870;
+export const Button = styled.button<Props>`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background: var(--Primary);
+  width: 140px;
   border-radius: 5px;
-  color: #ffffff;
+  border: none;
+  padding: 10px;
+  color: var(--White);
   font-weight: ${(props) => (props.fontWeight ? props.fontWeight : '700')};
   font-size: ${(props) => (props.fontSize ? props.fontSize : '12px')};
   margin: ${(props) => props.margin};
@@ -23,7 +28,4 @@ export const Input = styled.input<Props>`
   margin-right: ${(props) => props.marginRight};
   margin-bottom: ${(props) => props.marginBottom};
   margin-top: ${(props) => props.marginTop};
-  padding: 5px 8px;
-  width: 100%;
-  height: 32px;
 `;

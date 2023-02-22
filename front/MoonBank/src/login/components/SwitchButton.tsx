@@ -1,4 +1,4 @@
-import { Box, CheckBox, CheckBoxLabel, CheckBoxWrapper, Text } from '../styles-components';
+import { Box, CheckBox, CheckBoxLabel, CheckBoxWrapper, Text } from '../styled-components';
 
 export const SwitchButton = () => {
   return (

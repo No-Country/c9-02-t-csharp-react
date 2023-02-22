@@ -1,7 +1,5 @@
-import '../styles/main.css';
-
-import { Container, Paper, Text } from '../styles-components';
-
+import { Container, Paper, Text } from '../styled-components';
+import {FlexContainer} from "../../shared/styles/sharedStyles";
 import { Form } from '../components';
 
 export const Login = () => {
@@ -19,9 +17,14 @@ export const Login = () => {
           Forgot your password? | Forgot your username?
         </Text>
       </Paper>
-      <Text marginTop='1rem'>Terms and Conditions</Text>
-      <Text marginTop='0.5rem'>Security Policies</Text>
-      <Text marginTop='0.5rem'>Support Centre</Text>
+
+        <FlexContainer>
+
+            <Text>Terms and Conditions</Text>
+            <Text>Security Policies</Text>
+            <Text>Support Centre</Text>
+        </FlexContainer>
+
     </Container>
   );
 };

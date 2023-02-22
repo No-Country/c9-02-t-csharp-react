@@ -9,7 +9,7 @@ interface Props {
 
 export const Box = styled.div<Props>`
   display: flex;
-  flex-direction: ${(props) => props.direction};
+  flex-direction: ${({direction}) => direction};
   justify-content: center;
-  align-items: ${(props) => props.alignContent};
+  align-items: ${({alignContent}) => alignContent};
 `;
