@@ -13,10 +13,7 @@ function NavHeader(props: NavHeaderProps) {
           {props.name} {props.surname}
         </span>
         <span className='NavProfile__UserInfo_Credits'>
-          Your Credits:{' '}
-          <span className='NavProfile__UserInfo_Credits_Amount'>
-            {props.credits}px
-          </span>
+          Your Credits: <span className='NavProfile__UserInfo_Credits_Amount'>{props.credits}px</span>
         </span>
       </div>
     </NavHeader_Styled>

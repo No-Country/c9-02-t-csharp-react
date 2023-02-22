@@ -1,9 +1,6 @@
 import { NavLink, useLocation } from 'react-router-dom';
 import { IoHomeOutline } from 'react-icons/io5';
-import {
-  NavLinkObjectActiveProps,
-  NavLinkObjectProps,
-} from './NavLinkObjectTypes';
+import { NavLinkObjectActiveProps, NavLinkObjectProps } from './NavLinkObjectTypes';
 
 const activeNav: NavLinkObjectActiveProps = (props) => {
   return props.isActive ? 'NavPage--active' : 'NavPage';

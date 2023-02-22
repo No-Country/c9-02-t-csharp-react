@@ -24,9 +24,7 @@ export default {
   },
 } as ComponentMeta<typeof NavLinkObject>;
 
-const Template: ComponentStory<typeof NavLinkObject> = (args) => (
-  <NavLinkObject {...args} />
-);
+const Template: ComponentStory<typeof NavLinkObject> = (args) => <NavLinkObject {...args} />;
 
 export const CurrentPage = Template.bind({});
 

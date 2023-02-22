@@ -1,4 +1,4 @@
-import { ButtonContainer } from "./styles-button";
+import { ButtonContainer } from './styles-button';
 
 interface ButtonProps {
   /**
@@ -11,7 +11,7 @@ interface ButtonProps {
   /* secondaary theme */
   secondary?: boolean;
 
-  size?: "small" | "medium" | "large";
+  size?: 'small' | 'medium' | 'large';
 
   /* button text */
   label: string;
@@ -27,22 +27,15 @@ interface ButtonProps {
  * Primary UI component for user interaction
  */
 export const Button = ({
-  label = "myButton",
+  label = 'myButton',
   primary = false,
   size = 'small',
-  backgroundColor = "#ffff",
+  backgroundColor = '#ffff',
   ...props
 }: ButtonProps) => {
-  const mode = primary
-    ? "storybook-button--primary"
-    : "storybook-button--secondary";
+  const mode = primary ? 'storybook-button--primary' : 'storybook-button--secondary';
   return (
-    <ButtonContainer
-      label="Button label"
-      type="button"
-      size={size}
-      {...props}
-    >
+    <ButtonContainer label='Button label' type='button' size={size} {...props}>
       {label}
     </ButtonContainer>
   );

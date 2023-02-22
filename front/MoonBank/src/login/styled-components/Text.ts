@@ -12,15 +12,12 @@ interface Props {
 }
 
 export const Text = styled.p<Props>`
-  color: #ffffff;
-  font-family: arial;
-  font-family: 'Montserrat';
+  color: var(--White);
   font-size: ${(props) => props.size};
   font-weight: ${(props) => props.weight};
   text-align: ${(props) => props.align};
-  margin: ${(props) => props.margin};
-  margin-left: ${(props) => props.marginLeft};
-  margin-right: ${(props) => props.marginRight};
-  margin-bottom: ${(props) => props.marginBottom};
-  margin-top: ${(props) => props.marginTop};
+  margin-top: ${({marginTop}) => marginTop};
+  margin-right: ${({marginRight}) => marginRight};
+  margin-bottom: ${({marginBottom}) => marginBottom};
+  margin-left: ${({marginLeft}) => marginLeft};
 `;
