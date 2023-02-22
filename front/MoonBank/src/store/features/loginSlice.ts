@@ -1,23 +1,22 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit';
 
 //! draft slice
 interface LoginState {
- isLoggedIn: boolean
+  isLoggedIn: boolean;
 }
 const initialState: LoginState = {
-    isLoggedIn: false
-}
+  isLoggedIn: false,
+};
 
 export const LoginSlice = createSlice({
   name: 'loginForm',
   initialState,
   reducers: {
     setLogin: (state) => {
-      state.isLoggedIn = true
+      state.isLoggedIn = true;
     },
-   
   },
-})
+});
 
-export const {  setLogin } = LoginSlice.actions
-export default LoginSlice.reducer
+export const { setLogin } = LoginSlice.actions;
+export default LoginSlice.reducer;

@@ -26,27 +26,17 @@ const Icons = (OnCurrentPage: IconType, OnNonCurrentPage: IconType) => {
   return { OnCurrentPage, OnNonCurrentPage };
 };
 
-export const LinkGenerator = (
-  to: string,
-  label: string,
-  statusIcon: StatusIcon
-) => <NavLinkObject to={to} label={label} statusIcon={statusIcon} />;
+export const LinkGenerator = (to: string, label: string, statusIcon: StatusIcon) => (
+  <NavLinkObject to={to} label={label} statusIcon={statusIcon} />
+);
 
 export const NavListElements = [
   LinkGenerator('/home', 'Home', Icons(IoHome, IoHomeOutline)),
-  LinkGenerator(
-    '/profile',
-    'Profile',
-    Icons(IoPeopleCircle, IoPeopleCircleOutline)
-  ),
+  LinkGenerator('/profile', 'Profile', Icons(IoPeopleCircle, IoPeopleCircleOutline)),
   LinkGenerator('/help', 'Help', Icons(IoHelpCircle, IoHelpCircleOutline)),
   <NavSeparator orientation='horizontal' />,
   LinkGenerator('/balance', 'My Balance', Icons(IoCard, IoCardOutline)),
-  LinkGenerator(
-    '/activity',
-    'Activity',
-    Icons(IoListCircle, IoListCircleOutline)
-  ),
+  LinkGenerator('/activity', 'Activity', Icons(IoListCircle, IoListCircleOutline)),
   LinkGenerator('/send', 'Send Money', Icons(IoSend, IoSendOutline)),
   LinkGenerator('/link', 'Payment Link', Icons(IoIdCard, IoIdCardOutline)),
   <NavSeparator orientation='horizontal' />,

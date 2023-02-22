@@ -13,8 +13,7 @@ export default {
     name: 'Carlos',
     surname: 'Sorto',
     credits: 430,
-    userImgURL:
-      'https://upload.wikimedia.org/wikipedia/commons/5/50/User_icon-cp.svg',
+    userImgURL: 'https://upload.wikimedia.org/wikipedia/commons/5/50/User_icon-cp.svg',
   },
   parameters: {
     backgrounds: {

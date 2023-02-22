@@ -27,9 +27,7 @@ export default {
   },
 } as ComponentMeta<typeof NavList>;
 
-const Template: ComponentStory<typeof NavList> = (args) => (
-  <NavList {...args} />
-);
+const Template: ComponentStory<typeof NavList> = (args) => <NavList {...args} />;
 
 export const Default = Template.bind({});
 Default.parameters = {

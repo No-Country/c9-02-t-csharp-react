@@ -1,12 +1,11 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const Paper = styled.div`
+  background: var(--Dark);
   display: flex;
+  border-radius: 14px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  height: 100%;
-  background: #1e1e1e;
-  padding: 30px;
+  padding: 2rem;
 `;

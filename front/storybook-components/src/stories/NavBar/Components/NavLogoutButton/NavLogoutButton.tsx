@@ -13,9 +13,7 @@ function NavLogoutButton(props: NavLogoutBTNProps) {
   // ---------- -------------------- ---------- //
   // ---------- HANDLE ACTION EVENTS ---------- //
   // ---------- -------------------- ---------- //
-  const OnClickLogoutHandler: MouseEventHandler<HTMLButtonElement> = (
-    _event
-  ) => {
+  const OnClickLogoutHandler: MouseEventHandler<HTMLButtonElement> = (_event) => {
     //TO DO Here
     if (confirm('Are you sure you want to log out now?')) {
       confirmedLogoutAction();

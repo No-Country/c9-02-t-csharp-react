@@ -33,9 +33,7 @@ export default {
   },
 } as ComponentMeta<typeof NavLogoutButton>;
 
-const Template: ComponentStory<typeof NavLogoutButton> = (args) => (
-  <NavLogoutButton {...args} />
-);
+const Template: ComponentStory<typeof NavLogoutButton> = (args) => <NavLogoutButton {...args} />;
 
 export const Default = Template.bind({});
 
