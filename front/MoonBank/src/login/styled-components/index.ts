@@ -1,3 +1,4 @@
+export * from './Alert';
 export * from './Box';
 export * from '../../shared/styles/Button';
 export * from '../../shared/styles/Container';

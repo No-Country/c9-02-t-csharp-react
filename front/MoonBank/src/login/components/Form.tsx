@@ -1,5 +1,6 @@
 import { Button, Input } from '../styled-components';
 
+import { AlertNotification } from './AlertNotification';
 import { SwitchButton } from './SwitchButton';
 import { useForm } from '../../shared/hooks/useForm';
 
@@ -38,6 +39,7 @@ export const Form = () => {
         marginBottom='1rem'
       />
       <SwitchButton />
+      <AlertNotification /> 
       <Button marginTop='1rem'>Log In</Button>
     </>
   );
