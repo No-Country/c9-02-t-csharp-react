@@ -17,10 +17,10 @@ namespace MoonBankAPI.Controllers
             _transactionService = transactionService;
         }
 
-        [HttpGet("TransactionHistory")]
-        public ActionResult<IList<ResponseDTO>> GetTransactionHistory(TransactionDTO transactionDTO)
+        [HttpGet("TransactionHistory/{idAccount}")]
+        public ActionResult<IList<ResponseDTO>> GetTransactionHistory(int idAccount)
         {
-            var response = _transactionService.GetTransactionsHistory(transactionDTO);
+            var response = _transactionService.GetTransactionsHistory(idAccount);
             return Ok(response);
         }
 

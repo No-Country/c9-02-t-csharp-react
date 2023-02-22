@@ -10,7 +10,7 @@ namespace Contracts.Repositories
 {
     public interface ITransactionRepository
     {
-        IList<TransactionDTO> GetTransactionsHistory(TransactionDTO transactionDTO);
+        IList<TransactionDTO> GetTransactionsHistory(int idAccount);
 
         void MakeTransaction(TransactionDTO transactionDTO);
     }

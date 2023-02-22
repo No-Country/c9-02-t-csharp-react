@@ -24,12 +24,12 @@ namespace Services
         }
 
 
-        public ResponseDTO GetTransactionsHistory(TransactionDTO transactionDTO)
+        public ResponseDTO GetTransactionsHistory(int idAccount)
         {
             ResponseDTO response = new ResponseDTO();
             try
             {
-                response.Result = _transactionRepository.GetTransactionsHistory(transactionDTO);
+                response.Result = _transactionRepository.GetTransactionsHistory(idAccount);
                 response.Success = true;
             }
             catch (TransactionExceptions transactionException)

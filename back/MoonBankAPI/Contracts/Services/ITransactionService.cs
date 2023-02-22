@@ -9,7 +9,7 @@ namespace Contracts.Services
 {
     public interface ITransactionService
     {
-        ResponseDTO GetTransactionsHistory(TransactionDTO transactionDTO);
+        ResponseDTO GetTransactionsHistory(int idAccount);
 
         ResponseDTO MakeTransaction(TransactionDTO transactionDTO);
     }

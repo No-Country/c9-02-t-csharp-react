@@ -12,7 +12,7 @@ namespace Common.DTO
     public class ServiceDTO
     {
         [Required]
-        public int IdAccountService { get; set; }
+        public int IdService { get; set; }
 
         [Required]
         public string Name { get; set; }

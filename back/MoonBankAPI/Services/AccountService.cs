@@ -23,15 +23,15 @@ namespace Services
             _accountRepository = accountRepository;
         }
 
-        public ResponseDTO Login(string email, string password)
+        public ResponseDTO Login(AccountDTO accountDTO)
         {
             try
             {
-                var accountDTO = _accountRepository.Login(email, password);
+                var account = _accountRepository.Login(accountDTO);
                 return new ResponseDTO
                 {
                     Success = true,
-                    Result = accountDTO,
+                    Result = account,
                     Message = "Login successful"
                 };
             }

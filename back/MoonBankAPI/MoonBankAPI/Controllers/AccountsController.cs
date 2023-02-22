@@ -21,9 +21,9 @@ namespace MoonBankAPI.Controllers
 
 
         [HttpPost("Login")]
-        public ActionResult<ResponseDTO> Login([FromBody] string email, string password)
+        public ActionResult<ResponseDTO> Login([FromBody] AccountDTO accountDTO)
         {
-            var response = _accountService.Login(email, password);
+            var response = _accountService.Login(accountDTO);
             return Ok(response);
         }
 

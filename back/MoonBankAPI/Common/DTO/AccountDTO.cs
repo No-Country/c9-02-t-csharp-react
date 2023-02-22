@@ -11,10 +11,9 @@ namespace Common.DTO
 {
     public class AccountDTO
     {
-        [Key]        
+            
         public int IdAccount { get; set; }
-
-        
+     
         public string Name { get; set; }
 
         

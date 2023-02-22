@@ -2098,23 +2098,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Lucho\\.nuget\\packages\\": {},
+    "C:\\Users\\Windows11\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Lucho\\Desktop\\Proyectos\\c9-02-t-csharp-react\\back\\MoonBankAPI\\Services\\Services.csproj",
+      "projectUniqueName": "C:\\Users\\Windows11\\Desktop\\MoonBank\\c9-02-t-csharp-react\\back\\MoonBankAPI\\Services\\Services.csproj",
       "projectName": "Services",
-      "projectPath": "C:\\Users\\Lucho\\Desktop\\Proyectos\\c9-02-t-csharp-react\\back\\MoonBankAPI\\Services\\Services.csproj",
-      "packagesPath": "C:\\Users\\Lucho\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Lucho\\Desktop\\Proyectos\\c9-02-t-csharp-react\\back\\MoonBankAPI\\Services\\obj\\",
+      "projectPath": "C:\\Users\\Windows11\\Desktop\\MoonBank\\c9-02-t-csharp-react\\back\\MoonBankAPI\\Services\\Services.csproj",
+      "packagesPath": "C:\\Users\\Windows11\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Windows11\\Desktop\\MoonBank\\c9-02-t-csharp-react\\back\\MoonBankAPI\\Services\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Lucho\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Windows11\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -2130,17 +2130,17 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\Lucho\\Desktop\\Proyectos\\c9-02-t-csharp-react\\back\\MoonBankAPI\\Common\\Common.csproj": {
-              "projectPath": "C:\\Users\\Lucho\\Desktop\\Proyectos\\c9-02-t-csharp-react\\back\\MoonBankAPI\\Common\\Common.csproj"
+            "C:\\Users\\Windows11\\Desktop\\MoonBank\\c9-02-t-csharp-react\\back\\MoonBankAPI\\Common\\Common.csproj": {
+              "projectPath": "C:\\Users\\Windows11\\Desktop\\MoonBank\\c9-02-t-csharp-react\\back\\MoonBankAPI\\Common\\Common.csproj"
             },
-            "C:\\Users\\Lucho\\Desktop\\Proyectos\\c9-02-t-csharp-react\\back\\MoonBankAPI\\Contracts\\Contracts.csproj": {
-              "projectPath": "C:\\Users\\Lucho\\Desktop\\Proyectos\\c9-02-t-csharp-react\\back\\MoonBankAPI\\Contracts\\Contracts.csproj"
+            "C:\\Users\\Windows11\\Desktop\\MoonBank\\c9-02-t-csharp-react\\back\\MoonBankAPI\\Contracts\\Contracts.csproj": {
+              "projectPath": "C:\\Users\\Windows11\\Desktop\\MoonBank\\c9-02-t-csharp-react\\back\\MoonBankAPI\\Contracts\\Contracts.csproj"
             },
-            "C:\\Users\\Lucho\\Desktop\\Proyectos\\c9-02-t-csharp-react\\back\\MoonBankAPI\\DataAccess\\DataAccess.csproj": {
-              "projectPath": "C:\\Users\\Lucho\\Desktop\\Proyectos\\c9-02-t-csharp-react\\back\\MoonBankAPI\\DataAccess\\DataAccess.csproj"
+            "C:\\Users\\Windows11\\Desktop\\MoonBank\\c9-02-t-csharp-react\\back\\MoonBankAPI\\DataAccess\\DataAccess.csproj": {
+              "projectPath": "C:\\Users\\Windows11\\Desktop\\MoonBank\\c9-02-t-csharp-react\\back\\MoonBankAPI\\DataAccess\\DataAccess.csproj"
             },
-            "C:\\Users\\Lucho\\Desktop\\Proyectos\\c9-02-t-csharp-react\\back\\MoonBankAPI\\Repositories\\Repositories.csproj": {
-              "projectPath": "C:\\Users\\Lucho\\Desktop\\Proyectos\\c9-02-t-csharp-react\\back\\MoonBankAPI\\Repositories\\Repositories.csproj"
+            "C:\\Users\\Windows11\\Desktop\\MoonBank\\c9-02-t-csharp-react\\back\\MoonBankAPI\\Repositories\\Repositories.csproj": {
+              "projectPath": "C:\\Users\\Windows11\\Desktop\\MoonBank\\c9-02-t-csharp-react\\back\\MoonBankAPI\\Repositories\\Repositories.csproj"
             }
           }
         }

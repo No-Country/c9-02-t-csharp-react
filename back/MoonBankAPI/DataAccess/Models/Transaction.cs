@@ -34,7 +34,7 @@ namespace DataAccess.Models
 
         public int? IdReward { get; set; }
 
-
+        public int? IdService { get; set; }
 
 
         public virtual Account SourceAccount { get; set; }

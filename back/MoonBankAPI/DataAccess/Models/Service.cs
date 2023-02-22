@@ -11,7 +11,7 @@ namespace DataAccess.Models
     public class Service
     {
         [Key]
-        public int IdAccountService { get; set; }
+        public int IdService { get; set; }
 
         [Required]
         [Column(TypeName = "VARCHAR(50)")]

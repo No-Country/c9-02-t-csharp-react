@@ -19,9 +19,9 @@ namespace Repositories
 
         public IList<ServiceDTO> GetAllServices()
         {
-            return _context.Services.Where(x => x.IdAccountService > 0).Select(x => new ServiceDTO()
+            return _context.Services.Where(x => x.IdService > 0).Select(x => new ServiceDTO()
             {
-                IdAccountService = x.IdAccountService,
+                IdService = x.IdService,
                 Name = x.Name,
                 Amount = x.Amount,
                 ServiceUrlImage = x.ServiceUrlImage

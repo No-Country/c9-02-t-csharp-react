@@ -8,6 +8,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 
 namespace Repositories
 {
@@ -19,10 +20,10 @@ namespace Repositories
             _context = context;
         }
 
-        public IList<TransactionDTO> GetTransactionsHistory(TransactionDTO transactionDTO)
+        public IList<TransactionDTO> GetTransactionsHistory(int idAccount) //retornar error o mensaje si la lista viene vacia
         {
             return _context.Transactions
-                .Where(x => x.IdSourceAccount == transactionDTO.IdSourceAccount || x.IdDestinationAccount == transactionDTO.IdDestinationAccount)
+                .Where(x => x.IdSourceAccount == idAccount || x.IdDestinationAccount == idAccount)
                 .Select(x => new TransactionDTO
                 {
                     IdTransaction = x.IdTransaction,
@@ -74,32 +75,118 @@ namespace Repositories
             }
         }
 
+        public void MakeDeposit(TransactionDTO transactionDTO)
+        {
+            var destinationAccount = _context.Accounts.FirstOrDefault(a => a.IdAccount == transactionDTO.IdDestinationAccount);
 
+            if (transactionDTO.Amount > 50000)
+            {
+                Console.WriteLine("El monto ingresado es mayor a $50000 que es el permitido.");
+                return;
+            }
+
+            destinationAccount.Balance += transactionDTO.Amount;
+
+            var transaction = new DataAccess.Models.Transaction
+            {
+                IdDestinationAccount = transactionDTO.IdDestinationAccount,
+                TypeTransaction = DataAccess.Models.TypeTransaction.Deposit,
+                Amount = transactionDTO.Amount,
+                Date = DateTime.Now
+            };
+
+            _context.Transactions.Add(transaction);
+            _context.SaveChanges();
+
+            Console.WriteLine($"Depósito realizado con éxito a la cuenta de: {destinationAccount.Name}");
+        }
+
+        public void PayService(TransactionDTO transactionDTO)
+        {
+            
+            var sourceAccount = _context.Accounts.FirstOrDefault(a => a.IdAccount == transactionDTO.IdSourceAccount);
+            var service = _context.Services.FirstOrDefault(s => s.IdService == transactionDTO.IdService);
+
+            if (service.Amount > sourceAccount.Balance)
+            {
+                Console.WriteLine("No tienes suficiente saldo para abonar este servicio.");
+                return;
+            }
+
+            sourceAccount.Balance -= service.Amount;
+            sourceAccount.RewardPoints += 50;
+
+            var transaction = new DataAccess.Models.Transaction
+            {
+                IdService = transactionDTO.IdService,
+                TypeTransaction = DataAccess.Models.TypeTransaction.PayService,
+                Amount = transactionDTO.Amount,
+                Date = DateTime.Now
+            };
+
+            _context.Transactions.Add(transaction);
+            _context.SaveChanges();
+
+            Console.WriteLine($"Servicio abonado: {service.Name}  ${service.Amount}");
+        }
+
+        public void MakeTransfer(TransactionDTO transactionDTO)
+        {
+            if (transactionDTO.Amount > 50000)
+            {
+                throw new TransactionException("Monto ingresado mayor al limite permitido");
+            }
+
+            var sourceAccount = _context.Accounts.FirstOrDefault(a => a.IdAccount == transactionDTO.IdSourceAccount);
+
+            // Verificar que no se transfiera a la misma cuenta
+            if (sourceAccount.CBU_CVU == transactionDTO.DestinationAccountCBU_CVU || sourceAccount.Alias == transactionDTO.DestinationAccountAlias)
+            {
+                Console.WriteLine("No se puede transferir a la misma cuenta.");
+                return;
+            }
+
+            var destinationAccount = _context.Accounts.FirstOrDefault(a => a.CBU_CVU == transactionDTO.DestinationAccountCBU_CVU || a.Alias == transactionDTO.DestinationAccountAlias);
+
+
+            if (destinationAccount == null)
+            {
+                throw new TransactionException("Cuenta a transferir inexistente");
+            }
+
+            if (transactionDTO.Amount > sourceAccount.Balance)
+            {
+                throw new TransactionException("Saldo insuficiente");
+            }
+
+            sourceAccount.Balance -= transactionDTO.Amount;
+            destinationAccount.Balance += transactionDTO.Amount;
+            sourceAccount.RewardPoints += 100;
+
+            var transaction = new DataAccess.Models.Transaction
+            {
+                TypeTransaction = DataAccess.Models.TypeTransaction.Transfer,
+                IdSourceAccount = transactionDTO.IdSourceAccount,
+                IdDestinationAccount = destinationAccount.IdAccount,
+                Amount = transactionDTO.Amount,
+                Date = DateTime.Now
+            };
+
+            _context.Transactions.Add(transaction);
+            _context.SaveChanges();
+
+            Console.WriteLine($"Transfer to {destinationAccount.Name} success.");
+        }
 
         public void RedeemReward(TransactionDTO transactionDTO)
         {
-            List<RewardDTO> rewards = _context.Rewards
-                .Select(r => new RewardDTO
-                {
-                    IdReward = r.IdReward,
-                    Name = r.Name,
-                    Points = r.Points,
-                    RewardUrlImage = r.RewardUrlImage
-                })
-                .ToList();
+            var selectedReward = _context.Rewards.FirstOrDefault(r => r.IdReward == transactionDTO.IdReward);
 
-            Console.WriteLine("Selecciona una recompensa para acreditar a la cuenta:");
-
-            int i = 1;
-            foreach (var reward in rewards)
+            if (selectedReward == null)
             {
-                Console.WriteLine($"{i}. {reward.Name} ({reward.Points} puntos)");
-                i++;
+                Console.WriteLine("Recompensa no encontrada.");
+                return;
             }
-
-            Console.Write("Opción seleccionada: ");
-            int selectedOption = int.Parse(Console.ReadLine());
-            RewardDTO selectedReward = rewards[selectedOption - 1];
 
             var sourceAccount = _context.Accounts.FirstOrDefault(a => a.IdAccount == transactionDTO.IdSourceAccount);
 
@@ -111,103 +198,26 @@ namespace Repositories
 
             sourceAccount.RewardPoints -= selectedReward.Points;
 
+            var transaction = new DataAccess.Models.Transaction
+            {
+                IdSourceAccount = transactionDTO.IdSourceAccount,
+                TypeTransaction = DataAccess.Models.TypeTransaction.Reward,
+                Amount = 0,
+                IdReward = selectedReward.IdReward,
+                Date = DateTime.Now
+            };
+
+            _context.Transactions.Add(transaction);
             _context.SaveChanges();
 
             Console.WriteLine($"Recompensa acreditada: {selectedReward.Name}");
         }
 
-        public void PayService(TransactionDTO transactionDTO)
-        {
-            List<ServiceDTO> services = _context.Services
-                .Select(s => new ServiceDTO
-                {
-                    Name = s.Name,
-                    Amount = s.Amount,
-                    ServiceUrlImage = s.ServiceUrlImage,
-
-                })
-                .ToList();
-
-            Console.WriteLine("Selecciona un servicio para abonar:");
-
-            int i = 1;
-            foreach (var service in services)
-            {
-                Console.WriteLine($"{i}. {service.Name} (${service.Amount})");
-                i++;
-            }
-
-            Console.Write("Opción seleccionada: ");
-            int selectedOption = int.Parse(Console.ReadLine());
-            ServiceDTO selectedService = services[selectedOption - 1];
-
-            var sourceAccount = _context.Accounts.FirstOrDefault(a => a.IdAccount == transactionDTO.IdSourceAccount);
-
-            if (selectedService.Amount > sourceAccount.Balance)
-            {
-                Console.WriteLine("No tienes suficiente saldo para abonar este servicio.");
-                return;
-            }
-
-            sourceAccount.Balance -= selectedService.Amount;
-            sourceAccount.RewardPoints += 50;
-
-            _context.SaveChanges();
-
-            Console.WriteLine($"Servicio abonado: {selectedService.Name}  ${selectedService.Amount}");
-        }
-
-        public void MakeDeposit(TransactionDTO transactionDTO)
-        {
-
-            var destinationAccount = _context.Accounts.FirstOrDefault(a => a.IdAccount == transactionDTO.IdDestinationAccount);
-
-            if (transactionDTO.Amount > 50000)
-            {
-                Console.WriteLine("El monto ingresado es mayor a $50000 que es el permitido.");
-                return;
-            }
-
-            destinationAccount.Balance += transactionDTO.Amount;
-
-            _context.SaveChanges();
-
-            Console.WriteLine($"Deposito realizado con exito a la cuenta de : {destinationAccount.Name}");
-        }
-
-        public void MakeTransfer(TransactionDTO transactionDTO)
-        {
-            if (transactionDTO.Amount > 50000)
-            {
-                Console.WriteLine("El monto ingresado es mayor a $50000 que es el permitido por transferencia.");
-                return;
-            }
-
-            var sourceAccount = _context.Accounts.FirstOrDefault(a => a.IdAccount == transactionDTO.IdSourceAccount);
-
-            var destinationAccount = _context.Accounts.FirstOrDefault(a => a.CBU_CVU == transactionDTO.DestinationAccountCBU_CVU || a.Alias == transactionDTO.DestinationAccountAlias);
-
-
-            if (destinationAccount == null)
-            {
-                Console.WriteLine("Cuenta a transferir inexistente.");
-                return;
-            }
-
-            if (transactionDTO.Amount > sourceAccount.Balance)
-            {
-                Console.WriteLine("No tienes suficiente saldo para abonar este servicio.");
-                return;
-            }
-
-            sourceAccount.Balance -= transactionDTO.Amount;
-            destinationAccount.Balance += transactionDTO.Amount;
-            sourceAccount.RewardPoints += 100;
-
-            _context.SaveChanges();
-
-            Console.WriteLine($"Transfer to {destinationAccount.Name} success.");
-        }
-
+       
+        
+      
+  
+       
+       
     }
 }

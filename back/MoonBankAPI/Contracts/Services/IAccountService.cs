@@ -9,7 +9,7 @@ namespace Contracts.Services
 {
     public interface IAccountService
     {
-        ResponseDTO Login(string email, string password);
+        ResponseDTO Login(AccountDTO accountDTO);
 
         ResponseDTO GetAllAccounts();
 

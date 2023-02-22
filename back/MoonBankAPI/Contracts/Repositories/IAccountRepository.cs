@@ -11,7 +11,7 @@ namespace Contracts.Repositories
     public interface IAccountRepository
     {
         IList<AccountDTO> GetAllAccounts();
-        AccountDTO Login(string email, string password);
+        AccountDTO Login(AccountDTO accountDTO);
 
         //  void Register(AccountDTO accountDTO);
 

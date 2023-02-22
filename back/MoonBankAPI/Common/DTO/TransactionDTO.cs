@@ -31,6 +31,8 @@ namespace Common.DTO
 
         public string? DestinationAccountAlias { get; set; }
 
+        public int? IdService { get; set; }
+
         public int? IdReward { get; set; }
     }
 

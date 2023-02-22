@@ -24,11 +24,13 @@ namespace Repositories
             return _context.Accounts.Where(x => x.IdAccount > 0).Select(x => new AccountDTO()
             {
                 IdAccount = x.IdAccount,
-                Balance = x.Balance
+                Name = x.Name,
+                Balance = x.Balance,
+                RewardPoints= x.RewardPoints
             }).ToList();
         }
 
-        /*public AccountDTO Login(AccountDTO accountDTO)
+        public AccountDTO Login(AccountDTO accountDTO)
         {
             var account = _context.Accounts.FirstOrDefault(x => x.Email == accountDTO.Email);                        
 
@@ -45,6 +47,7 @@ namespace Repositories
 
             return new AccountDTO()
             {
+                IdAccount = account.IdAccount,
                 Name = account.Name,
                 LastName = account.LastName,
                 Email = account.Email,
@@ -56,8 +59,8 @@ namespace Repositories
             };
         }
 
-        */
-
+        
+/*
         public AccountDTO Login(string email, string password)
         {
             var account = _context.Accounts.FirstOrDefault(x => x.Email == email);
@@ -86,7 +89,7 @@ namespace Repositories
             };
         }
         
-
+*/
 
 
 

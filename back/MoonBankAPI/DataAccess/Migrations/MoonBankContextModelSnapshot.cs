@@ -91,11 +91,11 @@ namespace DataAccess.Migrations
 
             modelBuilder.Entity("DataAccess.Models.Service", b =>
                 {
-                    b.Property<int>("IdAccountService")
+                    b.Property<int>("IdService")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdAccountService"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdService"), 1L, 1);
 
                     b.Property<decimal>("Amount")
                         .HasColumnType("DECIMAL(11,2)");
@@ -108,7 +108,7 @@ namespace DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("IdAccountService");
+                    b.HasKey("IdService");
 
                     b.ToTable("Services");
                 });
@@ -131,6 +131,9 @@ namespace DataAccess.Migrations
                         .HasColumnType("int");
 
                     b.Property<int?>("IdReward")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("IdService")
                         .HasColumnType("int");
 
                     b.Property<int?>("IdSourceAccount")
