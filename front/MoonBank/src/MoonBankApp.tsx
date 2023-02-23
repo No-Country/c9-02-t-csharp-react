@@ -1,4 +1,4 @@
-import { Balance } from './balance/screens/Balance';
+import { Balance } from './operations/screens/Balance';
 import { Login } from './login/screens';
 import { Services } from './screens';
 
