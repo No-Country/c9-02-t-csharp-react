@@ -6,7 +6,7 @@ export const NavHeader_Styled = styled.div`
   align-items: center;
   padding: 10px 12px;
   gap: 10px;
-  background: #483475;
+  background: var(--PurpleD);
   width: 100%;
   height: 70px;
   border-radius: 0 8px 0 0;
@@ -18,12 +18,11 @@ export const NavHeader_Styled = styled.div`
   > .NavProfile__UserSprite {
     width: 50px;
     height: 50px;
-    border: 1px solid #727272;
+    border: 1px solid var(--Gray);
     background: #262626;
     > img {
       width: 100%;
       height: 100%;
-      //background: #ffffff;
       background-size: contain;
     }
   }
@@ -39,7 +38,7 @@ export const NavHeader_Styled = styled.div`
       align-self: center;
       font-size: 14px;
       font-family: 'Montserrat';
-      color: #ffffff;
+      color: var(--White);
     }
     > .NavProfile__UserInfo_Welcome_Name {
       font-weight: bold;
@@ -50,7 +49,7 @@ export const NavHeader_Styled = styled.div`
       align-self: center;
       font-size: 12px;
       font-family: 'Montserrat';
-      color: #ffffff;
+      color: var(--White);
       > .NavProfile__UserInfo_Credits_Amount {
         font-weight: bold;
       }

@@ -13,6 +13,6 @@ export const NavBar_Styled = styled.div<{ headerHeight: string }>`
     width: 320px;
   }
   height: ${(props) => props.headerHeight};
-  background: #262626;
-  box-shadow: 0 0 10px #483475;
+  background: var(--Dark);
+  box-shadow: 0 0 10px var(--PurpleD);
 `;

@@ -1,11 +1,13 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import MoonHeader from './MoonHeader';
 import { withRouter } from 'storybook-addon-react-router-v6';
+import GlobalStyles from '../../../../shared/styles/globalStyles';
+import GlobalStyleDecorator from '../../../../shared/decorators/GlobalStyleDecorator';
 
 export default {
   title: 'UI/Header/MoonHeader',
   component: MoonHeader,
-  decorators: [withRouter],
+  decorators: [withRouter, GlobalStyleDecorator],
   args: {
     labelTitle: 'MoonBank',
     isLogged: false,

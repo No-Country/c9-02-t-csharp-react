@@ -19,9 +19,9 @@ export const NavLink_Styled = styled.li`
     width: 100%;
     height: 100%;
     padding: 2px 15px;
-    background: #26262600;
+    background: #00000000;
     text-decoration: none;
-    color: #ffffff;
+    color: var(--White);
     > .PageIndicator {
       width: 8px;
       height: 100%;
@@ -29,12 +29,12 @@ export const NavLink_Styled = styled.li`
     > svg {
       height: 22px;
       width: auto;
-      color: #d9d9d9;
+      color: var(--Icons);
     }
   }
   > .NavPage:hover,
   > .LogoutBTN:hover {
-    background: #18508826;
+    background: var(--BlueA15);
   }
 
   > .LogoutBTN {
@@ -47,9 +47,9 @@ export const NavLink_Styled = styled.li`
     }
   }
   > .NavPage--active {
-    background: #3060904c;
+    background: var(--BLueLA30);
     > .PageIndicator {
-      background: #5878a0;
+      background: var(--BlueG);
     }
   }
 `; //*/

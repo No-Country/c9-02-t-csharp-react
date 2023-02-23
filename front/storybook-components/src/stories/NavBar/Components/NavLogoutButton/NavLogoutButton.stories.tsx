@@ -1,11 +1,12 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import NavLogoutButton from './NavLogoutButton';
 import { withRouter } from 'storybook-addon-react-router-v6';
+import GlobalStyleDecorator from '../../../../shared/decorators/GlobalStyleDecorator';
 
 export default {
   title: 'UI/Navigation/Moon LogoutButton',
   component: NavLogoutButton,
-  decorators: [withRouter],
+  decorators: [withRouter, GlobalStyleDecorator],
   argTypes: {
     confirmedLogoutAction: { type: 'function' },
   },
