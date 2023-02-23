@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
+
+import { Balance } from "../operations/screens/Balance";
 import { Login } from "../login/screens";
-import { Balance } from "../balance/screens/Balance";
 
 const appRouter = () => {
   return (
