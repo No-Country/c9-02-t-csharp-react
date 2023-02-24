@@ -1,12 +1,10 @@
 import { Container, Paper, Text } from '../styled-components';
-import {FlexContainer} from "../../shared/styles/sharedStyles";
+import { FlexContainer } from '../../shared/styles/sharedStyles';
 import { Form } from '../components';
 
 export const Login = () => {
   return (
-    <Container
-    >
-
+    <Container>
       <Paper>
         <Text size='20px' weight='700' align='center'>
           Welcome back!
@@ -20,13 +18,11 @@ export const Login = () => {
         </Text>
       </Paper>
 
-        <FlexContainer>
-
-            <Text>Terms and Conditions</Text>
-            <Text>Security Policies</Text>
-            <Text>Support Centre</Text>
-        </FlexContainer>
-
+      <FlexContainer>
+        <Text>Terms and Conditions</Text>
+        <Text>Security Policies</Text>
+        <Text>Support Centre</Text>
+      </FlexContainer>
     </Container>
   );
 };

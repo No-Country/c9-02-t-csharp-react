@@ -1,11 +1,9 @@
-import { Balance } from './balance/screens/Balance';
-import { Login } from './login/screens';
+import AppRouter from './router/AppRouter';
 
 const App = () => {
   return (
     <>
-      {/* <Login /> */}
-    <Balance/>  
+      <AppRouter />
     </>
   );
 };
