@@ -24,5 +24,19 @@ namespace MoonBankAPI.Controllers
             return Ok(response);
         }
 
+        [HttpGet("{id}")]
+        public ActionResult<ResponseDTO> GetServiceById(int id)
+        {
+            var response = _serviceService.GetServiceById(id);
+            if (response.Success)
+            {
+                return Ok(response);
+            }
+            else
+            {
+                return NotFound(response);
+            }
+        }
+
     }
 }

@@ -38,8 +38,9 @@ namespace DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("DECIMAL(11,2)");
 
-                    b.Property<long>("CBU_CVU")
-                        .HasColumnType("bigint");
+                    b.Property<string>("CBU_CVU")
+                        .IsRequired()
+                        .HasColumnType("VARCHAR(22)");
 
                     b.Property<string>("Email")
                         .IsRequired()

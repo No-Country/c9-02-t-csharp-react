@@ -36,6 +36,7 @@ namespace Repositories
                     Amount = x.Amount,
                     IdSourceAccount = x.IdSourceAccount,
                     IdDestinationAccount = x.IdDestinationAccount,
+                    
                     IdReward = x.IdReward
                 })
                 .ToList();
@@ -87,7 +88,7 @@ namespace Repositories
 
         public void MakeDeposit(TransactionDTO transactionDTO)
         {
-            var destinationAccount = _context.Accounts.FirstOrDefault(a => a.IdAccount == transactionDTO.IdDestinationAccount);
+            var destinationAccount = _context.Accounts.FirstOrDefault(a => a.CBU_CVU == transactionDTO.DestinationAccountCBU_CVU || a.Alias == transactionDTO.DestinationAccountAlias);
 
             if (destinationAccount == null)
             {
@@ -103,8 +104,9 @@ namespace Repositories
 
             var transaction = new DataAccess.Models.Transaction
             {
-                IdDestinationAccount = transactionDTO.IdDestinationAccount,
+                IdDestinationAccount = destinationAccount.IdAccount,
                 TypeTransaction = DataAccess.Models.TypeTransaction.Deposit,
+                TypeDeposit = (DataAccess.Models.TypeDeposit?)transactionDTO.TypeDeposit,
                 Amount = transactionDTO.Amount,
                 Date = DateTime.Now
             };

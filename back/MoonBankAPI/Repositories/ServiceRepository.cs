@@ -1,4 +1,5 @@
 ﻿using Common.DTO;
+using Common.Exceptions;
 using Contracts.Repositories;
 using DataAccess;
 using System;
@@ -29,6 +30,25 @@ namespace Repositories
             }).ToList();
         }
 
+        public ServiceDTO GetServiceById(int id)
+        {
+            var service = _context.Services.FirstOrDefault(s => s.IdService == id);
+
+            if (service != null)
+            {
+                return new ServiceDTO()
+                {
+                    IdService = service.IdService,
+                    Name = service.Name,
+                    Amount = service.Amount,
+                    ServiceUrlImage = service.ServiceUrlImage,
+                };
+            }
+            else
+            {
+                throw new ServiceExceptions("No Service found with the specified Id.");
+            }
+        }
 
     }
 }

@@ -10,5 +10,7 @@ namespace Contracts.Services
     public interface IRewardService
     {
         ResponseDTO GetAllRewards();
+
+        ResponseDTO GetRewardById(int id);
     }
 }

@@ -9,9 +9,15 @@ namespace Contracts.Services
 {
     public interface IAccountService
     {
-        ResponseDTO Login(AccountDTO accountDTO);
+        ResponseDTO Login(LoginDTO loginDTO);
 
         ResponseDTO GetAllAccounts();
+
+        ResponseDTO GetAccountById(int id);
+
+        ResponseDTO GetAccountByAlias(string alias);
+
+        ResponseDTO GetAccountByCBU_CVU(string cbu_cvu);
 
         // void Register(AccountDTO accountDTO);
     }

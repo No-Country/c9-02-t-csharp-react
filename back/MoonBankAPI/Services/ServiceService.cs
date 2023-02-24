@@ -44,5 +44,27 @@ namespace Services
 
             return response;
         }
+
+        public ResponseDTO GetServiceById(int id)
+        {
+            ResponseDTO response = new ResponseDTO();
+            try
+            {
+                response.Result = _serviceRepository.GetServiceById(id);
+                response.Success = true;
+            }
+            catch (ServiceExceptions serviceException)
+            {
+                response.Message = serviceException.Message;
+                response.Success = false;
+            }
+            catch
+            {
+                response.Message = "An error occurred, we are sorry for what happened";
+                response.Success = false;
+            }
+
+            return response;
+        }
     }
 }

@@ -11,7 +11,13 @@ namespace Contracts.Repositories
     public interface IAccountRepository
     {
         IList<AccountDTO> GetAllAccounts();
-        AccountDTO Login(AccountDTO accountDTO);
+        AccountDTO Login(LoginDTO loginDTO);
+
+        AccountDTO GetAccountById(int id);
+
+        AccountDTO GetAccountByAlias(string alias);
+
+        AccountDTO GetAccountByCBU_CVU(string cbu_cvu);
 
         //  void Register(AccountDTO accountDTO);
 

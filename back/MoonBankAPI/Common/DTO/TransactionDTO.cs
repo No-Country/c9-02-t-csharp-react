@@ -27,7 +27,7 @@ namespace Common.DTO
 
         public int? IdDestinationAccount { get; set; }
 
-        public long? DestinationAccountCBU_CVU { get; set; }
+        public string? DestinationAccountCBU_CVU { get; set; }
 
         public string? DestinationAccountAlias { get; set; }
 

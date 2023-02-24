@@ -35,7 +35,8 @@ namespace DataAccess.Models
         public string Alias { get; set; }
 
         [Required]
-        public long CBU_CVU { get; set; }
+        [Column(TypeName = "VARCHAR(22)")]
+        public string CBU_CVU { get; set; }
 
         [Required]
         [Column(TypeName = "DECIMAL(11,2)")]

@@ -3,6 +3,7 @@ using Contracts.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Services;
 
 namespace MoonBankAPI.Controllers
 {
@@ -22,6 +23,20 @@ namespace MoonBankAPI.Controllers
         {
             var response = _rewardService.GetAllRewards();
             return Ok(response);
+        }
+
+        [HttpGet("{id}")]
+        public ActionResult<ResponseDTO> GetRewardById(int id)
+        {
+            var response = _rewardService.GetRewardById(id);
+            if (response.Success)
+            {
+                return Ok(response);
+            }
+            else
+            {
+                return NotFound(response);
+            }
         }
     }
 }

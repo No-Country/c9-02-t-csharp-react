@@ -23,11 +23,11 @@ namespace Services
             _accountRepository = accountRepository;
         }
 
-        public ResponseDTO Login(AccountDTO accountDTO)
+        public ResponseDTO Login(LoginDTO loginDTO)
         {
             try
             {
-                var account = _accountRepository.Login(accountDTO);
+                var account = _accountRepository.Login(loginDTO);
                 return new ResponseDTO
                 {
                     Success = true,
@@ -77,6 +77,103 @@ namespace Services
 
             return response;
         }
+
+        public ResponseDTO GetAccountById(int id)
+        {
+            ResponseDTO response = new ResponseDTO();
+
+            try
+            {
+                var account = _accountRepository.GetAccountById(id);
+                if (account != null)
+                {
+                    response.Result = account;
+                    response.Success = true;
+                }
+                else
+                {
+                    response.Success = false;
+                    response.Message = $"No account found with Id = {id}";
+                }
+            }
+            catch (AccountExceptions accountException)
+            {
+                response.Success = false;
+                response.Message = accountException.Message;
+            }
+            catch
+            {
+                response.Success = false;
+                response.Message = "An error occurred, we are sorry for what happened";
+            }
+
+            return response;
+        }
+
+        public ResponseDTO GetAccountByAlias(string alias)
+        {
+            ResponseDTO response = new ResponseDTO();
+
+            try
+            {
+                var account = _accountRepository.GetAccountByAlias(alias);
+                if (account != null)
+                {
+                    response.Result = account;
+                    response.Success = true;
+                }
+                else
+                {
+                    response.Success = false;
+                    response.Message = $"No account found with Alias = {alias}";
+                }
+            }
+            catch (AccountExceptions accountException)
+            {
+                response.Success = false;
+                response.Message = accountException.Message;
+            }
+            catch
+            {
+                response.Success = false;
+                response.Message = "An error occurred, we are sorry for what happened";
+            }
+
+            return response;
+        }
+
+        public ResponseDTO GetAccountByCBU_CVU(string cbu_cvu)
+        {
+            ResponseDTO response = new ResponseDTO();
+
+            try
+            {
+                var account = _accountRepository.GetAccountByCBU_CVU(cbu_cvu);
+                if (account != null)
+                {
+                    response.Result = account;
+                    response.Success = true;
+                }
+                else
+                {
+                    response.Success = false;
+                    response.Message = $"No account found with CBU_CVU = {cbu_cvu}";
+                }
+            }
+            catch (AccountExceptions accountException)
+            {
+                response.Success = false;
+                response.Message = accountException.Message;
+            }
+            catch
+            {
+                response.Success = false;
+                response.Message = "An error occurred, we are sorry for what happened";
+            }
+
+            return response;
+        }
+
     }
 
     /*

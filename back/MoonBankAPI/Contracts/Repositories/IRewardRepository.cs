@@ -11,5 +11,7 @@ namespace Contracts.Repositories
     {
         IList<RewardDTO> GetAllRewards();
 
+        RewardDTO GetRewardById(int id);
+
     }
 }

@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.Json.Serialization;
 
 namespace Common.DTO
 {
@@ -20,7 +21,7 @@ namespace Common.DTO
         [Required]
         public decimal Amount { get; set; }
 
-        [Required]
+        [JsonIgnore]
         public string ServiceUrlImage { get; set; }
     }
 }

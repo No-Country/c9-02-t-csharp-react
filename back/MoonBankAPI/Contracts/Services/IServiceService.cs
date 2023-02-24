@@ -10,5 +10,7 @@ namespace Contracts.Services
     public interface IServiceService
     {
         ResponseDTO GetAllServices();
+
+        ResponseDTO GetServiceById(int id);
     }
 }

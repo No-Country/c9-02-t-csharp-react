@@ -2,6 +2,7 @@
 using Contracts.Services;
 using DataAccess;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 using Repositories;
 using Services;
 
@@ -34,7 +35,13 @@ namespace MoonBankAPI
 
             services.AddTransient<ITransactionService, TransactionService>();
             services.AddTransient<ITransactionRepository, TransactionRepository>();
-            
+
+            services.AddSwaggerGen(options =>
+            {
+                options.SwaggerDoc("v1", new OpenApiInfo { Title = "MoonBank", Version = "v1" });
+              
+            });
+
         }
 
         public void Configure(IApplicationBuilder app)

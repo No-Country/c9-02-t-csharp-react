@@ -1,4 +1,5 @@
 ﻿using Common.DTO;
+using Common.Exceptions;
 using Contracts.Repositories;
 using DataAccess;
 using System;
@@ -16,6 +17,27 @@ namespace Repositories
         {
             _context = context;
         }
+
+        public RewardDTO GetRewardById(int id)
+        {
+            var reward = _context.Rewards.FirstOrDefault(r => r.IdReward == id);
+
+            if (reward != null)
+            {
+                return new RewardDTO()
+                {
+                    IdReward = reward.IdReward,
+                    Name = reward.Name,
+                    Points = reward.Points,
+                    RewardUrlImage = reward.RewardUrlImage,
+                };
+            }
+            else
+            {
+                throw new RewardExceptions("No Reward found with the specified Id.");
+            }
+        }
+
 
         public IList<RewardDTO> GetAllRewards()
         {

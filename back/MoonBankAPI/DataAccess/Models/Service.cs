@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace DataAccess.Models
@@ -21,7 +22,6 @@ namespace DataAccess.Models
         [Column(TypeName = "DECIMAL(11,2)")]
         public decimal Amount { get; set; }
 
-        [Required]
         public string ServiceUrlImage { get; set; }
     }
 }
