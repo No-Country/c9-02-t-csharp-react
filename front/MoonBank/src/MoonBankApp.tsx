@@ -1,14 +1,10 @@
-import { Balance } from './operations/screens/Balance';
-import { Login } from './login/screens';
-import { getAccountsList } from './APIS/getRequest';
+import AppRouter from './router/AppRouter';
 
 const App = () => {
  console.log( getAccountsList())
   return (
     <>
-      {/* <Login /> */}
-      {/* <Balance/>   */}
-      {/* <Services /> */}
+      <AppRouter />
     </>
   );
 };
