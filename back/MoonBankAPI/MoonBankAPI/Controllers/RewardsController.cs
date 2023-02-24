@@ -25,10 +25,10 @@ namespace MoonBankAPI.Controllers
             return Ok(response);
         }
 
-        [HttpGet("{id}")]
-        public ActionResult<ResponseDTO> GetRewardById(int id)
+        [HttpGet("{idReward}")]
+        public ActionResult<ResponseDTO> GetRewardById(int idReward)
         {
-            var response = _rewardService.GetRewardById(id);
+            var response = _rewardService.GetRewardById(idReward);
             if (response.Success)
             {
                 return Ok(response);

@@ -34,10 +34,10 @@ namespace MoonBankAPI.Controllers
             return Ok(response);
         }
 
-        [HttpGet("{id}")]
-        public ActionResult<ResponseDTO> GetAccountById(int id)
+        [HttpGet("{idAccount}")]
+        public ActionResult<ResponseDTO> GetAccountById(int idAccount)
         {
-            var response = _accountService.GetAccountById(id);
+            var response = _accountService.GetAccountById(idAccount);
             if (response.Success)
             {
                 return Ok(response);

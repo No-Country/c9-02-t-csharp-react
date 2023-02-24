@@ -7,7 +7,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <TimeStampOfAssociatedLegacyPublishXmlFile />
     <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAxxJa4xG1D0CjO8Q3FY11TQAAAAACAAAAAAAQZgAAAAEAACAAAACmxw72BFY9WF/HKs1/cnNfbOQTHjPB6S+3f0hioZ3njAAAAAAOgAAAAAIAACAAAAC82AWUiOHkwWjQJzJhfiloGMaIn9ABRXj5qNrHsCdduSAAAABIPmNzr7IlhEuFodKQCcVXbpUg7poCzuHcys5SU25omkAAAACO+agxsEQKJS2FEjdFv+rR1sxkJQnTJHdpuj5s1aTUvz8jO10yYR2BrGnL/TCdodKzrOy4xny80+iVe49btN2X</EncryptedPassword>
     <_PublishTargetUrl>ftp://192.52.242.121/www.MoonBank.somee.com</_PublishTargetUrl>
-    <History>True|2023-02-24T18:20:29.7256477Z;True|2023-02-23T20:45:42.4048158-03:00;False|2023-02-23T20:40:20.9208208-03:00;False|2023-02-23T20:37:40.5040700-03:00;False|2023-02-23T20:33:44.2185819-03:00;False|2023-02-23T20:32:13.7731127-03:00;False|2023-02-23T20:30:39.8670010-03:00;False|2023-02-23T20:28:29.9619672-03:00;False|2023-02-23T20:25:55.4354570-03:00;False|2023-02-23T20:21:47.6032595-03:00;False|2023-02-23T20:18:56.8947792-03:00;False|2023-02-23T20:15:37.8818938-03:00;False|2023-02-23T20:14:09.9736654-03:00;False|2023-02-23T20:13:11.2778724-03:00;True|2023-02-23T19:37:45.7717029-03:00;True|2023-02-22T23:24:12.3028452-03:00;False|2023-02-22T23:23:14.8835723-03:00;False|2023-02-22T23:20:46.8674320-03:00;False|2023-02-22T23:17:59.0149187-03:00;True|2023-02-22T23:12:43.5472165-03:00;False|2023-02-22T23:11:26.3624195-03:00;False|2023-02-22T23:10:24.6655603-03:00;True|2023-02-22T15:01:38.5763589-03:00;False|2023-02-22T15:00:16.2142858-03:00;True|2023-02-22T14:39:41.0404378-03:00;False|2023-02-22T14:38:12.6715418-03:00;True|2023-02-22T14:32:30.0154685-03:00;False|2023-02-22T14:30:37.2635125-03:00;True|2023-02-22T14:24:09.3170830-03:00;False|2023-02-22T14:22:41.9909344-03:00;True|2023-02-22T14:09:50.4411015-03:00;</History>
+    <History>True|2023-02-24T19:11:36.0034505Z;True|2023-02-24T15:20:29.7256477-03:00;True|2023-02-23T20:45:42.4048158-03:00;False|2023-02-23T20:40:20.9208208-03:00;False|2023-02-23T20:37:40.5040700-03:00;False|2023-02-23T20:33:44.2185819-03:00;False|2023-02-23T20:32:13.7731127-03:00;False|2023-02-23T20:30:39.8670010-03:00;False|2023-02-23T20:28:29.9619672-03:00;False|2023-02-23T20:25:55.4354570-03:00;False|2023-02-23T20:21:47.6032595-03:00;False|2023-02-23T20:18:56.8947792-03:00;False|2023-02-23T20:15:37.8818938-03:00;False|2023-02-23T20:14:09.9736654-03:00;False|2023-02-23T20:13:11.2778724-03:00;True|2023-02-23T19:37:45.7717029-03:00;True|2023-02-22T23:24:12.3028452-03:00;False|2023-02-22T23:23:14.8835723-03:00;False|2023-02-22T23:20:46.8674320-03:00;False|2023-02-22T23:17:59.0149187-03:00;True|2023-02-22T23:12:43.5472165-03:00;False|2023-02-22T23:11:26.3624195-03:00;False|2023-02-22T23:10:24.6655603-03:00;True|2023-02-22T15:01:38.5763589-03:00;False|2023-02-22T15:00:16.2142858-03:00;True|2023-02-22T14:39:41.0404378-03:00;False|2023-02-22T14:38:12.6715418-03:00;True|2023-02-22T14:32:30.0154685-03:00;False|2023-02-22T14:30:37.2635125-03:00;True|2023-02-22T14:24:09.3170830-03:00;False|2023-02-22T14:22:41.9909344-03:00;True|2023-02-22T14:09:50.4411015-03:00;</History>
     <LastFailureDetails />
   </PropertyGroup>
   <ItemGroup>
@@ -15,7 +15,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>02/06/2023 22:54:50</publishTime>
     </File>
     <File Include="appsettings.json">
-      <publishTime>02/24/2023 15:19:04</publishTime>
+      <publishTime>02/24/2023 16:10:34</publishTime>
     </File>
     <File Include="Common.dll">
       <publishTime>02/23/2023 19:36:34</publishTime>
@@ -81,16 +81,16 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>11/15/2019 05:36:56</publishTime>
     </File>
     <File Include="MoonBankAPI.deps.json">
-      <publishTime>02/24/2023 15:19:37</publishTime>
+      <publishTime>02/24/2023 16:10:59</publishTime>
     </File>
     <File Include="MoonBankAPI.dll">
-      <publishTime>02/24/2023 15:19:37</publishTime>
+      <publishTime>02/24/2023 16:10:58</publishTime>
     </File>
     <File Include="MoonBankAPI.exe">
-      <publishTime>02/24/2023 15:19:37</publishTime>
+      <publishTime>02/24/2023 16:10:58</publishTime>
     </File>
     <File Include="MoonBankAPI.pdb">
-      <publishTime>02/24/2023 15:19:37</publishTime>
+      <publishTime>02/24/2023 16:10:58</publishTime>
     </File>
     <File Include="MoonBankAPI.runtimeconfig.json">
       <publishTime>02/22/2023 14:06:25</publishTime>
@@ -174,7 +174,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>11/15/2019 05:56:52</publishTime>
     </File>
     <File Include="web.config">
-      <publishTime>02/24/2023 15:19:37</publishTime>
+      <publishTime>02/24/2023 16:10:59</publishTime>
     </File>
   </ItemGroup>
 </Project>
