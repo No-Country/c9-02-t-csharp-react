@@ -17,6 +17,7 @@ const GlobalStyles = createGlobalStyle`
   }
   
   :root {
+    // COLORS
     --Primary: #083870; // DarkBlue
     --Secondary:  #7f46a9; // Light Purple
     --Blue: #185088; // Blue
@@ -25,6 +26,9 @@ const GlobalStyles = createGlobalStyle`
     --BLueLA30: #3060904c; // Light Blue Alpha 30%
     --BlueG: #5878A0; // Gray Blue
     --PurpleD: #483475; // Dark Purple
+    --Warn: #B66200; // Orange 
+    --OrangeL: #CF7000; // Light Orange
+    --OrangeD: #965100; // Dark Orange
     --White: #ffffff; // White
     --Icons: #d9d9d9; // White 85%
     --LightGray: #8C8C8C; //Light Gray
@@ -34,6 +38,10 @@ const GlobalStyles = createGlobalStyle`
     --mainBg: #151515; // Black 85%
     --figmaBg: #1e1e1e; // ---------
     --BlackBg: #090909; // Black 90%
+
+    //EFFECTS
+    --MoonBoxShadow: 0px 0px 10px 2px var(--Dark); // for box-sizing css
+    --NavBarShadow: 0px 0px 10px #483475; // for box-sizing css
   }
 
 h2 {
