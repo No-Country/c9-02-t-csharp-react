@@ -1,7 +1,7 @@
 export interface Account {
   id: number;
   name: string;
-  lasName: string;
+  lastName: string;
   email: string;
   password: string;
   alias: string;

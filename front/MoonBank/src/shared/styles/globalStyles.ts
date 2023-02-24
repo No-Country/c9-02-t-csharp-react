@@ -21,10 +21,7 @@ const GlobalStyles = createGlobalStyle`
     --DarkGray: #414141;
   }
 
-h2 {
-  align-self: flex-start;
 
-}
 `;
 
 export default GlobalStyles;

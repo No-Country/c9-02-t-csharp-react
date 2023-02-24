@@ -1,5 +1,5 @@
-import { Container, Paper, Text } from '../styled-components';
-import {FlexContainer} from "../../shared/styles/sharedStyles";
+import { Container, Paper, Text, FlexContainer } from '../../shared/styles';
+
 import { Form } from '../components';
 
 export const Login = () => {

@@ -1,5 +1,4 @@
-import { Button, Input } from '../styled-components';
-
+import { Button, Input } from '../../shared/styles';
 import { AlertNotification } from './AlertNotification';
 import { SwitchButton } from './SwitchButton';
 import { useForm } from '../../shared/hooks/useForm';

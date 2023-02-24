@@ -1,4 +1,4 @@
-import { Alert, Text } from '../styles-components';
+import { Alert, Text } from '../styled-components';
 
 import { IoWarning } from 'react-icons/io5';
 
