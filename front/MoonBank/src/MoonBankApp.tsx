@@ -7,9 +7,9 @@ const App = () => {
  console.log( getAccountsList())
   return (
     <>
-      {/* <Login /> */}
+      <Login />
       {/* <Balance/>   */}
-      <Services />
+      {/* <Services /> */}
     </>
   );
 };
