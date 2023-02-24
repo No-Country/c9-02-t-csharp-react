@@ -50,7 +50,7 @@ When making a transfer, the user will need to provide the following details:
     o	amount: Amount to transfer.
     o	idSourceAccount: ID of the user’s own account.
     o	Cbu_cvu: CBU or CVU of the account to which the transfer is to be made.
-    o	Alias: Alias of the account to which the transfer is to be made.
+    o	alias: Alias of the account to which the transfer is to be made.
 
 
 •	The user will be able to exchange rewards for points.
