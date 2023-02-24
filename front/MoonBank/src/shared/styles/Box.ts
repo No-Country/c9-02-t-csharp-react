@@ -10,11 +10,13 @@ interface Props {
   marginTop?: string;
   direction?: directions;
   alignContent?: align;
+  background?: string;
+  borderRadius?: string;
 }
 
 export const Box = styled.div<Props>`
   display: flex;
-  flex-direction: ${({direction}) => direction};
+  flex-direction: ${({ direction }) => direction};
   justify-content: center;
   align-items: ${(props) => props.alignContent};
   margin: ${(props) => props.margin};
@@ -22,4 +24,6 @@ export const Box = styled.div<Props>`
   margin-right: ${(props) => props.marginRight};
   margin-bottom: ${(props) => props.marginBottom};
   margin-top: ${(props) => props.marginTop};
+  background: ${(props) => props.background};
+  border-radius: ${(props) => props.borderRadius};
 `;

@@ -4,6 +4,7 @@ import { Balance } from '../balance/screens/Balance';
 import { MoonHeader } from '../shared/components/MoonHeader';
 import { NavBar, NavListElements } from '../shared/components/NavBar';
 
+
 const AppRouter = () => {
   return (
     <>
