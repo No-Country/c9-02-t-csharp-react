@@ -9,3 +9,8 @@ export interface Account {
   balance: number;
   rewardPoints: number;
 }
+
+export interface Login {
+  email: 'string';
+  password: 'string';
+}

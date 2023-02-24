@@ -1,4 +1,4 @@
-import { TypeDeposit, TypeTransaction } from '../enum';
+import { TypeDeposit, TypeTransaction } from '../types';
 
 export interface Transaction {
   id: number;
