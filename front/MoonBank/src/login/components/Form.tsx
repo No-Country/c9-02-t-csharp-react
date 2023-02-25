@@ -52,7 +52,7 @@ export const Form = () => {
       <SwitchButton />
       {!checkLogin && <AlertNotification />}
 
-      <Button marginTop='1rem' onClick={handleLogUser}>
+      <Button marginTop='1rem' onClick={handleLogUser} variant='blue'>
         Log In
       </Button>
     </>

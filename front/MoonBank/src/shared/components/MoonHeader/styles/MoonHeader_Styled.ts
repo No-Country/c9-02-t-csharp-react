@@ -36,10 +36,12 @@ export const MoonHeader_Styled = styled.header`
         padding: 12px;
         width: 100%;
         height: auto;
-        color: var(--Icons);
+        @media screen and (min-width: 0px) and (max-width: 860px) {
+          color: var(--Icons);
+        }
       }
       > svg.HD__MenuLabel {
-        @media screen and (min-width: 860px) {
+        @media screen and (min-width: 860.1px) {
           color: #00000000;
         }
       }
