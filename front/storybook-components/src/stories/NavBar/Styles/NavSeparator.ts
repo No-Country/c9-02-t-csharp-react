@@ -9,5 +9,5 @@ export const NavSeparator = styled.div<{
        width: 85%;`
       : `height: 85%;
        width: 3px;`}
-  background: #414141;
+  background: var(--DarkGray);
 `;

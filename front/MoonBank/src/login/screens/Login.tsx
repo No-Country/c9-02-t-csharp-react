@@ -1,5 +1,8 @@
 import { Container, Paper, Text } from '../styled-components';
+<<<<<<< HEAD
 
+=======
+>>>>>>> FrontDevelop
 import { FlexContainer } from '../../shared/styles/sharedStyles';
 import { Form } from '../components';
 

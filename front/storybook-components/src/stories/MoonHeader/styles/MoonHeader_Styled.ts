@@ -9,8 +9,7 @@ export const MoonHeader_Styled = styled.header`
   align-items: center;
   width: 100%;
   height: 55px;
-  color: #ffffff;
-  background: #090909;
+  background: var(--BlackBg);
 
   > .Header__MenuBTN,
   > .Header__AppName,
@@ -36,6 +35,7 @@ export const MoonHeader_Styled = styled.header`
         padding: 10px;
         width: 100%;
         height: auto;
+        color: var(--Icons);
       }
     }
   }

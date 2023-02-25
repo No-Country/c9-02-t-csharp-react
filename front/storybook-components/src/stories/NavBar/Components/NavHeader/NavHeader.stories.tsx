@@ -1,9 +1,11 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import NavHeader from './NavHeader';
+import GlobalStyleDecorator from '../../../../shared/decorators/GlobalStyleDecorator';
 
 export default {
   title: 'UI/Navigation/Moon NavHeader',
   component: NavHeader,
+  decorators: [GlobalStyleDecorator],
   parameters: {
     backgrounds: {
       default: 'MoonBank Menu',
