@@ -100,13 +100,7 @@ function NavList() {
         to='/rewards'
       />
       <NavSeparator orientation='horizontal' thickness='4px' />
-      <NavLogoutButton
-        to='login'
-        label='Logout'
-        confirmedLogoutAction={() => {
-          confirm('Confirm again?');
-        }}
-      />
+      <NavLogoutButton to='login' label='Logout' />
     </NavList_Styled>
   );
 }

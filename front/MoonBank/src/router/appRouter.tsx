@@ -2,23 +2,14 @@ import { Route, Routes, Navigate } from 'react-router-dom';
 import { Login } from '../login/screens';
 import { Balance } from '../operations/screens';
 import { MoonHeader } from '../shared/components/MoonHeader';
-import { NavBar } from '../shared/components/NavBar';
-import { useAppDispatch, useAppSelector } from '../store/hooks';
-import { LoginSlice } from '../store/features/loginSlice';
-
+import { useAppSelector } from '../store/hooks';
 const AppRouter = () => {
   const User = useAppSelector((state) => state.login);
 
   return (
     <>
       {/* SHARED COMPONENTS IN ALL ROUTES */}
-      <MoonHeader isLogged={User.success} labelTitle='MoonBank' />
-      <NavBar
-        headerHeight='55px'
-        name=''
-        surname=''
-        userImgURL='https://upload.wikimedia.org/wikipedia/commons/5/50/User_icon-cp.svg'
-        credits={0}></NavBar>
+      <MoonHeader isLogged={true} labelTitle='MoonBank' />
 
       {/* ALL ROUTES */}
       <Routes>

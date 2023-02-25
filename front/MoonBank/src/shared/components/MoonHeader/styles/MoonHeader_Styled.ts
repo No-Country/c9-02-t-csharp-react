@@ -10,6 +10,7 @@ export const MoonHeader_Styled = styled.header`
   width: 100%;
   height: 55px;
   background: var(--BlackBg);
+  transition: transform 1.3s;
 
   > .Header__MenuBTN,
   > .Header__AppName,

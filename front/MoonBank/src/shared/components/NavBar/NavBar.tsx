@@ -5,10 +5,9 @@ import { NavBar_Styled } from './Styles/NavBar_Styled';
 import { NavBarProps } from './NavbarTypes';
 import { NavListElements } from './Components/NavList/NavListElements';
 
-function NavBar(props: PropsWithChildren<NavBarProps>) {
-  const { children } = props;
+function NavBar(props: NavBarProps) {
   return (
-    <NavBar_Styled className='MoonBank__NavBar' headerHeight={props.headerHeight}>
+    <NavBar_Styled className='MoonBank__NavBar' headerHeight={props.headerHeight} isToggled={props.isToggled}>
       <NavHeader name={props.name} surname={props.surname} credits={props.credits} userImgURL={props.userImgURL} />
       <NavList />
     </NavBar_Styled>
