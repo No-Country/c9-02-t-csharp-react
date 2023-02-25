@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
 import LoginReducer from './features/loginSlice';
-import NavBarSlice from './features/NavBarSlice';
+import UISlice from './features/UISlice';
 export const store = configureStore({
   reducer: {
     login: LoginReducer,
-    NavbarReducer: NavBarSlice,
+    UIReducer: UISlice,
   },
 });
 

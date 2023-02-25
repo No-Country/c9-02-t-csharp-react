@@ -4,14 +4,17 @@ import { IoNotificationsOutline, IoNotifications, IoMenu, IoClose } from 'react-
 import type { MoonHeaderProps } from './MoonHeaderTypes';
 import { NavBar } from '../../../NavBar';
 import { useAppSelector, useAppDispatch } from '../../../../../store/hooks';
-import { toggleNavbar } from '../../../../../store/features/NavBarSlice';
+import { setLogoutDialog, setNavbarState, toggleNavbar } from '../../../../../store/features/UISlice';
+import { DialogBox } from '../../../DialogBox';
+import { useNavigate } from 'react-router';
 
 function MoonHeader(props: MoonHeaderProps) {
   // ---------- -------------- ---------- //
   // ---------- STARTING HOOKS ---------- //
   // ---------- -------------- ---------- //
+  const NavigateTo = useNavigate();
   const dispatch = useAppDispatch();
-  const NavbarState = useAppSelector((state) => state.NavbarReducer);
+  const { isNavToggled, logoutDialogShow } = useAppSelector((state) => state.UIReducer);
   const [NotiToggled, setNotiToggled] = useState(false);
 
   // ---------- ---------------- ---------- //
@@ -21,9 +24,17 @@ function MoonHeader(props: MoonHeaderProps) {
     <>
       <MoonHeader_Styled className='MoonHeader'>
         <div className='Header__MenuBTN'>
-          <input type='checkbox' name='' id='MBHeader_NavToggle' checked={NavbarState.isToggled} />
+          <input type='checkbox' name='' id='MBHeader_NavToggle' checked={isNavToggled} />
           <label htmlFor='MBHeader_NavToggle' onClick={() => dispatch(toggleNavbar())}>
-            {props.isLogged ? !NavbarState.isToggled ? <IoMenu /> : <IoClose /> : <></>}
+            {props.isLogged ? (
+              !isNavToggled ? (
+                <IoMenu className='HD__MenuLabel' />
+              ) : (
+                <IoClose className='HD__MenuLabel' />
+              )
+            ) : (
+              <></>
+            )}
           </label>
         </div>
         <div className='Header__AppName'>
@@ -37,12 +48,28 @@ function MoonHeader(props: MoonHeaderProps) {
         </div>
       </MoonHeader_Styled>
       <NavBar
-        isToggled={NavbarState.isToggled}
+        isToggled={isNavToggled}
         headerHeight='55px'
         name=''
         surname=''
         userImgURL='https://upload.wikimedia.org/wikipedia/commons/5/50/User_icon-cp.svg'
-        credits={0}></NavBar>
+        credits={0}
+      />
+      <DialogBox
+        isOpen={logoutDialogShow}
+        title='Log Out?'
+        dialogType='information'
+        message='Are you sure to close the current session?'
+        to='/login'
+        onConfirmAction={() => {
+          dispatch(setNavbarState(false));
+          dispatch(setLogoutDialog(false));
+          NavigateTo('/login', { replace: true });
+        }}
+        onCancelAction={() => {
+          dispatch(setLogoutDialog(false));
+        }}
+      />
     </>
   );
 }

@@ -2,7 +2,7 @@ import type { NavLinkObjectProps } from './NavLinkObjectTypes';
 import CustomNavLink from './CustomNavLink';
 import { NavLink_Styled } from '../../Styles/NavLink_Styled';
 import { useAppDispatch } from '../../../../../store/hooks';
-import { setNavbarState } from '../../../../../store/features/NavBarSlice';
+import { setNavbarState } from '../../../../../store/features/UISlice';
 
 function NavLinkObject(props: NavLinkObjectProps) {
   // ---------- -------------- ---------- //

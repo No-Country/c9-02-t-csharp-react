@@ -1,3 +1,6 @@
-export interface NavbarState {
-  isToggled: boolean;
+export interface UIStates {
+  isNavToggled: boolean;
+  logoutDialogShow: boolean;
+  depositDialogShow: boolean;
+  sendDialogShow: boolean;
 }
