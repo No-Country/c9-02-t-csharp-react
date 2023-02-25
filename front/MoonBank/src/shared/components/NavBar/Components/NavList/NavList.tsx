@@ -13,8 +13,8 @@ import {
   IoListCircleOutline,
   IoSend,
   IoSendOutline,
-  IoIdCard,
-  IoIdCardOutline,
+  IoGlobe,
+  IoGlobeOutline,
   IoGift,
   IoGiftOutline,
 } from 'react-icons/io5';
@@ -42,12 +42,12 @@ function NavList() {
         to='/profile'
       />
       <NavLinkObject
-        label='Help'
+        label='About'
         statusIcon={{
           OnCurrentPage: IoHelpCircle,
           OnNonCurrentPage: IoHelpCircleOutline,
         }}
-        to='/help'
+        to='/about'
       />
       <NavSeparator orientation='horizontal' thickness='2px' />
       <NavLinkObject
@@ -82,15 +82,15 @@ function NavList() {
         }}
         to='/send'
       />
-      <NavLinkObject
-        label='Payment Link'
-        statusIcon={{
-          OnCurrentPage: IoIdCard,
-          OnNonCurrentPage: IoIdCardOutline,
-        }}
-        to='/link'
-      />
       <NavSeparator orientation='horizontal' thickness='2px' />
+      <NavLinkObject
+        label='Services'
+        statusIcon={{
+          OnCurrentPage: IoGlobe,
+          OnNonCurrentPage: IoGlobeOutline,
+        }}
+        to='/services'
+      />
       <NavLinkObject
         label='Rewards'
         statusIcon={{
@@ -99,7 +99,7 @@ function NavList() {
         }}
         to='/rewards'
       />
-      <NavSeparator orientation='horizontal' thickness='4px' />
+      <NavSeparator orientation='horizontal' thickness='6px' />
       <NavLogoutButton to='login' label='Logout' />
     </NavList_Styled>
   );
