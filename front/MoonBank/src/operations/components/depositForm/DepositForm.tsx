@@ -1,43 +1,53 @@
 import { Input, Button, FlexRowContainer, Text } from '../../../shared/styles';
 import { useForm } from '../../../shared/hooks';
+import { FormEvent } from 'react';
+import { DepositRequest } from '../../../shared/interfaces';
 import { MakeDeposit } from '../../../APIS/TransactionRequests';
 import { useAppSelector } from '../../../store/hooks';
-import { DepositRequest } from '../../../shared/interfaces/TransactionRequests';
-import { FormEvent } from 'react';
+import { useToggle } from '../../../shared/hooks';
+import { DialogBox } from "../../../shared/components/DialogBox";
+import { DialogBoxProps } from '../../../shared/components/DialogBox/components/DialogBoxTypes';
+
 export const DepositForm = () => {
- const {balance, cbU_CVU} = useAppSelector(state => state.login)
-   const {
-    handleInputChange,
-    ResetForm,
-    cardNumber,
-    cardExpireDate,
-    cardCvc,
-    cardHolderName,
-    amount,
-  } = useForm({
+  const { balance, cbU_CVU } = useAppSelector((state) => state.login);
+  const { show, toggleChange } = useToggle();
+  const { handleInputChange, ResetForm, cardNumber, cardExpireDate, cardCvc, cardHolderName, amount } = useForm({
     cardNumber: '',
     cardExpireDate: '',
     cardCvc: '',
     cardHolderName: '',
     amount: 0,
-   
   });
-
-  const submitHandler = (e:FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-
-    const data:DepositRequest = {
-      typeTransaction: 0,
-      typeDeposit: 0,
-      amount,
-      destinationAccountCBU_CVU: cbU_CVU
-    }
-    console.log(data)
-    MakeDeposit(data);
+  const dataForm: DepositRequest = {
+    typeTransaction: 0,
+    typeDeposit: 0,
+    amount,
+    destinationAccountCBU_CVU: cbU_CVU,
   };
+
+
+  const submitHandler = ( data: DepositRequest) => {
+    
+    MakeDeposit(data)
+    toggleChange(false)
+  console.log('subido')
+    
+  };
+  const props:DialogBoxProps = {
+    dialogType: 'warning',
+    isOpen: show,
+    title: 'Confirm transfer',
+    message: 'Would you like to confirm this transaction?',
+    extraMessage: 'This action cannot be reverted after confirmation!',
+    to: '/',
+    onConfirmAction: () => submitHandler(dataForm) ,
+    onCancelAction: () => toggleChange(false),
+  }
+  
+ 
   return (
     <>
-      <form onSubmit={submitHandler}>
+      <form onSubmit={(e) => e.preventDefault()} >
         <label>CARD NUMBER</label>
         <Input
           name='cardNumber'
@@ -109,8 +119,13 @@ export const DepositForm = () => {
           </Text>
         </FlexRowContainer>
         <FlexRowContainer>
-          <Button variant='blue' type='submit'>Deposit</Button>
-          <Button variant='blue' onClick={ResetForm}>Clear</Button>
+          <Button onClick={() => toggleChange(true)} type='button' variant='blue'>
+            Deposit
+          </Button>
+          <Button variant='blue' type='button' onClick={ResetForm}>
+            Clear
+          </Button>
+          {show && <DialogBox {...props}/>}
         </FlexRowContainer>
       </form>
     </>

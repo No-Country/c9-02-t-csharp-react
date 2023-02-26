@@ -4,7 +4,7 @@ import MoonApi from './Axios';
 export const MakeDeposit = async (depositReq: DepositRequest) => {
   try {
      await MoonApi.post('Transactions/MakeTransaction', depositReq);
- 
+     
   }
   catch (error) {
     console.log(error)
