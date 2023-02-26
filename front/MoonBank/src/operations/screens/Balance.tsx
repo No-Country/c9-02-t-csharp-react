@@ -7,12 +7,12 @@ import {
   FlexRowContainer,
   UserInfoContainer,
   Button,
-} from '../../shared/styles';
+  useToggle
+} from '../../shared';
 import { useNavigate } from 'react-router';
 import eyeIcon from '../../shared/assets/eyeIcon.svg';
 import hideEyeIcon from '../../shared/assets/hideEyeIcon.svg';
 import { useAppSelector } from '../../store/hooks';
-import { useToggle } from '../../shared/hooks';
 export const Balance = () => {
   const navigate = useNavigate();
   const { balance, cbU_CVU, alias } = useAppSelector((state) => state.login);

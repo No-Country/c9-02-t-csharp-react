@@ -1,12 +1,16 @@
-import { Input, Button, FlexRowContainer, Text } from '../../../shared/styles';
-import { useForm } from '../../../shared/hooks';
-import { FormEvent } from 'react';
-import { DepositRequest } from '../../../shared/interfaces';
-import { MakeDeposit } from '../../../APIS/TransactionRequests';
 import { useAppSelector } from '../../../store/hooks';
-import { useToggle } from '../../../shared/hooks';
-import { DialogBox } from "../../../shared/components/DialogBox";
-import { DialogBoxProps } from '../../../shared/components/DialogBox/components/DialogBoxTypes';
+import { MakeDeposit } from '../../../APIS/TransactionRequests';
+import {
+  DialogBox,
+  DialogBoxProps,
+  useToggle,
+  useForm,
+  DepositRequest,
+  Input,
+  Button,
+  FlexRowContainer,
+  Text,
+} from '../../../shared';
 
 export const DepositForm = () => {
   const { balance, cbU_CVU } = useAppSelector((state) => state.login);
@@ -25,29 +29,25 @@ export const DepositForm = () => {
     destinationAccountCBU_CVU: cbU_CVU,
   };
 
-
-  const submitHandler = ( data: DepositRequest) => {
-    
-    MakeDeposit(data)
-    toggleChange(false)
-  console.log('subido')
-    
+  const submitHandler = (data: DepositRequest) => {
+    MakeDeposit(data);
+    toggleChange(false);
+    console.log('subido');
   };
-  const props:DialogBoxProps = {
+  const props: DialogBoxProps = {
     dialogType: 'warning',
     isOpen: show,
     title: 'Confirm transfer',
     message: 'Would you like to confirm this transaction?',
     extraMessage: 'This action cannot be reverted after confirmation!',
-    to: '/',
-    onConfirmAction: () => submitHandler(dataForm) ,
+    to: '/deposit',
+    onConfirmAction: () => submitHandler(dataForm),
     onCancelAction: () => toggleChange(false),
-  }
-  
- 
+  };
+
   return (
     <>
-      <form onSubmit={(e) => e.preventDefault()} >
+      <form onSubmit={(e) => e.preventDefault()}>
         <label>CARD NUMBER</label>
         <Input
           name='cardNumber'
@@ -125,7 +125,7 @@ export const DepositForm = () => {
           <Button variant='blue' type='button' onClick={ResetForm}>
             Clear
           </Button>
-          {show && <DialogBox {...props}/>}
+          {show && <DialogBox {...props} />}
         </FlexRowContainer>
       </form>
     </>
