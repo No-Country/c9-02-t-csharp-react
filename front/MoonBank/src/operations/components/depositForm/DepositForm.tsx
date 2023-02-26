@@ -1,10 +1,12 @@
 import { Input, Button, FlexRowContainer, Text } from '../../../shared/styles';
 import { useForm } from '../../../shared/hooks';
 import { MakeDeposit } from '../../../APIS/TransactionRequests';
-
-// this screen has to receive the balance from the user Slice
+import { useAppSelector } from '../../../store/hooks';
+import { DepositRequest } from '../../../shared/interfaces/TransactionRequests';
+import { FormEvent } from 'react';
 export const DepositForm = () => {
-  const {
+ const {balance, cbU_CVU} = useAppSelector(state => state.login)
+   const {
     handleInputChange,
     ResetForm,
     cardNumber,
@@ -12,23 +14,26 @@ export const DepositForm = () => {
     cardCvc,
     cardHolderName,
     amount,
-    idDestinationAccount,
   } = useForm({
     cardNumber: '',
     cardExpireDate: '',
     cardCvc: '',
     cardHolderName: '',
     amount: 0,
-    idDestinationAccount: 1,
+   
   });
 
-  const submitHandler = () => {
-    MakeDeposit({
+  const submitHandler = (e:FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+
+    const data:DepositRequest = {
       typeTransaction: 0,
       typeDeposit: 0,
       amount,
-      idDestinationAccount,
-    });
+      destinationAccountCBU_CVU: cbU_CVU
+    }
+    console.log(data)
+    MakeDeposit(data);
   };
   return (
     <>
@@ -81,18 +86,6 @@ export const DepositForm = () => {
           fontSize='12px'
         />
 
-        <label>ID DESTINATION ACCOUNT</label>
-        <Input
-          name='idDestinationAccount'
-          value={idDestinationAccount}
-          onChange={handleInputChange}
-          type='text'
-          placeholder='Destination account'
-          marginBottom='1rem'
-          marginTop='1rem'
-          fontSize='12px'
-        />
-
         <FlexRowContainer withAmount>
           <Text> Amount to Deposit $</Text>
 
@@ -112,13 +105,12 @@ export const DepositForm = () => {
         <FlexRowContainer space='between'>
           <Text style={{ alignSelf: 'flex-start' }}>Available Deposit Today</Text>
           <Text marginTop='1.2rem' style={{ alignSelf: 'flex-end' }}>
-            $ 7500
-            {/* add balance here */}
+            $ {balance}
           </Text>
         </FlexRowContainer>
         <FlexRowContainer>
-          <Button type='submit'>Deposit</Button>
-          <Button onClick={ResetForm}>Clear</Button>
+          <Button variant='blue' type='submit'>Deposit</Button>
+          <Button variant='blue' onClick={ResetForm}>Clear</Button>
         </FlexRowContainer>
       </form>
     </>

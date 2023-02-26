@@ -1,12 +1,16 @@
-import { Alert, Text } from "../../shared/styles";
+import { Paper, Button, Text, FlexContainer, FlexRowContainer } from "../../shared/styles";
 
 export const DeposiAlert = () => {
   return (
-    <Alert>
-      {/* icono */}
-      <Text marginLeft='5px' size='10px'>
-        Do not share your Username, Password or Token with anyone! More security advice here.
-      </Text>
-    </Alert>
+    <Paper>
+      <FlexContainer>
+      <Text></Text>
+     <Text></Text>
+      </FlexContainer>
+     <FlexRowContainer>
+      <Button variant='blue'>Confirm</Button>
+      <Button variant='orange'>Cancel</Button>
+     </FlexRowContainer>
+    </Paper>
   );
 };

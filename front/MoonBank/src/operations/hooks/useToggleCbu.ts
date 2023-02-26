@@ -1,20 +1,16 @@
-import { useState } from "react";
-
+import { useState } from 'react';
 
 const useToggleCbu = () => {
-  
-  const [showCbu, setShowCbu] = useState(false)
+  const [showCbu, setShowCbu] = useState(false);
 
-const toggleCbu = () => {
-    setShowCbu(prev => !prev)
-}
+  const toggleCbu = () => {
+    setShowCbu((prev) => !prev);
+  };
 
-    return {
-showCbu,
-toggleCbu
-  }
-  
-  
-}
+  return {
+    showCbu,
+    toggleCbu,
+  };
+};
 
-export default useToggleCbu
+export default useToggleCbu;
