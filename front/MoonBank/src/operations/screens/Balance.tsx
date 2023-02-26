@@ -3,6 +3,8 @@ import { FlexContainer, FlexRowContainer, UserInfoContainer } from '../../shared
 import { Button } from '../../shared/styles/Button';
 import eyeIcon from '../../shared/assets/eyeIcon.svg';
 import hideEyeIcon from '../../shared/assets/hideEyeIcon.svg';
+import { useSelector } from 'react-redux';
+
 // type Props = {
 //   amount: number;
 //   alias: string;
@@ -10,6 +12,7 @@ import hideEyeIcon from '../../shared/assets/hideEyeIcon.svg';
 // };
 
 export const Balance = () => {
+
   return (
     <Container>
       <Paper>

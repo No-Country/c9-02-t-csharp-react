@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import { Login } from '../login/screens';
-import { Balance } from '../balance/screens/Balance';
+import { Balance, Services } from '../operations/screens';
 import { MoonHeader } from '../shared/components/MoonHeader';
 import { NavBar, NavListElements } from '../shared/components/NavBar';
 
@@ -20,7 +20,9 @@ const AppRouter = () => {
       {/* ALL ROUTES */}
       <Routes>
         <Route path='/' element={<Login />} />
-        {<Route path='balance' element={<Balance />} /> /**/}
+        <Route path='balance' element={<Balance />} /> 
+        <Route path='services' element={<Services />} /> 
+        {/* <Route path='deposit' element={<Deposit />} />  */}
       </Routes>
     </>
   );

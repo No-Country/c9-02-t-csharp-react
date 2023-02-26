@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-//! draft slice
 interface LoginState {
   isLoggedIn: boolean;
 }

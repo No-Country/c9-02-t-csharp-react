@@ -1,7 +1,7 @@
-import AppRouter from './router/AppRouter';
+import AppRouter from './router/appRouter';
 
 const App = () => {
- console.log( getAccountsList())
+
   return (
     <>
       <AppRouter />

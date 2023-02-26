@@ -1,4 +1,4 @@
-import { Box, Container, ItemActivity, Paper, Text } from '../../shared/styles';
+import { Container, Paper, Text } from '../../shared/styles';
 
 import { Activity } from '../components';
 import electricIcon from '../../shared/assets/eletricIcon.svg'
