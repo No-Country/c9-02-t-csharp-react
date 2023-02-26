@@ -1,5 +1,6 @@
-import { useAppSelector } from '../../../store/hooks';
+import { useAppSelector, useAppDispatch } from '../../../store/hooks';
 import { MakeDeposit } from '../../../APIS/TransactionRequests';
+import { useEffect } from 'react';
 import {
   DialogBox,
   DialogBoxProps,
@@ -11,9 +12,11 @@ import {
   FlexRowContainer,
   Text,
 } from '../../../shared';
-
+import { retrieveUser } from '../../../store/features/loginSlice';
 export const DepositForm = () => {
-  const { balance, cbU_CVU } = useAppSelector((state) => state.login);
+
+const dispatch = useAppDispatch()
+  const { login } = useAppSelector((state) => state);
   const { show, toggleChange } = useToggle();
   const { handleInputChange, ResetForm, cardNumber, cardExpireDate, cardCvc, cardHolderName, amount } = useForm({
     cardNumber: '',
@@ -22,13 +25,17 @@ export const DepositForm = () => {
     cardHolderName: '',
     amount: 0,
   });
+  const id = login.alias.split('b')[1]
   const dataForm: DepositRequest = {
     typeTransaction: 0,
     typeDeposit: 0,
     amount,
-    destinationAccountCBU_CVU: cbU_CVU,
+    destinationAccountCBU_CVU: login.cbU_CVU,
   };
-
+  useEffect(() => {
+    dispatch(retrieveUser(id));
+  }, [login]);
+  
   const submitHandler = (data: DepositRequest) => {
     MakeDeposit(data);
     toggleChange(false);
@@ -115,7 +122,7 @@ export const DepositForm = () => {
         <FlexRowContainer space='between'>
           <Text style={{ alignSelf: 'flex-start' }}>Available Deposit Today</Text>
           <Text marginTop='1.2rem' style={{ alignSelf: 'flex-end' }}>
-            $ {balance}
+            $ {login.balance}
           </Text>
         </FlexRowContainer>
         <FlexRowContainer>
