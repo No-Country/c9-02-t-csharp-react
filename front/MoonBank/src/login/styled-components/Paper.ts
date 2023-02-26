@@ -8,4 +8,5 @@ export const Paper = styled.div`
   justify-content: center;
   align-items: center;
   padding: 2rem;
+  box-shadow: var(--MoonBoxShadow);
 `;

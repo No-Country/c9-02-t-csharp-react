@@ -1,23 +1,42 @@
 import { Button, Input } from '../styled-components';
 
 import { AlertNotification } from './AlertNotification';
+import { Login } from '../../shared/interfaces';
 import { SwitchButton } from './SwitchButton';
+import { logUser } from '../../APIS/postRequests';
+import { setUser } from '../../store/features/loginSlice';
+import { useAppDispatch } from '../../store/hooks';
 import { useForm } from '../../shared/hooks/useForm';
+import { useState } from 'react';
 
 export const Form = () => {
-  const { handleInputChange, moonToken, password, username } = useForm({
-    username: '',
+  const dispatch = useAppDispatch();
+  const [checkLogin, setCheckLogin] = useState(true);
+  const { handleInputChange, password, email } = useForm({
+    email: '',
     password: '',
-    moonToken: '',
   });
+
+  const handleLogUser = () => {
+    const data: Login = {
+      email,
+      password,
+    };
+    logUser(data).then((resp) => {
+      if (!resp.data.success) {
+        setCheckLogin(false);
+      }
+      dispatch(setUser(resp.data.result));
+    });
+  };
   return (
     <>
       <Input
-        name='username'
-        value={username}
+        name='email'
+        value={email}
         onChange={handleInputChange}
         type='text'
-        placeholder='Username'
+        placeholder='Email'
         marginBottom='1rem'
         marginTop='1rem'
         fontSize='12px'
@@ -30,17 +49,12 @@ export const Form = () => {
         placeholder='Password'
         marginBottom='1rem'
       />
-      <Input
-        name='moonToken'
-        value={moonToken}
-        onChange={handleInputChange}
-        type='text'
-        placeholder='Moon Token'
-        marginBottom='1rem'
-      />
       <SwitchButton />
-      <AlertNotification /> 
-      <Button marginTop='1rem'>Log In</Button>
+      {!checkLogin && <AlertNotification />}
+
+      <Button marginTop='1rem' onClick={handleLogUser} variant='blue'>
+        Log In
+      </Button>
     </>
   );
 };
