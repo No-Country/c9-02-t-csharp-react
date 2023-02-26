@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 
-export const Alert = styled.div`
+interface Props {
+  isVisible?: boolean;
+}
+export const Alert = styled.div<Props>`
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -9,4 +12,5 @@ export const Alert = styled.div`
   padding: 1rem;
   background: #b66200;
   border-radius: 5px;
+
 `;

@@ -8,5 +8,10 @@ export const Paper = styled.div`
   justify-content: center;
   align-items: center;
   padding: 2rem;
+  width: 30rem;
   box-shadow: var(--MoonBoxShadow);
+  margin-top: 2rem;
+  @media (max-width: 600px) {
+    width: 19rem;
+  }
 `;
