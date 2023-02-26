@@ -1,10 +1,4 @@
-<<<<<<< HEAD
 import { Alert, Text } from "../styled-components";
-=======
-import { Alert, Text } from '../styled-components';
-
-import { IoWarning } from 'react-icons/io5';
->>>>>>> kelly-depositPage
 
 export const AlertNotification = () => {
   return (
