@@ -9,7 +9,11 @@ const GlobalStyles = createGlobalStyle`
     list-style: none;
   }
 
-  label, span, text, input{
+  label,
+  span,
+  text,
+  input,
+  h1,h2,h3,h4,h5,h6 {
     color: var(--White);
   }
   input:placeholder-shown{
@@ -25,6 +29,7 @@ const GlobalStyles = createGlobalStyle`
     --BlueL: #306090; // Light Blue
     --BLueLA30: #3060904c; // Light Blue Alpha 30%
     --BlueG: #5878A0; // Gray Blue
+    --Purple: #584880; // Purple
     --PurpleD: #483475; // Dark Purple
     --Warn: #B66200; // Orange 
     --OrangeL: #CF7000; // Light Orange
@@ -40,8 +45,8 @@ const GlobalStyles = createGlobalStyle`
     --BlackBg: #090909; // Black 90%
 
     //EFFECTS
-    --MoonBoxShadow: 0px 0px 10px 2px var(--Dark); // for box-sizing css
-    --NavBarShadow: 0px 0px 10px #483475; // for box-sizing css
+    --MoonBoxShadow: 0px 0px 5px 2px var(--Dark); // for box-shadow css
+    --NavBarShadow: 0px 0px 10px #483475; // for box-shadow css
   }
 
 h2 {

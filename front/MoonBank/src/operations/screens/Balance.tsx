@@ -25,11 +25,11 @@ export const Balance = () => {
           </FlexRowContainer>
 
           <FlexRowContainer>
-            <Button>Deposit</Button>
-            <Button>Transfer</Button>
+            <Button variant='blue'>Deposit</Button>
+            <Button variant='blue'>Transfer</Button>
           </FlexRowContainer>
 
-          <hr/>
+          <hr />
           <UserInfoContainer>
             <div>
               <h3>Alias:</h3>
@@ -42,7 +42,7 @@ export const Balance = () => {
             </div>
             <FlexRowContainer space='between'>
               <img src={hideEyeIcon} alt='eye icon' />
-              <Text >**************</Text>
+              <Text>**************</Text>
             </FlexRowContainer>
           </UserInfoContainer>
         </FlexContainer>

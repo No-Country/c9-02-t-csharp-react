@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { DialogBoxProps, DialogStyledProp } from '../components/DialogBoxTypes';
+import { DialogStyledProp } from '../components/DialogBoxTypes';
 
 export const DialogBox_Styled = styled.dialog<DialogStyledProp>`
   display: flex;

@@ -10,6 +10,7 @@ export const MoonHeader_Styled = styled.header`
   width: 100%;
   height: 55px;
   background: var(--BlackBg);
+  transition: transform 1.3s;
 
   > .Header__MenuBTN,
   > .Header__AppName,
@@ -24,7 +25,7 @@ export const MoonHeader_Styled = styled.header`
   > .Header__NotificationBTN {
     justify-content: center;
     align-items: center;
-    width: 42px;
+    width: 45px;
     height: 100%;
     > label {
       display: flex;
@@ -32,10 +33,17 @@ export const MoonHeader_Styled = styled.header`
       width: 100%;
       height: 100%;
       > svg {
-        padding: 10px;
+        padding: 12px;
         width: 100%;
         height: auto;
-        color: var(--Icons);
+        @media screen and (min-width: 0px) and (max-width: 860px) {
+          color: var(--Icons);
+        }
+      }
+      > svg.HD__MenuLabel {
+        @media screen and (min-width: 860.1px) {
+          color: #00000000;
+        }
       }
     }
   }

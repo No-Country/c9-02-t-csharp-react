@@ -14,7 +14,6 @@ export type NavLinkStates = {
 export type NavLinkObjectActiveProps = (props: NavLinkStates) => string;
 
 export type NavLinkObjectProps = {
-  id?: number;
   to: To;
   label: string;
   statusIcon: StatusIcon;

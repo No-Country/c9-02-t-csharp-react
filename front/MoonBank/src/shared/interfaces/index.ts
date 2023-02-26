@@ -3,4 +3,4 @@ export * from './Reward';
 export * from './Service';
 export * from './Transaction';
 export * from './TransactionRequests';
-export * from './index';
+export * from './NavbarState';
