@@ -2,7 +2,9 @@ import styled, { css } from 'styled-components';
 
 interface flexRowContainerProps {
   space?: 'between' | 'around';
+  withAmount?: boolean;
 }
+
 export const FlexContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -19,11 +21,27 @@ export const FlexRowContainer = styled.div<flexRowContainerProps>`
   gap: 0.5rem;
   width: 100%;
   margin: 1.2rem 0;
-
+label {
+  width: 100%;
+}
   ${(props) =>
     props.space === 'between' &&
     css`
       justify-content: space-between;
+
+    `}
+
+    ${(props) =>
+    props.withAmount  &&
+    css`
+      justify-content: space-between;
+
+      p {
+        width: 100%;
+      }
+      input {
+        width: 50%;
+      }
     `}
 `;
 export const Header = styled.header`

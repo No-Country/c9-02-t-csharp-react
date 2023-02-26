@@ -1,6 +1,13 @@
-import { Container, Paper, Text } from '../../login/styled-components';
-import { FlexContainer, FlexRowContainer, UserInfoContainer } from '../../shared/styles/sharedStyles';
-import { Button } from '../../shared/styles/Button';
+import {
+  Container,
+  Paper,
+  Text,
+  Title,
+  FlexContainer,
+  FlexRowContainer,
+  UserInfoContainer,
+  Button,
+} from '../../shared/styles';
 import eyeIcon from '../../shared/assets/eyeIcon.svg';
 import hideEyeIcon from '../../shared/assets/hideEyeIcon.svg';
 import { useSelector } from 'react-redux';
@@ -16,7 +23,7 @@ export const Balance = () => {
   return (
     <Container>
       <Paper>
-        <h2>My balance</h2>
+        <Title>My balance</Title>
 
         <FlexContainer>
           <FlexRowContainer>
@@ -30,6 +37,7 @@ export const Balance = () => {
           </FlexRowContainer>
 
           <hr />
+          <hr />
           <UserInfoContainer>
             <div>
               <h3>Alias:</h3>
@@ -42,6 +50,7 @@ export const Balance = () => {
             </div>
             <FlexRowContainer space='between'>
               <img src={hideEyeIcon} alt='eye icon' />
+              <Text>**************</Text>
               <Text>**************</Text>
             </FlexRowContainer>
           </UserInfoContainer>
