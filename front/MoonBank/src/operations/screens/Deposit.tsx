@@ -1,4 +1,4 @@
-import { Container, Paper, Title, Text, Button, FlexContainer, FlexRowContainer } from '../../shared/styles';
+import { Container, Paper, Title } from '../../shared/styles';
 import { DepositForm } from '../components/depositForm/DepositForm';
 
 const Deposit = () => {
