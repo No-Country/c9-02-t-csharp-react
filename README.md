@@ -28,7 +28,8 @@ In this case, when making a deposit into their MoonBank account, the user will n
     o	typeTransaction: If it is a deposit, it will be zero (“0”).
     o	typeDeposit: It can be “0” if it is a cash deposit via a cashier, “1” if it is through Paypal, and “2” if it is through Binance.
     o	amount: Amount to be deposited.
-    o	idDestinationAccount: ID of the account to which the deposit will be made.
+    o	Cbu_cvu: CBU or CVU of the account to which the transfer is to be made.
+    o	alias: Alias of the account to which the transfer is to be made.
 
 
 •	The user will be able to make service payments.
