@@ -8,18 +8,18 @@ import {
   UserInfoContainer,
   Button,
 } from '../../shared/styles';
+import { useNavigate } from 'react-router';
 import eyeIcon from '../../shared/assets/eyeIcon.svg';
 import hideEyeIcon from '../../shared/assets/hideEyeIcon.svg';
-import { useSelector } from 'react-redux';
-
-// type Props = {
-//   amount: number;
-//   alias: string;
-//   cbu: string;
-// };
-
+import { useAppSelector } from '../../store/hooks';
+import { useToggleCbu } from '../hooks';
 export const Balance = () => {
-
+  const navigate = useNavigate();
+  const { balance, cbU_CVU, alias } = useAppSelector((state) => state.login);
+  const {showCbu, toggleCbu} = useToggleCbu()
+  const navigateTo = (route: string) => {
+    navigate(`${route}`);
+  };
   return (
     <Container>
       <Paper>
@@ -28,12 +28,16 @@ export const Balance = () => {
         <FlexContainer>
           <FlexRowContainer>
             <img src={eyeIcon} alt='eye icon' />
-            <Text>$ 45,820.17</Text>
+            <Text>$ {balance}</Text>
           </FlexRowContainer>
 
           <FlexRowContainer>
-            <Button variant='blue'>Deposit</Button>
-            <Button variant='blue'>Transfer</Button>
+            <Button variant='blue' onClick={() => navigateTo('/deposit')}>
+              Deposit
+            </Button>
+            <Button variant='blue' onClick={() => navigateTo('/transfer')}>
+              Transfer
+            </Button>
           </FlexRowContainer>
 
           <hr />
@@ -42,16 +46,15 @@ export const Balance = () => {
             <div>
               <h3>Alias:</h3>
             </div>
-            <Text marginTop='1.2rem'>@sortOmega</Text>
+            <Text marginTop='1.2rem'>@{alias}</Text>
           </UserInfoContainer>
           <UserInfoContainer>
             <div>
               <h3>CBU:</h3>
             </div>
             <FlexRowContainer space='between'>
-              <img src={hideEyeIcon} alt='eye icon' />
-              <Text>**************</Text>
-              <Text>**************</Text>
+              <img src={hideEyeIcon} alt='eye icon' style={{cursor: 'pointer'}} onClick={toggleCbu}/>
+              <Text>  {showCbu ? cbU_CVU : '*********** ********'}</Text>
             </FlexRowContainer>
           </UserInfoContainer>
         </FlexContainer>

@@ -1,6 +1,6 @@
 import { Alert, Text } from "../../shared/styles";
 
-export const AlertNotification = () => {
+export const DeposiAlert = () => {
   return (
     <Alert>
       {/* icono */}
