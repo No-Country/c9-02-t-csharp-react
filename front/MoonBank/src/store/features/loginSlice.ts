@@ -8,7 +8,7 @@ const initialState: Account = {
   cbU_CVU: '',
   email: '',
   name: '',
-  lasName: '',
+  lastName: '',
   success: false,
   rewardPoints: 0,
 };
