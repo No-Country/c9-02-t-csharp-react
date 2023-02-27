@@ -19,16 +19,32 @@ namespace MoonBankAPI.Controllers
 
         [HttpGet("TransactionHistory/{idAccount}")]
         public ActionResult<IList<ResponseDTO>> GetTransactionHistory(int idAccount)
-        {
+        {            
             var response = _transactionService.GetTransactionsHistory(idAccount);
-            return Ok(response);
+
+            if (response.Success)
+            {
+                return Ok(response);
+            }
+            else
+            {
+                return NotFound(response);
+            }
         }
 
         [HttpPost("MakeTransaction")]
         public ActionResult<ResponseDTO> MakeTransaction([FromBody] TransactionDTO transactionDTO)
         {
             var response = _transactionService.MakeTransaction(transactionDTO);
-            return Ok(response);
+            
+            if (response.Success)
+            {
+                return Ok(response);
+            }
+            else
+            {
+                return BadRequest(response);
+            }
         }
 
     }

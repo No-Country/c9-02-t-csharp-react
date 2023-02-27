@@ -3,6 +3,8 @@ using Common.Exceptions;
 using Contracts.Repositories;
 using DataAccess;
 using DataAccess.Models;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -106,7 +108,7 @@ namespace Repositories
             }
         }
 
-
+        
         public AccountDTO Login(LoginDTO loginDTO)
         {
             var account = _context.Accounts.FirstOrDefault(x => x.Email == loginDTO.Email);                        
@@ -134,57 +136,6 @@ namespace Repositories
                 RewardPoints = account.RewardPoints,
             };
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        /* public void Register(AccountDTO accountDTO)
-         {
-             if (_context.Accounts.Any(x => x.Email == accountDTO.Email ))
-             {
-                 throw new AccountExceptions("The email you have entered is already in use.");
-             }
-
-             var alias = string.Join(".", accountDTO.Alias.Split(" ")); // consultar validacion en front para que ingrese solo 3 palabras
-
-             if (_context.Accounts.Any(x => x.Alias == alias))
-             {
-                 throw new AccountExceptions("The Alias you have entered is already in use.");
-             }
-
-             long cbuCvu = 95422330000000000 + (long)(new Random().NextDouble() * 9999999999999999); // 9542233 son los 7 digitos fijos(3 entidadBanco, 4 sucursal)
-
-             if (_context.Accounts.Any(x => x.CBU_CVU == cbuCvu))
-             {
-                 throw new AccountExceptions("An error has occurred with the CBU_CVU number, we apologize for that.");
-             }
-
-             _context.Accounts.Add(new DataAccess.Models.Account()
-             {
-                 Name = accountDTO.Name,
-                 LastName = accountDTO.LastName,
-                 Email = accountDTO.Email,
-                 Password = accountDTO.Password,
-                 Alias = alias,
-                 CBU_CVU = cbuCvu, 
-                 Balance = 0,                               
-                 RewardPoints = 0
-             });
-         }*/
+        
     }
 }

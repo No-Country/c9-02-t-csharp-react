@@ -24,7 +24,11 @@ namespace MoonBankAPI.Controllers
         public ActionResult<ResponseDTO> Login([FromBody] LoginDTO loginDTO)
         {
             var response = _accountService.Login(loginDTO);
-            return Ok(response);
+
+            if (response.Success)
+                return Ok(response);
+            else
+                return BadRequest(response);           
         }
 
         [HttpGet("AccountsList")]
@@ -38,6 +42,7 @@ namespace MoonBankAPI.Controllers
         public ActionResult<ResponseDTO> GetAccountById(int idAccount)
         {
             var response = _accountService.GetAccountById(idAccount);
+
             if (response.Success)
             {
                 return Ok(response);
@@ -52,6 +57,7 @@ namespace MoonBankAPI.Controllers
         public ActionResult<ResponseDTO> GetAccountByAlias(string alias)
         {
             var response = _accountService.GetAccountByAlias(alias);
+
             if (response.Success)
             {
                 return Ok(response);
@@ -66,6 +72,7 @@ namespace MoonBankAPI.Controllers
         public ActionResult<ResponseDTO> GetAccountByCBU_CVU(string cbu_cvu)
         {
             var response = _accountService.GetAccountByCBU_CVU(cbu_cvu);
+
             if (response.Success)
             {
                 return Ok(response);
