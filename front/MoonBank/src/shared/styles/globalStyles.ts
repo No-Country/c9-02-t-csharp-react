@@ -43,19 +43,14 @@ const GlobalStyles = createGlobalStyle`
     --mainBg: #151515; // Black 85%
     --figmaBg: #1e1e1e; // ---------
     --BlackBg: #090909; // Black 90%
+    --LightRed: #FF4D77;
+    --LightGreen:  #25FFD8;
 
     //EFFECTS
     --MoonBoxShadow: 0px 0px 5px 2px var(--Dark); // for box-shadow css
     --NavBarShadow: 0px 0px 10px #483475; // for box-shadow css
   }
 
-<<<<<<< HEAD
-h2 {
-  align-self: flex-start;
-}
-=======
-
->>>>>>> kelly-depositPage
 `;
 
 export default GlobalStyles;

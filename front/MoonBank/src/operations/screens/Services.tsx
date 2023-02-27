@@ -4,9 +4,9 @@ import { Activity } from '../components';
 import { Service } from '../../shared/interfaces';
 import electricIcon from '../../shared/assets/eletricIcon.svg';
 import { getServicesList } from '../../APIS/getRequest';
-
 export const Services = () => {
   const [services, setServices] = useState<Service[]>([]);
+
   useEffect(() => {
     const data = getServicesList();
     data.then((resp) => setServices(resp));
@@ -20,12 +20,14 @@ export const Services = () => {
         {services.map((service, index) => (
           <Activity
             key={index}
-            date='March 2023'
             icon={electricIcon}
             quantity={service.amount}
             serviceDescription={`Montly ${service.name} tax`}
             serviceTitle={service.name}
             transaction={() => {}}
+            typeItem='service'
+            
+
           />
         ))}
       </Paper>

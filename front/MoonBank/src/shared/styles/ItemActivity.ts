@@ -13,6 +13,11 @@ export const ItemActivity = styled.div`
   justify-content: space-between;
   padding: 8px;
   gap: 10px;
+ width: 100%;
 
-  width: 100%;
+ img {
+  max-width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+ }
 `;
