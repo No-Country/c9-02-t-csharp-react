@@ -1,6 +1,6 @@
 import { Route, Routes, Navigate } from 'react-router-dom';
 import { Login } from '../login/screens';
-import { Balance, Services, Deposit } from '../operations/screens';
+import { Balance, Services, Deposit, Rewards } from '../operations/screens';
 import { MoonHeader } from '../shared/components/MoonHeader';
 import { useAppSelector } from '../store/hooks';
 const AppRouter = () => {
@@ -17,6 +17,7 @@ const AppRouter = () => {
         <Route path='balance' element={<Balance />} /> 
         <Route path='services' element={<Services />} /> 
         <Route path='deposit' element={<Deposit />} /> 
+        <Route path='rewards' element={<Rewards />} /> 
         <Route path='/login' element={<Navigate to={'/'} replace={true} />} />
       </Routes>
     </>

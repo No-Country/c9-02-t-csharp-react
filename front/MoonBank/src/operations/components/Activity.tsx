@@ -1,33 +1,41 @@
-import { Box, ItemActivity, Text } from '../../shared/styles';
+import { Box, Button, ItemActivity, Text, ItemContainer } from '../../shared/styles';
 
 interface Props {
   icon: string;
   serviceTitle: string;
   serviceDescription: string;
-  date: string;
+  date?: string;
   quantity: number;
+  typeItem: 'reward' | 'service',
+  totalPoints?: number,
+  transaction: () => void
 }
 
-export const Activity = ({ date, icon, quantity, serviceDescription, serviceTitle }: Props) => {
+export const Activity = ({ date, icon, quantity, serviceDescription, serviceTitle, transaction, typeItem, totalPoints }: Props) => {
+  const isEnoughPoints =  typeItem === 'reward' && totalPoints as number >= quantity
+
   return (
-    <ItemActivity>
-      <Box>
-        <img src={icon} alt={icon} />
-        <Box direction='column' marginLeft='10px'>
-          <Text weight='700' size='10px'>
-            {serviceTitle}
-          </Text>
-          <Text weight='400' size='8px'>
-            {serviceDescription}
-          </Text>
+    <ItemContainer>
+      <ItemActivity>
+        <Box>
+          <img src={icon} alt={icon}/>
+          <Box direction='column' marginLeft='10px'>
+            <Text weight='700' size='10px'>
+              {serviceTitle}
+            </Text>
+            <Text weight='400' size='8px'>
+              {serviceDescription}
+            </Text>
+          </Box>
         </Box>
-      </Box>
-      <Box direction='column'>
-        <Text size='10px' weight='600'>
-          {date}
-        </Text>
-        <Text size='10px'>${quantity}</Text>
-      </Box>
-    </ItemActivity>
+        <Box direction='column'>
+          <Text size='10px' weight='600'>
+            {date}
+          </Text>
+          <Text size='10px' style={{color: isEnoughPoints ? 'var(--LightGreen)' : 'var(--LightRed)' }}>{typeItem === 'service' ? `$ ${quantity} `: `${quantity} px`}</Text>
+        </Box>
+      </ItemActivity>
+      <Button width='100%' variant='blue' onClick={transaction}>Perform transaction</Button>
+    </ItemContainer>
   );
 };
