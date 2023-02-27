@@ -7,19 +7,15 @@ import {
   FlexRowContainer,
   UserInfoContainer,
   Button,
-  useToggle
 } from '../../shared';
 import { useNavigate } from 'react-router';
 import eyeIcon from '../../shared/assets/eyeIcon.svg';
-import hideEyeIcon from '../../shared/assets/hideEyeIcon.svg';
-import { useAppSelector, useAppDispatch } from '../../store/hooks';
-import { useEffect } from 'react';
-import { retrieveUser } from '../../store/features/loginSlice';
-
+import { useAppSelector } from '../../store/hooks';
+import ShowCbu from '../components/ShowCbu';
 export const Balance = () => {
   const navigate = useNavigate();
-  const { login } = useAppSelector((state) => state)
-  const {show, toggleChange} = useToggle()
+  const { login } = useAppSelector((state) => state);
+
   const navigateTo = (route: string) => {
     navigate(`${route}`);
   };
@@ -34,7 +30,7 @@ export const Balance = () => {
             <img src={eyeIcon} alt='eye icon' />
             <Text>$ {login.balance}</Text>
           </FlexRowContainer>
-
+          <ShowCbu cbu={login.cbU_CVU} />
           <FlexRowContainer>
             <Button variant='blue' onClick={() => navigateTo('/deposit')}>
               Deposit
@@ -51,15 +47,6 @@ export const Balance = () => {
               <h3>Alias:</h3>
             </div>
             <Text marginTop='1.2rem'>@{login.alias}</Text>
-          </UserInfoContainer>
-          <UserInfoContainer>
-            <div>
-              <h3>CBU:</h3>
-            </div>
-            <FlexRowContainer space='between'>
-              <img src={hideEyeIcon} alt='eye icon' style={{cursor: 'pointer'}} onClick={() => toggleChange(!show)}/>
-              <Text>  {show ? login.cbU_CVU : '*********** ********'}</Text>
-            </FlexRowContainer>
           </UserInfoContainer>
         </FlexContainer>
       </Paper>
