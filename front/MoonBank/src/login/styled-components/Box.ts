@@ -22,4 +22,5 @@ export const Box = styled.div<Props>`
   margin-right: ${(props) => props.marginRight};
   margin-bottom: ${(props) => props.marginBottom};
   margin-top: ${(props) => props.marginTop};
+  width: 100%;
 `;

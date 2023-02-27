@@ -9,7 +9,6 @@ export const Container = styled.div`
   height: 100%;
   background: var(--mainBg);
   padding: 30px;
-
   hr {
     border-color: var(--LightGray);
     width: 100%;
