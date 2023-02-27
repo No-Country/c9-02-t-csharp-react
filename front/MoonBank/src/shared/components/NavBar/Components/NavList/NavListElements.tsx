@@ -91,11 +91,5 @@ export const NavListElements = [
   <NavSeparator orientation='horizontal' thickness='2px' />,
   LinkGenerator('/rewards', 'Rewards', Icons(IoGift, IoGiftOutline)),
   <NavSeparator orientation='horizontal' thickness='4px' />,
-  <NavLogoutButton
-    to='login'
-    label='Logout'
-    confirmedLogoutAction={() => {
-      confirm('Confirm again?');
-    }}
-  />,
+  <NavLogoutButton to='login' label='Logout' />,
 ];

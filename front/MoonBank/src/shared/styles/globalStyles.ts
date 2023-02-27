@@ -16,9 +16,6 @@ const GlobalStyles = createGlobalStyle`
   h1,h2,h3,h4,h5,h6 {
     color: var(--White);
   }
-  input:placeholder-shown{
-    color: var(--LightGray);
-  }
   
   :root {
     // COLORS
@@ -34,6 +31,8 @@ const GlobalStyles = createGlobalStyle`
     --Warn: #B66200; // Orange 
     --OrangeL: #CF7000; // Light Orange
     --OrangeD: #965100; // Dark Orange
+    --RedL: #FF4D77; // Light Red
+    --RedInvalid: #B10B00; // Dark Red
     --White: #ffffff; // White
     --Icons: #d9d9d9; // White 85%
     --LightGray: #8C8C8C; //Light Gray

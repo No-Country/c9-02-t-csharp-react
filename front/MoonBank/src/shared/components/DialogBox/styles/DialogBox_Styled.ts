@@ -89,15 +89,16 @@ export const DialogBox_Styled = styled.dialog<DialogStyledProp>`
     gap: 0 5px;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 45px;
-    > .DB__Btn {
+    > button.DB__Btn {
       border: none;
       border-radius: 5px;
       display: inline-block;
       font-weight: bold;
       color: var(--White);
       transition: background 0.2s;
+      cursor: pointer;
     }
-    > .DB__BtnConfirm {
+    > button.DB__BtnConfirm {
       background: var(--Primary);
       &:hover {
         background: var(--Blue);
@@ -106,7 +107,7 @@ export const DialogBox_Styled = styled.dialog<DialogStyledProp>`
         background: var(--BlueL);
       }
     }
-    > .DB__BtnCancel {
+    > button.DB__BtnCancel {
       background: var(--OrangeD);
       &:hover {
         background: var(--Warn);
