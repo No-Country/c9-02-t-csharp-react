@@ -1,6 +1,6 @@
-import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-
+import { createAsyncThunk, PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { Account } from '../../shared/interfaces';
+import { getAccountById } from '../../APIS/getRequest';
 
 const initialState: Account = {
   alias: '',
@@ -13,21 +13,35 @@ const initialState: Account = {
   rewardPoints: 0,
 };
 
+export const retrieveUser = createAsyncThunk(
+  'loginForm/retrieve',
+  async (id:string):Promise<Account> => {
+    const account = await getAccountById(id);
+    return account
+  }
+);
+
 export const LoginSlice = createSlice({
   name: 'loginForm',
   initialState,
   reducers: {
     setUser: (state, action: PayloadAction<Account>) => {
-      state = action.payload;
-      state = {
-        ...state,
+      return {
+        ...action.payload,
         success: true,
       };
-      return state;
     },
     userLogout: (state) => {
-      state = { ...state, success: false };
+      return { ...state, success: false };
     },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(retrieveUser.fulfilled, (state, action: PayloadAction<Account>) => {
+      return {
+        ...action.payload,
+        success: true,
+      };
+    });
   },
 });
 
