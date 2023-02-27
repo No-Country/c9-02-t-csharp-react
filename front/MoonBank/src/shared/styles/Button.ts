@@ -30,7 +30,6 @@ export const Button = styled.button<Props>`
   margin-bottom: ${(props) => props.marginBottom};
   margin-top: ${(props) => props.marginTop};
   cursor: pointer;
-
   transition: background 0.2s;
 
   ${(props) =>

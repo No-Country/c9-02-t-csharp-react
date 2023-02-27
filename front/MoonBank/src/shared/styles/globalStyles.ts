@@ -49,9 +49,13 @@ const GlobalStyles = createGlobalStyle`
     --NavBarShadow: 0px 0px 10px #483475; // for box-shadow css
   }
 
+<<<<<<< HEAD
 h2 {
   align-self: flex-start;
 }
+=======
+
+>>>>>>> kelly-depositPage
 `;
 
 export default GlobalStyles;

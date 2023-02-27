@@ -1,4 +1,4 @@
-import { Balance, Services } from '../operations/screens';
+import { Balance, Deposit, Services } from '../operations/screens';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
 import { Login } from '../login/screens';
@@ -16,9 +16,10 @@ const AppRouter = () => {
       {/* ALL ROUTES */}
       <Routes>
         <Route path='/' element={<Login />} />
+        <Route path='balance' element={<Balance />} />
+        <Route path='services' element={<Services />} />
+        <Route path='deposit' element={<Deposit />} />
         <Route path='/login' element={<Navigate to={'/'} replace={true} />} />
-        <Route path='/services' element={<Services />} />
-        {<Route path='balance' element={<Balance />} /> /**/}
       </Routes>
     </>
   );

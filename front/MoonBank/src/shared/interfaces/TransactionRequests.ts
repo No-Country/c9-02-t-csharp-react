@@ -2,7 +2,7 @@ export interface DepositRequest {
     typeTransaction: 0;
     typeDeposit: 0;
     amount: number;
-    idDestinationAccount: number;
+    destinationAccountCBU_CVU: string;
   }
   
   export interface PayRequest {
