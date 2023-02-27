@@ -1,5 +1,5 @@
 import MoonApi from './Axios';
-import { Service, Account, Transaction } from '../shared/interfaces';
+import { Service, Account, Transaction, Reward } from '../shared/interfaces';
 
 export const getAccountsList = async (): Promise<Account[]> => {
   const { data } = await MoonApi.get('Accounts/AccountsList');
