@@ -29,7 +29,7 @@ const SendMoneyForm = () => {
   const { show, toggleChange } = useToggle();
   const dispatcher = useAppDispatch();
 
-  const initialStateForm: SendMoneyFormData = { userAlias: '', amount: 1, message: '' };
+  const initialStateForm: SendMoneyFormData = { userAlias: '', amount: 1.0, message: '' };
   const { ResetForm, handleInputChange, formInputState, userAlias, amount, message } =
     useForm<SendMoneyFormData>(initialStateForm);
 
@@ -51,7 +51,11 @@ const SendMoneyForm = () => {
     title: 'Confirm Transfer?',
     message: 'Would you like to confirm this transaction?',
     to: '/send',
-    onConfirmAction: () => {},
+    onConfirmAction: () => {
+      MakeTransfer(dataForm);
+      toggleChange(false);
+      console.log('Transaccion Realizada');
+    },
     onCancelAction: () => {
       toggleChange(false);
     },
@@ -95,9 +99,10 @@ const SendMoneyForm = () => {
             value={amount}
             onChange={handleInputChange}
             type='text'
-            placeholder='0'
+            inputMode='numeric'
+            placeholder='0.00'
             justifyInput='end'
-            pattern='(?:^[1-9][0-9]*$)'
+            pattern='^(?:[1-9][0-9]*)\.{0,1}[0-9]{1,2}$'
           />
         </GridContainer>
         <LabelInput contentDirection='column' gap='10px'>
