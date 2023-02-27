@@ -5,7 +5,6 @@ import { Activity } from '../components';
 import { Service } from '../../shared/interfaces';
 import electricIcon from '../../shared/assets/eletricIcon.svg';
 import { getServicesList } from '../../APIS/getRequest';
-import waterIcon from '../../shared/assets/waterIcon.svg';
 
 export const Services = () => {
   const [services, setServices] = useState<Service[]>([]);
@@ -15,8 +14,8 @@ export const Services = () => {
   }, []);
 
   return (
-    <Container>
-      <Paper>
+    <Container width={'90'}>
+      <Paper justifyContent='center' alignContent='center' direction='column' marginTop='2.5rem'>
         <Text weight='700'>Services</Text>
 
         {services.map((service, index) => (
