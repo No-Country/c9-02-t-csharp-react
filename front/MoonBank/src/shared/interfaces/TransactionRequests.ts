@@ -21,6 +21,6 @@ export interface DepositRequest {
   
   export interface RedeemRewardRequest {
     typeTransaction: 3;
-    idSourceAccount: string;
+    destinationAccountAlias: string;
     idReward: number;
   }

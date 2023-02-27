@@ -4,20 +4,26 @@ import { getRewardsList } from '../../APIS/getRequest';
 import { Activity } from '../components/Activity';
 import { useAppSelector } from '../../store/hooks';
 import { RedeemReward } from '../../APIS/TransactionRequests';
+import { useAppDispatch } from '../../store/hooks';
+import { retrieveUser } from '../../store/features/loginSlice';
+
 const Rewards = () => {
   const [rewards, setRewards] = useState<Reward[]>([]);
-  const { rewardPoints, cbU_CVU, alias } = useAppSelector((state) => state.login);
-const id =  +alias.split('b')[1]
-console.log(rewardPoints)
+  const { login } = useAppSelector((state) => state);
+const dispatch = useAppDispatch()
   useEffect(() => {
     const data = getRewardsList();
     data.then((resp) => setRewards(resp));
   }, []);
-
+  useEffect(() => {
+    dispatch(retrieveUser(login.alias))
+  }, [login]);
+  
+  
   const redeemReward = (idReward: number) => {
-    RedeemReward({
+     RedeemReward({
       typeTransaction: 3,
-      idSourceAccount: cbU_CVU,
+      destinationAccountAlias: login.alias,
       idReward,
     });
   };
@@ -33,9 +39,9 @@ console.log(rewardPoints)
             quantity={reward.points}
             serviceDescription='amazon.com.mb'
             serviceTitle={reward.name}
-            transaction={() => redeemReward(id)}
+            transaction={() => redeemReward(reward.idReward)}
             typeItem='reward'
-            totalPoints={rewardPoints}
+            totalPoints={login.rewardPoints}
           />
         ))}
       </Paper>

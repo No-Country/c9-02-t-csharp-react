@@ -8,8 +8,8 @@ export const getAccountsList = async (): Promise<Account[]> => {
   return data.result 
 };
 
-export const getAccountById = async (id:string): Promise<Account> => {
-  const { data } = await MoonApi.get(`Accounts/${id}`);
+export const getAccountByAlias = async (alias:string): Promise<Account> => {
+  const { data } = await MoonApi.get(`Accounts/Alias/${alias}`);
   return data.result 
 };
 

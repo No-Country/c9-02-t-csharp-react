@@ -25,7 +25,6 @@ const dispatch = useAppDispatch()
     cardHolderName: '',
     amount: 0,
   });
-  const id = login.alias.split('b')[1]
   const dataForm: DepositRequest = {
     typeTransaction: 0,
     typeDeposit: 0,
@@ -33,7 +32,7 @@ const dispatch = useAppDispatch()
     destinationAccountCBU_CVU: login.cbU_CVU,
   };
   useEffect(() => {
-    dispatch(retrieveUser(id));
+    dispatch(retrieveUser(login.alias));
   }, [login]);
   
   const submitHandler = (data: DepositRequest) => {

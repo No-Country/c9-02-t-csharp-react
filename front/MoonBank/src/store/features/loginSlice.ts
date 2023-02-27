@@ -1,6 +1,6 @@
 import { createAsyncThunk, PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { Account } from '../../shared/interfaces';
-import { getAccountById } from '../../APIS/getRequest';
+import { getAccountByAlias } from '../../APIS/getRequest';
 
 const initialState: Account = {
   alias: '',
@@ -15,8 +15,8 @@ const initialState: Account = {
 
 export const retrieveUser = createAsyncThunk(
   'loginForm/retrieve',
-  async (id:string):Promise<Account> => {
-    const account = await getAccountById(id);
+  async (alias:string):Promise<Account> => {
+    const account = await getAccountByAlias(alias);
     return account
   }
 );
