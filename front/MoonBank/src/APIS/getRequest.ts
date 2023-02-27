@@ -1,7 +1,5 @@
-import { Account } from '../shared/interfaces/Account';
 import MoonApi from './Axios';
-import { Service } from '../shared/interfaces';
-import { Reward } from '../shared/interfaces/Reward';
+import { Service, Reward, Transaction, Account } from '../shared/interfaces';
 
 export const getAccountsList = async (): Promise<Account[]> => {
   const { data } = await MoonApi.get('Accounts/AccountsList');
@@ -20,5 +18,9 @@ export const getRewardsList = async (): Promise<Reward[]> => {
 
 export const getServicesList = async (): Promise<Service[]> => {
   const { data } = await MoonApi.get('Services/ServicesList');
+  return data.result
+};
+export const getTransactionHistory = async (cbu:string): Promise<Transaction[]> => {
+  const { data } = await MoonApi.get(`Transactions/TransactionHistory/${cbu}`);
   return data.result
 };
