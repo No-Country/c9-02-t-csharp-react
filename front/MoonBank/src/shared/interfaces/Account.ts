@@ -1,6 +1,6 @@
 export interface Account {
   name: string;
-  lasName: string;
+  lastName: string;
   email: string;
   alias: string;
   cbU_CVU: string;

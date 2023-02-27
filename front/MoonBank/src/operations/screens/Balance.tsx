@@ -1,45 +1,64 @@
-import { Container, Paper, Text } from '../../login/styled-components';
-import { FlexContainer, FlexRowContainer, UserInfoContainer } from '../../shared/styles/sharedStyles';
-import { Button } from '../../shared/styles/Button';
+import {
+  Container,
+  Paper,
+  Text,
+  Title,
+  FlexContainer,
+  FlexRowContainer,
+  UserInfoContainer,
+  Button,
+  useToggle
+} from '../../shared';
+import { useNavigate } from 'react-router';
 import eyeIcon from '../../shared/assets/eyeIcon.svg';
 import hideEyeIcon from '../../shared/assets/hideEyeIcon.svg';
-// type Props = {
-//   amount: number;
-//   alias: string;
-//   cbu: string;
-// };
+import { useAppSelector, useAppDispatch } from '../../store/hooks';
+import { useEffect } from 'react';
+import { retrieveUser } from '../../store/features/loginSlice';
 
 export const Balance = () => {
+  const navigate = useNavigate();
+  const { login } = useAppSelector((state) => state)
+  const {show, toggleChange} = useToggle()
+  const navigateTo = (route: string) => {
+    navigate(`${route}`);
+  };
+
   return (
     <Container>
       <Paper>
-        <h2>My balance</h2>
+        <Title>My balance</Title>
 
         <FlexContainer>
           <FlexRowContainer>
             <img src={eyeIcon} alt='eye icon' />
-            <Text>$ 45,820.17</Text>
+            <Text>$ {login.balance}</Text>
           </FlexRowContainer>
 
           <FlexRowContainer>
-            <Button variant='blue'>Deposit</Button>
-            <Button variant='blue'>Transfer</Button>
+            <Button variant='blue' onClick={() => navigateTo('/deposit')}>
+              Deposit
+            </Button>
+            <Button variant='blue' onClick={() => navigateTo('/transfer')}>
+              Transfer
+            </Button>
           </FlexRowContainer>
 
+          <hr />
           <hr />
           <UserInfoContainer>
             <div>
               <h3>Alias:</h3>
             </div>
-            <Text marginTop='1.2rem'>@sortOmega</Text>
+            <Text marginTop='1.2rem'>@{login.alias}</Text>
           </UserInfoContainer>
           <UserInfoContainer>
             <div>
               <h3>CBU:</h3>
             </div>
             <FlexRowContainer space='between'>
-              <img src={hideEyeIcon} alt='eye icon' />
-              <Text>**************</Text>
+              <img src={hideEyeIcon} alt='eye icon' style={{cursor: 'pointer'}} onClick={() => toggleChange(!show)}/>
+              <Text>  {show ? login.cbU_CVU : '*********** ********'}</Text>
             </FlexRowContainer>
           </UserInfoContainer>
         </FlexContainer>
