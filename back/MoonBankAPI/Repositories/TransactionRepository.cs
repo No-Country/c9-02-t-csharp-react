@@ -117,8 +117,8 @@ namespace Repositories
 
         public void PayService(TransactionDTO transactionDTO)
         {
-            
-            var sourceAccount = _context.Accounts.FirstOrDefault(a => a.IdAccount == transactionDTO.IdSourceAccount);
+
+            var sourceAccount = _context.Accounts.FirstOrDefault(a => a.CBU_CVU == transactionDTO.DestinationAccountCBU_CVU);
             var service = _context.Services.FirstOrDefault(s => s.IdService == transactionDTO.IdService);
 
             if (sourceAccount == null)
@@ -141,6 +141,7 @@ namespace Repositories
 
             var transaction = new DataAccess.Models.Transaction
             {
+                IdSourceAccount = sourceAccount.IdAccount,
                 IdService = transactionDTO.IdService,
                 TypeTransaction = DataAccess.Models.TypeTransaction.PayService,
                 Amount = service.Amount,
@@ -197,7 +198,7 @@ namespace Repositories
 
         public void RedeemReward(TransactionDTO transactionDTO)
         {
-            var sourceAccount = _context.Accounts.FirstOrDefault(a => a.IdAccount == transactionDTO.IdSourceAccount);
+            var sourceAccount = _context.Accounts.FirstOrDefault(a => a.Alias == transactionDTO.DestinationAccountAlias);
             var reward = _context.Rewards.FirstOrDefault(r => r.IdReward == transactionDTO.IdReward);
 
             if (sourceAccount == null)
@@ -219,7 +220,7 @@ namespace Repositories
 
             var transaction = new DataAccess.Models.Transaction
             {
-                IdSourceAccount = transactionDTO.IdSourceAccount,
+                IdSourceAccount = sourceAccount.IdAccount,
                 TypeTransaction = DataAccess.Models.TypeTransaction.Reward,
                 Amount = 0,
                 IdReward = reward.IdReward,
