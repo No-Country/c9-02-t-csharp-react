@@ -14,21 +14,24 @@ export const Services = () => {
   }, []);
 
   return (
-    <Container width={'90'}>
-      <Paper justifyContent='center' alignContent='center' direction='column' marginTop='2.5rem'>
-        <Text weight='700'>Services</Text>
+    <Container>
+      <Container marginLeft={['300px', '0']}>
+        <Paper justifyContent='center' alignContent='center' direction='column' marginTop='2.5rem'>
+          <Text weight='700'>Services</Text>
 
-        {services.map((service, index) => (
-          <Activity
-            key={index}
-            date='March 2023'
-            icon={electricIcon}
-            quantity={service.amount}
-            serviceDescription={`Montly ${service.name} tax`}
-            serviceTitle={service.name}
-          />
-        ))}
-      </Paper>
+          {services.map((service, index) => (
+            <Activity
+              key={index}
+              date='March 2023'
+              icon={electricIcon}
+              quantity={service.amount}
+              serviceDescription={`Montly ${service.name} tax`}
+              serviceTitle={service.name}
+              idService={service.idAccountService}
+            />
+          ))}
+        </Paper>
+      </Container>
     </Container>
   );
 };

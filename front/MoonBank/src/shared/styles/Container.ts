@@ -40,7 +40,7 @@ export const Container = styled.div<Props>`
     width: ${props => props.width && props.width[0] ? props.width[0] : '100%'};
   }
   @media (min-width: 860px) {
-    margin-left: ${(props) => props.marginLeft && props.marginLeft[0] ? props.marginLeft[0] : '300px' };
+    margin-left: ${(props) => props.marginLeft && props.marginLeft[0] ? props.marginLeft[0] : '0' };
   }
 
   hr {
