@@ -1,4 +1,4 @@
-import { Box, ItemActivity, Text } from '../../shared/styles';
+import { Box, Button, ItemActivity, Text, ItemContainer } from '../../shared/styles';
 
 interface Props {
   icon: string;
@@ -6,28 +6,32 @@ interface Props {
   serviceDescription: string;
   date: string;
   quantity: number;
+  transaction: () => void
 }
 
-export const Activity = ({ date, icon, quantity, serviceDescription, serviceTitle }: Props) => {
+export const Activity = ({ date, icon, quantity, serviceDescription, serviceTitle, transaction }: Props) => {
   return (
-    <ItemActivity>
-      <Box>
-        <img src={icon} alt={icon} />
-        <Box direction='column' marginLeft='10px'>
-          <Text weight='700' size='10px'>
-            {serviceTitle}
-          </Text>
-          <Text weight='400' size='8px'>
-            {serviceDescription}
-          </Text>
+    <ItemContainer>
+      <ItemActivity>
+        <Box>
+          <img src={icon} alt={icon} />
+          <Box direction='column' marginLeft='10px'>
+            <Text weight='700' size='10px'>
+              {serviceTitle}
+            </Text>
+            <Text weight='400' size='8px'>
+              {serviceDescription}
+            </Text>
+          </Box>
         </Box>
-      </Box>
-      <Box direction='column'>
-        <Text size='10px' weight='600'>
-          {date}
-        </Text>
-        <Text size='10px'>${quantity}</Text>
-      </Box>
-    </ItemActivity>
+        <Box direction='column'>
+          <Text size='10px' weight='600'>
+            {date}
+          </Text>
+          <Text size='10px'>${quantity}</Text>
+        </Box>
+      </ItemActivity>
+      <Button width='100%' variant='blue' onClick={transaction}>Perform transaction</Button>
+    </ItemContainer>
   );
 };
