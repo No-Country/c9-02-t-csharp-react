@@ -38,20 +38,20 @@ A list of available services and their respective amounts will be displayed to t
 
 When making a service payment, the user will need to provide the following details:
 
-    o	typeTransaction: If it is a service payment, it will be one (“1”).
-    o	idSourceAccount: ID of the user’s own account.
-    o	idService: ID of the service to be paid, which will already have its amount.
+    o	TypeTransaction: If it is a service payment, it will be one (“1”).
+    o	DestinationAccountCBU_CVU: CBU or CVU of the user’s own account.
+    o	IdService: ID of the service to be paid, which will already have its amount.
 
 
 •	The user will be able to make transfers between accounts within the same bank.
 
 When making a transfer, the user will need to provide the following details:
 
-    o	typeTransaction: If it is a transfer, it will be two (“2”).
-    o	amount: Amount to transfer.
-    o	idSourceAccount: ID of the user’s own account.
-    o	Cbu_cvu: CBU or CVU of the account to which the transfer is to be made.
-    o	alias: Alias of the account to which the transfer is to be made.
+    o	TypeTransaction: If it is a transfer, it will be two (“2”).
+    o	Amount: Amount to transfer.
+    o	IdSourceAccount: ID of the user’s own account.
+    o	CBU_CVU: CBU or CVU of the account to which the transfer is to be made.
+    o	Alias: Alias of the account to which the transfer is to be made.
 
 
 •	The user will be able to exchange rewards for points.
@@ -60,9 +60,9 @@ A list of available rewards and their respective point values will be displayed 
 
 When making a reward exchange, the user will need to provide the following details:
 
-    o	typeTransaction: If it is a reward exchange, it will be three (“3”).
-    o	idSourceAccount: ID of the user’s own account.
-    o	idReward: ID of the reward to be exchanged, which will already have its point value.
+    o	TypeTransaction: If it is a reward exchange, it will be three (“3”).
+    o	DestinationAccountAlias: Alias of the user’s own account.
+    o	IdReward: ID of the reward to be exchanged, which will already have its point value.
 
 ## 🛠️ Built With
 
@@ -120,7 +120,7 @@ When making a reward exchange, the user will need to provide the following detai
 
 **👨‍💼👨‍💻 Project Manager and Backend Developer**
 
-![Luciano Fernandez](https://avatars.githubusercontent.com/u/98769385?v=4)
+![Luciano Fernandez](https://iili.io/HV3aByu.jpg)
 
 **Luciano Fernández**
 [![GitHub Icon](https://icons.iconarchive.com/icons/pictogrammers/material/48/github-icon.png)](https://github.com/FZ-developer) 
