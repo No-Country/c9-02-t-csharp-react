@@ -7,9 +7,10 @@ import { setUser } from '../../store/features/loginSlice';
 import { useAppDispatch } from '../../store/hooks';
 import { useForm } from '../../shared/hooks/useForm';
 import { useState } from 'react';
-
+import { useNavigate } from 'react-router';
 export const Form = () => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate()
   const [checkLogin, setCheckLogin] = useState(true);
   const { handleInputChange, password, email } = useForm({
     email: '',
@@ -26,7 +27,9 @@ export const Form = () => {
         setCheckLogin(false);
       }
       dispatch(setUser(resp.data.result));
-    });
+     
+    })
+    navigate('/profile')
   };
   return (
     <>
