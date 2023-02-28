@@ -17,9 +17,10 @@ import {
   FlexContainer,
 } from '../../../shared';
 import { NavSeparator } from '../../../shared';
-import { retrieveUser } from '../../../store/features/loginSlice';
+import { retrieveUserByCBU } from '../../../store/features/loginSlice';
 import type { SendMoneyFormData } from './SendMoneyFormData';
 import { MakeTransfer } from '../../../APIS/TransactionRequests';
+import { Navigate, useNavigate } from 'react-router';
 
 const SendMoneyForm = () => {
   // ---------- -------------- ---------- //
@@ -29,11 +30,11 @@ const SendMoneyForm = () => {
   const { show, toggleChange } = useToggle();
   const dispatcher = useAppDispatch();
 
+  const NavigateTo = useNavigate();
+
   const initialStateForm: SendMoneyFormData = { userAlias: '', amount: 1.0, message: '' };
   const { ResetForm, handleInputChange, formInputState, userAlias, amount, message } =
     useForm<SendMoneyFormData>(initialStateForm);
-
-  const id = login.alias.split('b')[1];
   const dataForm: TransferRequest = {
     typeTransaction: 2,
     Amount: amount,
@@ -42,8 +43,10 @@ const SendMoneyForm = () => {
     destinationAccountAlias: userAlias,
   };
   useEffect(() => {
-    dispatcher(retrieveUser(id));
-  }, [login]);
+    dispatcher(retrieveUserByCBU(login.cbU_CVU));
+
+    !login.success && NavigateTo('/', { replace: true, state: { loggedOut: true } });
+  }, []);
 
   const propsDialog: DialogBoxProps = {
     dialogType: 'warning',
@@ -52,9 +55,13 @@ const SendMoneyForm = () => {
     message: 'Would you like to confirm this transaction?',
     to: '/send',
     onConfirmAction: () => {
-      MakeTransfer(dataForm);
-      toggleChange(false);
-      console.log('Transaccion Realizada');
+      try {
+        submitHandler(dataForm);
+        toggleChange(false);
+        console.log('Transaccion Realizada');
+      } catch (error) {
+        console.log('Transaccion Fallida');
+      }
     },
     onCancelAction: () => {
       toggleChange(false);
@@ -102,7 +109,6 @@ const SendMoneyForm = () => {
             inputMode='numeric'
             placeholder='0.00'
             justifyInput='end'
-            pattern='^(?:[1-9][0-9]*)\.{0,1}[0-9]{1,2}$'
           />
         </GridContainer>
         <LabelInput contentDirection='column' gap='10px'>

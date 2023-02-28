@@ -1,6 +1,6 @@
 import { createAsyncThunk, PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { Account } from '../../shared/interfaces';
-import { getAccountById } from '../../APIS/getRequest';
+import { getAccountByCBU, getAccountById } from '../../APIS/getRequest';
 
 const initialState: Account = {
   alias: '',
@@ -13,14 +13,18 @@ const initialState: Account = {
   rewardPoints: 0,
 };
 
-export const retrieveUser = createAsyncThunk(
-  'loginForm/retrieve',
-  async (id:string):Promise<Account> => {
-    const account = await getAccountById(id);
-    return account
+export const retrieveUser = createAsyncThunk('loginForm/retrieve', async (id: string): Promise<Account> => {
+  const account = await getAccountById(id);
+  return account;
+});
+
+export const retrieveUserByCBU = createAsyncThunk(
+  'loginForm/retrieveUserCBU',
+  async (CBU_CVU: string): Promise<Account> => {
+    const account = await getAccountByCBU(CBU_CVU);
+    return account;
   }
 );
-
 export const LoginSlice = createSlice({
   name: 'loginForm',
   initialState,
@@ -36,12 +40,19 @@ export const LoginSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(retrieveUser.fulfilled, (state, action: PayloadAction<Account>) => {
-      return {
-        ...action.payload,
-        success: true,
-      };
-    });
+    builder
+      .addCase(retrieveUser.fulfilled, (state, action: PayloadAction<Account>) => {
+        return {
+          ...action.payload,
+          success: true,
+        };
+      })
+      .addCase(retrieveUserByCBU.fulfilled, (_state, action: PayloadAction<Account>) => {
+        return {
+          ...action.payload,
+          success: true,
+        };
+      });
   },
 });
 

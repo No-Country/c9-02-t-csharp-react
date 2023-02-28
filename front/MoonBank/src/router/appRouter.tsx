@@ -4,12 +4,12 @@ import { Balance, Services, Deposit, Send } from '../operations/screens';
 import { MoonHeader } from '../shared/components/MoonHeader';
 import { useAppSelector } from '../store/hooks';
 const AppRouter = () => {
-  const User = useAppSelector((state) => state.login);
+  const { success } = useAppSelector((state) => state.login);
 
   return (
     <>
       {/* SHARED COMPONENTS IN ALL ROUTES */}
-      <MoonHeader isLogged={true} labelTitle='MoonBank' />
+      <MoonHeader isLogged={success} labelTitle='MoonBank' />
 
       {/* ALL ROUTES */}
       <Routes>
