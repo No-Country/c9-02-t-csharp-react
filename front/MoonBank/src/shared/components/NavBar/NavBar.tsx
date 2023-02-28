@@ -5,7 +5,7 @@ import NavList from './Components/NavList/NavList';
 import { useAppSelector } from '../../../store/hooks';
 
 function NavBar(props: NavBarProps) {
-  const { rewardPoints, name, lastName } = useAppSelector(state => state.login)
+  const { rewardPoints, name, lastName } = useAppSelector((state) => state.login);
   return (
     <NavBar_Styled className='MoonBank__NavBar' headerHeight={props.headerHeight} isToggled={props.isToggled}>
       <NavHeader name={name} surname={lastName} credits={rewardPoints} userImgURL={props.userImgURL} />
