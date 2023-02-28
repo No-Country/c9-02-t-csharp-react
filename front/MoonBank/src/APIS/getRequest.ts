@@ -31,7 +31,7 @@ export const getServicesList = async (): Promise<Service[]> => {
   return data.result;
 };
 
-export const getTransactionHistory = async (cbu:string): Promise<Transaction[]> => {
+export const getTransactionHistory = async (cbu: string): Promise<Transaction[]> => {
   const { data } = await MoonApi.get(`Transactions/TransactionHistory/${cbu}`);
-  return data.result
+  return data.result;
 };

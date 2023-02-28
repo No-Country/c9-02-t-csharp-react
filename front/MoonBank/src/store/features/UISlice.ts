@@ -9,7 +9,7 @@ const initialState: UIStates = {
 };
 
 export const UISlice = createSlice({
-  name: 'NavBarSlice',
+  name: 'UISlice',
   initialState,
   reducers: {
     setNavbarState: (state, action: PayloadAction<boolean>) => {

@@ -1,5 +1,4 @@
 import { Container, Paper, Title } from '../../shared';
-import { useAppSelector } from '../../store/hooks';
 import SendMoneyForm from '../components/SendMoneyForm/SendMoneyForm';
 
 const Send = () => {

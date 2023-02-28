@@ -2,7 +2,6 @@ import { createAsyncThunk, PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { Account } from '../../shared/interfaces';
 import { getAccountByCBU, getAccountById, getAccountByAlias } from '../../APIS/getRequest';
 
-
 const initialState: Account = {
   alias: '',
   balance: 0,
@@ -14,11 +13,9 @@ const initialState: Account = {
   rewardPoints: 0,
 };
 
-export const retrieveUser = createAsyncThunk(
-  'loginForm/retrieve',
-  async (alias:string):Promise<Account> => {
-    const account = await getAccountByAlias(alias);
-    return account
+export const retrieveUser = createAsyncThunk('loginForm/retrieve', async (alias: string): Promise<Account> => {
+  const account = await getAccountByAlias(alias);
+  return account;
 });
 
 export const retrieveUserByCBU = createAsyncThunk(
@@ -38,8 +35,8 @@ export const LoginSlice = createSlice({
         success: true,
       };
     },
-    userLogout: (state) => {
-      return { ...state, success: false };
+    userLogout: (_state) => {
+      return { ...initialState, success: false };
     },
   },
   extraReducers: (builder) => {
