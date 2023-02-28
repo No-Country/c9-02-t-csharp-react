@@ -42,7 +42,8 @@ export const Activity = ({
             {date}
           </Text>
           <Text size='10px' style={{ color: isEnoughPoints ? 'var(--LightGreen)' : 'var(--LightRed)' }}>
-            {typeItem === 'service' ? `$ ${quantity} ` : `${quantity} px`}
+
+            {typeItem === 'service' ? `$ ${quantity} ` : typeItem === 'reward' ? `${quantity} px` : `- ${quantity} `}
           </Text>
         </Box>
       </ItemActivity>
