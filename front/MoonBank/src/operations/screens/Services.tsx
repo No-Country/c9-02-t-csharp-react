@@ -26,8 +26,6 @@ export const Services = () => {
             serviceTitle={service.name}
             transaction={() => {}}
             typeItem='service'
-            
-
           />
         ))}
       </Paper>
