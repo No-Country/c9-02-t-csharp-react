@@ -14,7 +14,6 @@ export { default as CustomNavLink } from './components/NavBar/Components/NavLink
 export { default as NavLinkObject } from './components/NavBar/Components/NavLink/NavLinkObject';
 export * from './components/NavBar/Components/NavLink/NavLinkObjectTypes.d';
 export { default as NavList } from './components/NavBar/Components/NavList/NavList';
-export * from './components/NavBar/Components/NavList/NavListElements';
 export { default as NavLogoutButton } from './components/NavBar/Components/NavLogoutButton/NavLogoutButton';
 export * from './components/NavBar/Components/NavLogoutButton/NavLogoutButtonTypes.d';
 export * from './components/NavBar/Styles/NavBar_Styled';

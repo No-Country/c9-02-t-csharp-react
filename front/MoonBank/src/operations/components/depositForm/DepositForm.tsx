@@ -14,8 +14,7 @@ import {
 } from '../../../shared';
 import { retrieveUser } from '../../../store/features/loginSlice';
 export const DepositForm = () => {
-
-const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
   const { login } = useAppSelector((state) => state);
   const { show, toggleChange } = useToggle();
   const { handleInputChange, ResetForm, cardNumber, cardExpireDate, cardCvc, cardHolderName, amount } = useForm({
@@ -33,8 +32,8 @@ const dispatch = useAppDispatch()
   };
   useEffect(() => {
     dispatch(retrieveUser(login.alias));
-  }, [login]);
-  
+  }, []);
+
   const submitHandler = (data: DepositRequest) => {
     MakeDeposit(data);
     toggleChange(false);

@@ -13,7 +13,6 @@ export { default as CustomNavLink } from './NavBar/Components/NavLink/CustomNavL
 export { default as NavLinkObject } from './NavBar/Components/NavLink/NavLinkObject';
 export * from './NavBar/Components/NavLink/NavLinkObjectTypes.d';
 export { default as NavList } from './NavBar/Components/NavList/NavList';
-export * from './NavBar/Components/NavList/NavListElements';
 export { default as NavLogoutButton } from './NavBar/Components/NavLogoutButton/NavLogoutButton';
 export * from './NavBar/Components/NavLogoutButton/NavLogoutButtonTypes.d';
 export * from './NavBar/Styles/NavBar_Styled';

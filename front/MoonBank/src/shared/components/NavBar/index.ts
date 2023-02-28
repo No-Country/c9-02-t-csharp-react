@@ -4,7 +4,6 @@ export { default as CustomNavLink } from './Components/NavLink/CustomNavLink';
 export { default as NavLinkObject } from './Components/NavLink/NavLinkObject';
 export * from './Components/NavLink/NavLinkObjectTypes.d';
 export { default as NavList } from './Components/NavList/NavList';
-export * from './Components/NavList/NavListElements';
 export { default as NavLogoutButton } from './Components/NavLogoutButton/NavLogoutButton';
 export * from './Components/NavLogoutButton/NavLogoutButtonTypes.d';
 export { default as NavBar } from './NavBar';
