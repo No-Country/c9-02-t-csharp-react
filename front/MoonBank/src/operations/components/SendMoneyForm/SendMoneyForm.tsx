@@ -37,9 +37,9 @@ const SendMoneyForm = () => {
     useForm<SendMoneyFormData>(initialStateForm);
   const dataForm: TransferRequest = {
     typeTransaction: 2,
-    Amount: amount,
+    sourceAccountCBU_CVU: login.cbU_CVU,
     destinationAccountCBU_CVU: '',
-    idSourceAccount: 0,
+    Amount: amount,
     destinationAccountAlias: userAlias,
   };
   useEffect(() => {

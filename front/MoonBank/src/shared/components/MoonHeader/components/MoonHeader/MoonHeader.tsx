@@ -1,5 +1,6 @@
 import { IoClose, IoMenu, IoNotifications, IoNotificationsOutline } from 'react-icons/io5';
 import { setLogoutDialog, setNavbarState, toggleNavbar } from '../../../../../store/features/UISlice';
+import { userLogout } from '../../../../../store/features/loginSlice';
 import { useAppDispatch, useAppSelector } from '../../../../../store/hooks';
 
 import { DialogBox } from '../../../DialogBox';
@@ -50,30 +51,33 @@ function MoonHeader(props: MoonHeaderProps) {
         </div>
       </MoonHeader_Styled>
       {success && (
-        <NavBar
-          isToggled={isNavToggled}
-          headerHeight='55px'
-          name={name}
-          surname={lastName}
-          userImgURL='https://upload.wikimedia.org/wikipedia/commons/5/50/User_icon-cp.svg'
-          credits={rewardPoints}
-        />
+        <>
+          <NavBar
+            isToggled={isNavToggled}
+            headerHeight='55px'
+            name={name}
+            surname={lastName}
+            userImgURL='https://upload.wikimedia.org/wikipedia/commons/5/50/User_icon-cp.svg'
+            credits={rewardPoints}
+          />
+          <DialogBox
+            isOpen={logoutDialogShow}
+            title='Log Out?'
+            dialogType='information'
+            message='Are you sure to close the current session?'
+            to='/login'
+            onConfirmAction={() => {
+              dispatch(setNavbarState(false));
+              dispatch(userLogout());
+              dispatch(setLogoutDialog(false));
+              NavigateTo('/login', { replace: true });
+            }}
+            onCancelAction={() => {
+              dispatch(setLogoutDialog(false));
+            }}
+          />
+        </>
       )}
-      <DialogBox
-        isOpen={logoutDialogShow}
-        title='Log Out?'
-        dialogType='information'
-        message='Are you sure to close the current session?'
-        to='/login'
-        onConfirmAction={() => {
-          dispatch(setNavbarState(false));
-          dispatch(setLogoutDialog(false));
-          NavigateTo('/login', { replace: true });
-        }}
-        onCancelAction={() => {
-          dispatch(setLogoutDialog(false));
-        }}
-      />
     </>
   );
 }

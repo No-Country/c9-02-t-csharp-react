@@ -35,7 +35,3 @@ export const getTransactionHistory = async (cbu: string): Promise<Transaction[]>
   const { data } = await MoonApi.get(`Transactions/TransactionHistory/${cbu}`);
   return data.result;
 };
-export const getTransactionHistory = async (cbu:string): Promise<Transaction[]> => {
-  const { data } = await MoonApi.get(`Transactions/TransactionHistory/${cbu}`);
-  return data.result
-};
