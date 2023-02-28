@@ -6,7 +6,6 @@ export const getAccountsList = async (): Promise<Account[]> => {
   return data.result;
 };
 
-
 export const getAccountById = async (id: string): Promise<Account> => {
   const { data } = await MoonApi.get(`Accounts/${id}`);
   return data.result;
@@ -15,11 +14,10 @@ export const getAccountById = async (id: string): Promise<Account> => {
 export const getAccountByCBU = async (CBU: string): Promise<Account> => {
   const { data } = await MoonApi.get(`Accounts/CBU_CVU/${CBU}`);
   return data.result;
-
-export const getAccountByAlias = async (alias:string): Promise<Account> => {
+};
+export const getAccountByAlias = async (alias: string): Promise<Account> => {
   const { data } = await MoonApi.get(`Accounts/Alias/${alias}`);
-  return data.result 
-
+  return data.result;
 };
 
 export const getRewardsList = async (): Promise<Reward[]> => {
@@ -34,5 +32,5 @@ export const getServicesList = async (): Promise<Service[]> => {
 
 export const getTransactionHistory = async (cbu: string): Promise<Transaction[]> => {
   const { data } = await MoonApi.get(`Transactions/TransactionHistory/${cbu}`);
-  return data.result
+  return data.result;
 };
