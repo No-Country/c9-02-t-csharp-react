@@ -6,19 +6,28 @@ interface Props {
   serviceDescription: string;
   date?: string;
   quantity: number;
-  typeItem: 'reward' | 'service',
-  totalPoints?: number,
-  transaction: () => void
+  typeItem: 'reward' | 'service' | 'activity';
+  totalPoints?: number;
+  transaction?: () => void;
 }
 
-export const Activity = ({ date, icon, quantity, serviceDescription, serviceTitle, transaction, typeItem, totalPoints }: Props) => {
-  const isEnoughPoints =  typeItem === 'reward' && totalPoints as number >= quantity
+export const Activity = ({
+  date,
+  icon,
+  quantity,
+  serviceDescription,
+  serviceTitle,
+  transaction,
+  typeItem,
+  totalPoints,
+}: Props) => {
+  const isEnoughPoints = typeItem === 'reward' && (totalPoints as number) >= quantity;
 
   return (
     <ItemContainer>
       <ItemActivity>
         <Box>
-          <img src={icon} alt={icon}/>
+          <img src={icon} alt={icon} />
           <Box direction='column' marginLeft='10px'>
             <Text weight='700' size='10px'>
               {serviceTitle}
@@ -32,10 +41,16 @@ export const Activity = ({ date, icon, quantity, serviceDescription, serviceTitl
           <Text size='10px' weight='600'>
             {date}
           </Text>
-          <Text size='10px' style={{color: isEnoughPoints ? 'var(--LightGreen)' : 'var(--LightRed)' }}>{typeItem === 'service' ? `$ ${quantity} `: `${quantity} px`}</Text>
+          <Text size='10px' style={{ color: isEnoughPoints ? 'var(--LightGreen)' : 'var(--LightRed)' }}>
+            {typeItem === 'service' ? `$ ${quantity} ` : `${quantity} px`}
+          </Text>
         </Box>
       </ItemActivity>
-      <Button width='100%' variant='blue' onClick={transaction}>Perform transaction</Button>
+      {typeItem !== 'activity' && (
+        <Button width='100%' variant='blue' onClick={transaction}>
+          Perform transaction
+        </Button>
+      )}
     </ItemContainer>
   );
 };
