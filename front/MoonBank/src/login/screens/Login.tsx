@@ -9,16 +9,16 @@ export const Login = () => {
   // ---------- STARTING HOOKS ---------- //
   // ---------- -------------- ---------- //
   const { state } = useLocation();
-
+  const LoginStatus = state as LocationState;
   // ---------- -------------------- ---------- //
   // ---------- HANDLE ACTION EVENTS ---------- //
   // ---------- -------------------- ---------- //
   return (
     <>
-      {state === null ? (
+      {LoginStatus === null ? (
         <></>
       ) : (
-        state.loggedOut === true && (
+        LoginStatus.loggedOut === true && (
           <LoginAlert headerHeight='55px' boxHeight='50px'>
             You have been logged out for been idle!
           </LoginAlert>
