@@ -11,3 +11,7 @@ export * from './Title';
 export { default as globalStyles } from './globalStyles';
 export * from './index';
 export * from './sharedStyles';
+export * from './Label';
+export * from './LabelInput';
+export * from './FormContainter';
+export * from './GridContainer';
