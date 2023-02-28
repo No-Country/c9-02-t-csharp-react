@@ -1,4 +1,5 @@
 export * from './Alert';
+export * from './Avatar';
 export * from './Box';
 export * from './Button';
 export * from './Container';
@@ -10,3 +11,7 @@ export * from './Title';
 export { default as globalStyles } from './globalStyles';
 export * from './index';
 export * from './sharedStyles';
+export * from './Label';
+export * from './LabelInput';
+export * from './FormContainter';
+export * from './GridContainer';

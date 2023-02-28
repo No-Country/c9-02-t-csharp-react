@@ -1,15 +1,16 @@
 import { Route, Routes, Navigate } from 'react-router-dom';
 import { Login } from '../login/screens';
-import { Balance, Services, Deposit, Rewards, TransactionHistory } from '../operations/screens';
+import { Balance, Services, Deposit, Rewards, TransactionHistory,Send } from '../operations/screens';
+import { Profile } from '../Principal/screens';
 import { MoonHeader } from '../shared/components/MoonHeader';
 import { useAppSelector } from '../store/hooks';
 const AppRouter = () => {
-  const User = useAppSelector((state) => state.login);
+  const { success } = useAppSelector((state) => state.login);
 
   return (
     <>
       {/* SHARED COMPONENTS IN ALL ROUTES */}
-      <MoonHeader isLogged={true} labelTitle='MoonBank' />
+      <MoonHeader isLogged={success} labelTitle='MoonBank' />
 
       {/* ALL ROUTES */}
       <Routes>
@@ -19,6 +20,8 @@ const AppRouter = () => {
         <Route path='deposit' element={<Deposit />} /> 
         <Route path='rewards' element={<Rewards />} /> 
         <Route path='activity' element={<TransactionHistory />} />
+        <Route path='profile' element={<Profile />} />
+        <Route path='send' element={<Send />} />
         <Route path='/login' element={<Navigate to={'/'} replace={true} />} />
       </Routes>
     </>
