@@ -25,7 +25,7 @@ const TransactionHistory = () => {
     <Container>
         <Paper>
         <Title>Activities</Title>
-            {activities?.map((activity) => {
+            {activities?.slice(0,5).map((activity) => {
             
             const actDate = new Date(activity.date).toLocaleDateString(undefined, {
               month: 'short',

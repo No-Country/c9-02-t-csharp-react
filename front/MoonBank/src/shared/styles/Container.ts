@@ -5,8 +5,8 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  height: 100%;
+  height: 100vh;
+  
   background: var(--mainBg);
   padding: 30px;
   hr {

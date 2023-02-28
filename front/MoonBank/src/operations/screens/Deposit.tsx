@@ -4,8 +4,9 @@ import { DepositForm } from '../components/depositForm/DepositForm';
 const Deposit = () => {
   return (
     <Container>
-      <Paper>
-        <Title>Deposit</Title>
+      
+      <Paper >
+      <Title>Deposit</Title>
         <DepositForm />
       </Paper>
     </Container>
