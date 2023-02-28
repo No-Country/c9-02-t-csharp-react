@@ -1,12 +1,23 @@
 import styled from 'styled-components';
+import { FlexContainer } from './sharedStyles';
 
+export const ItemContainer = styled(FlexContainer)`
+  background: #414141;
+  border-radius: 8px;
+  margin: 0.2rem 0;
+  padding: 8px;
+  width: 100%;
+`;
 export const ItemActivity = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 8px;
   gap: 10px;
-  background: #414141;
-  border-radius: 8px;
-  margin-top: 0.5rem;
-  width: 100%;
+ width: 100%;
+
+ img {
+  max-width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+ }
 `;
