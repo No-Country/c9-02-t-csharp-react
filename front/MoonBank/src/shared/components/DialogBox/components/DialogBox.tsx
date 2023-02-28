@@ -48,7 +48,7 @@ const DialogBox = (props: DialogBoxProps) => {
           <button className='DB__Btn DB__BtnConfirm' onClick={DialogConfirmHandler}>
             Confirm
           </button>
-          <button className='DB__Btn DB__BtnCancel' onClick={onCancelAction}>
+          <button className='DB__Btn DB__BtnCancel' onClick={DialogCancelHandler}>
             Cancel
           </button>
         </div>
