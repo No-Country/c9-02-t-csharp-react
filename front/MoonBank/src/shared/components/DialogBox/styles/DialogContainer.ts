@@ -10,7 +10,7 @@ export const DialogContainer = styled.div<DialogContainerProp>`
       : css`
           display: flex;
         `}
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
