@@ -8,3 +8,4 @@ export * from './Services';
 export { default as TransactionHistory } from './TransactionHistory';
 export * from './index';
 export { default as Send } from './Send';
+export { default as Page404 } from './Page404';

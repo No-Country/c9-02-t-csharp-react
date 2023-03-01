@@ -10,6 +10,7 @@ import {
   About,
   AboutTerms,
   AboutSecurity,
+  Page404,
 } from '../operations/screens';
 import { Profile } from '../Principal/screens';
 import { MoonHeader } from '../shared/components/MoonHeader';
@@ -36,6 +37,7 @@ const AppRouter = () => {
         <Route path='profile' element={<Profile />} />
         <Route path='send' element={<Send />} />
         <Route path='/login' element={<Navigate to={'/'} replace={true} />} />
+        <Route path='*' element={<Page404 />} />
       </Routes>
     </>
   );
