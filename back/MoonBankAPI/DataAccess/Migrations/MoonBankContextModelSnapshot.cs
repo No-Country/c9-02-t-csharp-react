@@ -30,6 +30,10 @@ namespace DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdAccount"), 1L, 1);
 
+                    b.Property<string>("AccountUrlImage")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Alias")
                         .IsRequired()
                         .HasColumnType("VARCHAR(50)");

@@ -23,8 +23,14 @@ namespace Repositories
             _context = context;
         }
 
-        public IList<TransactionDTO> GetTransactionsHistory(int idAccount)
+        public IList<TransactionDTO> GetTransactionsHistory(string CBU_CVU)
         {
+            var sourceAccount = _context.Accounts.FirstOrDefault(a => a.CBU_CVU == CBU_CVU);
+            if (sourceAccount == null)
+            {
+                throw new TransactionExceptions("No transactions found for the specified CBU_CVU or it does not exists.");
+            }
+            var idAccount = sourceAccount.IdAccount;
             var transactions = _context.Transactions
                 .Where(x => x.IdSourceAccount == idAccount || x.IdDestinationAccount == idAccount)
                 .Select(x => new TransactionDTO
@@ -159,7 +165,7 @@ namespace Repositories
                 throw new TransactionExceptions("Entered amount exceeds the allowed limit.");
             }
 
-            var sourceAccount = _context.Accounts.FirstOrDefault(a => a.IdAccount == transactionDTO.IdSourceAccount);
+            var sourceAccount = _context.Accounts.FirstOrDefault(a => a.CBU_CVU == transactionDTO.SourceAccountCBU_CVU);
                         
             if (sourceAccount.CBU_CVU == transactionDTO.DestinationAccountCBU_CVU || sourceAccount.Alias == transactionDTO.DestinationAccountAlias)
             {
@@ -186,7 +192,7 @@ namespace Repositories
             var transaction = new DataAccess.Models.Transaction
             {
                 TypeTransaction = DataAccess.Models.TypeTransaction.Transfer,
-                IdSourceAccount = transactionDTO.IdSourceAccount,
+                IdSourceAccount = sourceAccount.IdAccount,
                 IdDestinationAccount = destinationAccount.IdAccount,
                 Amount = transactionDTO.Amount,
                 Date = DateTime.Now
@@ -207,7 +213,7 @@ namespace Repositories
             }
 
             if (reward == null)
-            {                
+            {
                 throw new TransactionExceptions("Reward not found.");
             }
 
@@ -231,11 +237,11 @@ namespace Repositories
             _context.SaveChanges();
         }
 
-       
-        
-      
-  
-       
-       
+
+
+
+
+
+
     }
 }

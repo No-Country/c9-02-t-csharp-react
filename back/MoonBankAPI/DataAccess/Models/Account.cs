@@ -44,5 +44,8 @@ namespace DataAccess.Models
 
         [Required]
         public int RewardPoints { get; set; }
+
+        public string AccountUrlImage { get; set; }
     }
 }
+

@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -32,7 +33,8 @@ namespace Repositories
                 Alias= x.Alias,
                 CBU_CVU= x.CBU_CVU,
                 Balance = x.Balance,
-                RewardPoints= x.RewardPoints
+                RewardPoints= x.RewardPoints,
+                AccountUrlImage = x.AccountUrlImage
             }).ToList();
         }
 
@@ -51,7 +53,8 @@ namespace Repositories
                     Alias = account.Alias,
                     CBU_CVU = account.CBU_CVU,
                     Balance = account.Balance,
-                    RewardPoints = account.RewardPoints
+                    RewardPoints = account.RewardPoints,
+                    AccountUrlImage = account.AccountUrlImage
                 };
             }
             else
@@ -75,7 +78,8 @@ namespace Repositories
                     Alias = account.Alias,
                     CBU_CVU = account.CBU_CVU,
                     Balance = account.Balance,
-                    RewardPoints = account.RewardPoints
+                    RewardPoints = account.RewardPoints,
+                    AccountUrlImage = account.AccountUrlImage
                 };
             }
             else
@@ -99,7 +103,8 @@ namespace Repositories
                     Alias = account.Alias,
                     CBU_CVU = account.CBU_CVU,
                     Balance = account.Balance,
-                    RewardPoints = account.RewardPoints
+                    RewardPoints = account.RewardPoints,
+                    AccountUrlImage = account.AccountUrlImage
                 };
             }
             else
@@ -134,6 +139,8 @@ namespace Repositories
                 CBU_CVU = account.CBU_CVU,
                 Balance = account.Balance,
                 RewardPoints = account.RewardPoints,
+                AccountUrlImage= account.AccountUrlImage
+
             };
         }
         

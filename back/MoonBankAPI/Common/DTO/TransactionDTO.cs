@@ -6,6 +6,11 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.Serialization;
+
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
+using System.Text.Json.Serialization;
+
 
 namespace Common.DTO
 {
@@ -13,9 +18,11 @@ namespace Common.DTO
     {        
         public int IdTransaction { get; set; }
 
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         [Required]
         public TypeTransaction TypeTransaction { get; set; }
 
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         public TypeDeposit? TypeDeposit { get; set; }
 
         [Required]
@@ -26,6 +33,8 @@ namespace Common.DTO
         public int? IdSourceAccount { get; set; }
 
         public int? IdDestinationAccount { get; set; }
+
+        public string? SourceAccountCBU_CVU { get; set; }
 
         public string? DestinationAccountCBU_CVU { get; set; }
 
@@ -38,7 +47,8 @@ namespace Common.DTO
 
     public enum TypeTransaction
     {
-        Deposit,
+      
+        Deposit,    
         PayService,
         Transfer,
         Reward

@@ -155,3 +155,6 @@ C:\Users\Windows11\Desktop\MoonBank\c9-02-t-csharp-react\back\MoonBankAPI\MoonBa
 C:\Users\Lucho\Desktop\Proyectos\c9-02-t-csharp-react\back\MoonBankAPI\MoonBankAPI\bin\Debug\net6.0\Microsoft.DotNet.PlatformAbstractions.dll
 C:\Users\Lucho\Desktop\Proyectos\c9-02-t-csharp-react\back\MoonBankAPI\MoonBankAPI\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll
 C:\Users\Lucho\Desktop\Proyectos\c9-02-t-csharp-react\back\MoonBankAPI\MoonBankAPI\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\Windows11\Desktop\MoonBank\c9-02-t-csharp-react\back\MoonBankAPI\MoonBankAPI\bin\Debug\net6.0\Microsoft.DotNet.PlatformAbstractions.dll
+C:\Users\Windows11\Desktop\MoonBank\c9-02-t-csharp-react\back\MoonBankAPI\MoonBankAPI\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\Windows11\Desktop\MoonBank\c9-02-t-csharp-react\back\MoonBankAPI\MoonBankAPI\bin\Debug\net6.0\Newtonsoft.Json.dll
