@@ -4,7 +4,9 @@ import { FlexContainer, Container, Paper, Text } from '../../shared/styles';
 import { LoginAlert } from '../../shared/styles/LoginAlert';
 import { Form } from '../components';
 import { useLocation, useNavigate } from 'react-router';
+import { Link } from 'react-router-dom';
 import { useAppSelector } from '../../store/hooks';
+import { LinkStyled } from '../../shared';
 
 export const Login = () => {
   // ---------- -------------- ---------- //
@@ -47,8 +49,8 @@ export const Login = () => {
         </Paper>
 
         <FlexContainer>
-          <Text>Terms and Conditions</Text>
-          <Text>Security Policies</Text>
+          <LinkStyled To={'/terms-conditions'} Label='Terms and Conditions' fontSize='16px' />
+          <LinkStyled To={'/security-policies'} Label='Security Policies' fontSize='16px' />
           <Text>Support Centre</Text>
         </FlexContainer>
       </Container>

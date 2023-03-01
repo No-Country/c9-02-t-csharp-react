@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 
-type TitleProps = {
+type SubTitleProps = {
+  textColor?: string;
   alignSelf?:
     | 'auto'
     | 'baseline'
@@ -15,8 +16,9 @@ type TitleProps = {
     | 'stretch';
 };
 
-export const Title = styled.h2<TitleProps>`
-  ${({ alignSelf }) => css`
+export const SubTitle = styled.h3<SubTitleProps>`
+  ${({ alignSelf, textColor }) => css`
     align-self: ${alignSelf ? alignSelf : 'flex-start'};
+    color: ${textColor ? textColor : 'var(--White)'};
   `}
 `;

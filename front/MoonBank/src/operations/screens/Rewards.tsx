@@ -21,7 +21,7 @@ const Rewards = () => {
   }, []);
   useEffect(() => {
     dispatch(retrieveUser(login.alias));
-  }, [login]);
+  }, []);
 
   const redeemReward = (idReward: number) => {
     RedeemReward({

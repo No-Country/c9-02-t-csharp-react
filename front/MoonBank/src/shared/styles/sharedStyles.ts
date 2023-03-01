@@ -4,6 +4,7 @@ interface flexContainerProps {
   marginBox?: string;
   flexGap?: string;
   direction?: 'column' | 'row';
+  flexWidth?: string;
 }
 
 interface flexRowContainerProps {
@@ -20,6 +21,13 @@ export const FlexContainer = styled.div<flexContainerProps>`
   justify-content: space-between;
   gap: ${({ flexGap }) => (flexGap ? flexGap : '0.8rem')};
   margin: ${({ marginBox }) => (marginBox ? marginBox : '1.2rem 0')};
+
+  ${({ flexWidth }) =>
+    flexWidth
+      ? css`
+          width: ${flexWidth};
+        `
+      : ''}
 `;
 export const FlexRowContainer = styled.div<flexRowContainerProps>`
   display: flex;
