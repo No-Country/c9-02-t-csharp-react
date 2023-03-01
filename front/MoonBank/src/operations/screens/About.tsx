@@ -15,13 +15,6 @@ const About = () => {
     !success && NavigateTo('/', { replace: true, state: { loggedOut: true } });
   }, []);
 
-  // ---------- -------------------- ---------- //
-  // ---------- HANDLE ACTION EVENTS ---------- //
-  // ---------- -------------------- ---------- //
-  /*const actionHandler = (event: ChangeEvent<HTMLInputElement>) => {
-    //TO DO Here
-  }; //*/
-
   // ---------- ---------------- ---------- //
   // ---------- RETURN COMPONENT ---------- //
   // ---------- ---------------- ---------- //
