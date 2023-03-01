@@ -18,7 +18,7 @@ import {
 } from '../../../shared';
 import { NavSeparator } from '../../../shared';
 import { retrieveUserByCBU } from '../../../store/features/loginSlice';
-import type { SendMoneyFormData } from './SendMoneyFormData';
+import { SendMoneyFormData } from './SendMoneyFormData';
 import { MakeTransfer } from '../../../APIS/TransactionRequests';
 import { Navigate, useNavigate } from 'react-router';
 
