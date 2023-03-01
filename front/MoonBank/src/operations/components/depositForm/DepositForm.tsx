@@ -13,7 +13,10 @@ import {
   Text,
 } from '../../../shared';
 import { retrieveUser } from '../../../store/features/loginSlice';
+import { useNavigate } from 'react-router';
+
 export const DepositForm = () => {
+  const NavigateTo = useNavigate();
   const dispatch = useAppDispatch();
   const { login } = useAppSelector((state) => state);
   const { show, toggleChange } = useToggle();
@@ -31,6 +34,7 @@ export const DepositForm = () => {
     destinationAccountCBU_CVU: login.cbU_CVU,
   };
   useEffect(() => {
+    !login.success && NavigateTo('/', { replace: true, state: { loggedOut: true } });
     dispatch(retrieveUser(login.alias));
   }, []);
 

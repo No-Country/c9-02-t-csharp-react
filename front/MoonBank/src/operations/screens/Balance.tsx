@@ -21,7 +21,7 @@ export const Balance = () => {
   };
 
   return (
-    <Container>
+    <Container headerHeight='55px' onLogging={login.success}>
       <Paper>
         <Title>My balance</Title>
 

@@ -8,8 +8,7 @@ export const Paper = styled.div<{ flexGap?: string }>`
   justify-content: center;
   align-items: center;
 
-
-padding: 2rem;
+  padding: 2rem;
   ${(props) =>
     props.flexGap
       ? css`
@@ -25,6 +24,5 @@ padding: 2rem;
   }
   @media screen and (min-width: 760px) {
     width: 380px;
-    margin-top: 8rem
   }
 `;

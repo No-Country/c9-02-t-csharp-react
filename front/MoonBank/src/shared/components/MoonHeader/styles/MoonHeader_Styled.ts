@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const MoonHeader_Styled = styled.header`
+  grid-area: header;
   display: flex;
   box-sizing: border-box;
   z-index: 200;

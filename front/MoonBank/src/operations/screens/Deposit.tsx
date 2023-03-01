@@ -1,12 +1,13 @@
 import { Container, Paper, Title } from '../../shared';
 import { DepositForm } from '../components/depositForm/DepositForm';
+import { useAppSelector } from '../../store/hooks';
 
 const Deposit = () => {
+  const { success } = useAppSelector((state) => state.login);
   return (
-    <Container>
-      
-      <Paper >
-      <Title>Deposit</Title>
+    <Container headerHeight='55px' onLogging={success}>
+      <Paper>
+        <Title>Deposit</Title>
         <DepositForm />
       </Paper>
     </Container>

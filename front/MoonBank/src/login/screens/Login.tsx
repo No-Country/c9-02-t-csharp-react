@@ -1,15 +1,23 @@
+import { useEffect } from 'react';
 import { LocationState } from '../../shared/interfaces/LocationState';
 import { FlexContainer, Container, Paper, Text } from '../../shared/styles';
 import { LoginAlert } from '../../shared/styles/LoginAlert';
 import { Form } from '../components';
-import { useLocation } from 'react-router';
+import { useLocation, useNavigate } from 'react-router';
+import { useAppSelector } from '../../store/hooks';
 
 export const Login = () => {
   // ---------- -------------- ---------- //
   // ---------- STARTING HOOKS ---------- //
   // ---------- -------------- ---------- //
+  const NavigateTo = useNavigate();
   const { state } = useLocation();
+  const { success } = useAppSelector((state) => state.login);
   const LoginStatus = state as LocationState;
+
+  useEffect(() => {
+    success && NavigateTo('/', { replace: true, state: { loggedOut: true } });
+  }, []);
   // ---------- -------------------- ---------- //
   // ---------- HANDLE ACTION EVENTS ---------- //
   // ---------- -------------------- ---------- //
@@ -24,7 +32,7 @@ export const Login = () => {
           </LoginAlert>
         )
       )}
-      <Container>
+      <Container onLogging={false} headerHeight='55px'>
         <Paper>
           <Text size='20px' weight='700' align='center'>
             Welcome back!

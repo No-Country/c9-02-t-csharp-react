@@ -9,8 +9,8 @@ export const NavBar_Styled = styled.div<NavBarStyleProps>`
   min-width: 260px;
   border-radius: 0 8px 8px 0;
   z-index: 150;
- 
-  height: 100vh;
+
+  height: calc(100vh - ${({ headerHeight }) => headerHeight});
   top: ${(props) => props.headerHeight};
   background: var(--Dark);
   box-shadow: 0 0 10px var(--PurpleD);
