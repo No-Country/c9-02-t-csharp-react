@@ -11,6 +11,7 @@ export { default as NavHeader } from './NavBar/Components/NavHeader/NavHeader';
 export * from './NavBar/Components/NavHeader/NavHeaderTypes.d';
 export { default as CustomNavLink } from './NavBar/Components/NavLink/CustomNavLink';
 export { default as NavLinkObject } from './NavBar/Components/NavLink/NavLinkObject';
+export { default as LinkStyled } from './LinkStyled/LinkStyled';
 export * from './NavBar/Components/NavLink/NavLinkObjectTypes.d';
 export { default as NavList } from './NavBar/Components/NavList/NavList';
 export { default as NavLogoutButton } from './NavBar/Components/NavLogoutButton/NavLogoutButton';

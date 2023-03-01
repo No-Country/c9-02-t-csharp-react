@@ -12,12 +12,12 @@ import {
 } from '../../shared';
 import { useAppSelector } from '../../store/hooks';
 import PenIcon from '../../shared/Icons/PenIcon.svg';
-import LinkIcon from '../../shared/Icons/LinkIcon.svg'
+import LinkIcon from '../../shared/Icons/LinkIcon.svg';
 const Profile = () => {
-  const { name, lastName, alias, cbU_CVU } = useAppSelector((state) => state.login);
+  const { name, lastName, alias, cbU_CVU, success } = useAppSelector((state) => state.login);
 
   return (
-    <Container key={name}>
+    <Container key={name} headerHeight='55px' onLogging={success}>
       <Paper>
         <Title>Profile</Title>
         <FlexContainer>
@@ -25,8 +25,8 @@ const Profile = () => {
           <h3>
             {name} {lastName}
           </h3>
-          <span style={{color: '#88BDFF'}}>{alias}</span>
-          <img src={LinkIcon} alt="link icon" />
+          <span style={{ color: '#88BDFF' }}>{alias}</span>
+          <img src={LinkIcon} alt='link icon' />
         </FlexContainer>
         <ShowCbu cbu={cbU_CVU} />
         <UserInfoContainer>

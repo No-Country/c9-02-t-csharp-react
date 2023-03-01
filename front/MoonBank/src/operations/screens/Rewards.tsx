@@ -6,22 +6,25 @@ import { useAppSelector } from '../../store/hooks';
 import { RedeemReward } from '../../APIS/TransactionRequests';
 import { useAppDispatch } from '../../store/hooks';
 import { retrieveUser } from '../../store/features/loginSlice';
+import { useNavigate } from 'react-router';
 
 const Rewards = () => {
+  const NavigateTo = useNavigate();
   const [rewards, setRewards] = useState<Reward[]>([]);
   const { login } = useAppSelector((state) => state);
-const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
+
   useEffect(() => {
+    !login.success && NavigateTo('/', { replace: true, state: { loggedOut: true } });
     const data = getRewardsList();
     data.then((resp) => setRewards(resp));
   }, []);
   useEffect(() => {
-    dispatch(retrieveUser(login.alias))
-  }, [login]);
-  
-  
+    dispatch(retrieveUser(login.alias));
+  }, []);
+
   const redeemReward = (idReward: number) => {
-     RedeemReward({
+    RedeemReward({
       typeTransaction: 3,
       destinationAccountAlias: login.alias,
       idReward,
@@ -29,7 +32,7 @@ const dispatch = useAppDispatch()
   };
 
   return (
-    <Container>
+    <Container headerHeight='55px' onLogging={login.success}>
       <Paper>
         <Title>Rewards</Title>
         {rewards?.map((reward) => (
