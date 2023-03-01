@@ -12,13 +12,16 @@ import { useNavigate } from 'react-router';
 import eyeIcon from '../../shared/assets/eyeIcon.svg';
 import { useAppSelector } from '../../store/hooks';
 import ShowCbu from '../components/ShowCbu';
+import { useEffect } from 'react';
+
 export const Balance = () => {
-  const navigate = useNavigate();
   const { login } = useAppSelector((state) => state);
 
-  const navigateTo = (route: string) => {
-    navigate(`${route}`);
-  };
+  const NavigateTo = useNavigate();
+
+  useEffect(() => {
+    !login.success && NavigateTo('/', { replace: true, state: { loggedOut: true } });
+  }, []);
 
   return (
     <Container headerHeight='55px' onLogging={login.success}>
@@ -32,10 +35,10 @@ export const Balance = () => {
           </FlexRowContainer>
           <ShowCbu cbu={login.cbU_CVU} />
           <FlexRowContainer>
-            <Button variant='blue' onClick={() => navigateTo('/deposit')}>
+            <Button variant='blue' onClick={() => NavigateTo('/deposit')}>
               Deposit
             </Button>
-            <Button variant='blue' onClick={() => navigateTo('/transfer')}>
+            <Button variant='blue' onClick={() => NavigateTo('/send')}>
               Transfer
             </Button>
           </FlexRowContainer>

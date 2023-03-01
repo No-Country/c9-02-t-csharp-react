@@ -2,7 +2,6 @@ import ShowCbu from '../../operations/components/ShowCbu';
 import {
   Container,
   Paper,
-  Button,
   Title,
   FlexContainer,
   Avatar,
@@ -13,8 +12,16 @@ import {
 import { useAppSelector } from '../../store/hooks';
 import PenIcon from '../../shared/Icons/PenIcon.svg';
 import LinkIcon from '../../shared/Icons/LinkIcon.svg';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router';
+
 const Profile = () => {
   const { name, lastName, alias, cbU_CVU, success } = useAppSelector((state) => state.login);
+  const NavigateTo = useNavigate();
+
+  useEffect(() => {
+    !success && NavigateTo('/', { replace: true, state: { loggedOut: true } });
+  }, []);
 
   return (
     <Container key={name} headerHeight='55px' onLogging={success}>
