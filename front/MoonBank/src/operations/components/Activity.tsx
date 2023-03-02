@@ -29,20 +29,22 @@ export const Activity = ({
         <Box>
           <img src={icon} alt={icon} />
           <Box direction='column' marginLeft='10px'>
-            <Text weight='700' size='10px'>
+            <Text fontWeight='Bold_700' fontSize='15px' fontSizeVar={{ large: '13px', medium: '11px', min: '9px' }}>
               {serviceTitle}
             </Text>
-            <Text weight='400' size='8px'>
+            <Text fontWeight='Normal_400' fontSize='13px' fontSizeVar={{ large: '11px', medium: '9px', min: '7px' }}>
               {serviceDescription}
             </Text>
           </Box>
         </Box>
         <Box direction='column'>
-          <Text size='10px' weight='600'>
+          <Text fontSize='14px' fontWeight='DemiBold_600' fontSizeVar={{ large: '12px', medium: '11px', min: '9px' }}>
             {date}
           </Text>
-          <Text size='10px' style={{ color: isEnoughPoints ? 'var(--LightGreen)' : 'var(--LightRed)' }}>
-
+          <Text
+            fontSize='12px'
+            style={{ color: isEnoughPoints ? 'var(--LightGreen)' : 'var(--LightRed)' }}
+            fontSizeVar={{ large: '10px', medium: '9px', min: '8px' }}>
             {typeItem === 'service' ? `$ ${quantity} ` : typeItem === 'reward' ? `${quantity} px` : `- ${quantity} `}
           </Text>
         </Box>

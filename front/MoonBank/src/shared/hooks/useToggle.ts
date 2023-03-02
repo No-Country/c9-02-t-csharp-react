@@ -1,12 +1,11 @@
 import { useState } from 'react';
 
-
-const useToggle = () => {
-  
-  const [show, setShow] = useState(false);
+const useToggle = (initState?: boolean) => {
+  const init = initState !== undefined ? initState : false;
+  const [show, setShow] = useState(init);
 
   const toggleChange = (value: boolean) => {
-    setShow(value )
+    setShow(value);
   };
 
   return {

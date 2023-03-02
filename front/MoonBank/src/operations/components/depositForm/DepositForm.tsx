@@ -11,6 +11,12 @@ import {
   Button,
   FlexRowContainer,
   Text,
+  FormContainer,
+  LabelInput,
+  Label,
+  GridContainer,
+  NavSeparator,
+  InfoContainer,
 } from '../../../shared';
 import { retrieveUser } from '../../../store/features/loginSlice';
 import { useNavigate } from 'react-router';
@@ -56,87 +62,100 @@ export const DepositForm = () => {
 
   return (
     <>
-      <form onSubmit={(e) => e.preventDefault()}>
-        <label>CARD NUMBER</label>
-        <Input
-          name='cardNumber'
-          value={cardNumber}
-          onChange={handleInputChange}
-          type='text'
-          placeholder='***** ***** *****'
-          marginBottom='1rem'
-          marginTop='1rem'
-          fontSize='12px'
-        />
+      <FormContainer onSubmit={(e) => e.preventDefault()} formGap='20px'>
+        <LabelInput contentDirection='column' gap='10px'>
+          <Label htmlFor='userAlias' width='100%'>
+            CARD NUMBER:
+          </Label>
+          <Input
+            name='cardNumber'
+            value={cardNumber}
+            onChange={handleInputChange}
+            type='text'
+            placeholder='***** ***** *****'
+            fontSize='12px'
+          />
+        </LabelInput>
 
-        <FlexRowContainer>
-          <label>
-            EXPIRE DATE
+        <GridContainer direction={'column'} directionTemplate='1fr 1fr' width='100%' gridGap='4px'>
+          <LabelInput contentDirection='column' gap='10px'>
+            <Label htmlFor='amount' width='100%'>
+              EXPIRE DATE:
+            </Label>
             <Input
               name='cardExpireDate'
               value={cardExpireDate}
               onChange={handleInputChange}
-              type='date'
               placeholder='**/**'
-              marginBottom='1rem'
+              inputMode='numeric'
+              pattern='^\d{2,2}\/\d{2,2}$'
             />
-          </label>
-          <label>
-            CVC
+          </LabelInput>
+          <LabelInput contentDirection='column' gap='10px'>
+            <Label width='100%'>CVC:</Label>
             <Input
               name='cardCvc'
               value={cardCvc}
               onChange={handleInputChange}
               type='number'
+              inputMode='numeric'
               placeholder='***'
-              marginBottom='1rem'
+              height='100%;'
+              pattern='(?:^\d{3,3}$)'
             />
-          </label>
-        </FlexRowContainer>
-        <label>CARD HOLDER NAME</label>
-        <Input
-          name='cardHolderName'
-          value={cardHolderName}
-          onChange={handleInputChange}
-          type='text'
-          placeholder='NAME'
-          marginBottom='1rem'
-          marginTop='1rem'
-          fontSize='12px'
-        />
+          </LabelInput>
+        </GridContainer>
+
+        <LabelInput contentDirection='column'>
+          <Label width='100%'>CARD HOLDER NAME</Label>
+          <Input
+            name='cardHolderName'
+            value={cardHolderName}
+            onChange={handleInputChange}
+            type='text'
+            placeholder='NAME'
+            marginBottom='1rem'
+            marginTop='1rem'
+            fontSize='12px'
+          />
+        </LabelInput>
 
         <FlexRowContainer withAmount>
-          <Text> Amount to Deposit $</Text>
-
+          <Label fontSize='15px' width='100%'>
+            {' '}
+            Amount to Deposit $
+          </Label>
           <Input
             name='amount'
             value={amount}
             onChange={handleInputChange}
             type='text'
             placeholder='150,0'
-            marginBottom='1rem'
-            marginTop='1rem'
             fontSize='12px'
           />
         </FlexRowContainer>
 
-        <hr />
-        <FlexRowContainer space='between'>
-          <Text style={{ alignSelf: 'flex-start' }}>Available Deposit Today</Text>
-          <Text marginTop='1.2rem' style={{ alignSelf: 'flex-end' }}>
-            $ {login.balance}
-          </Text>
-        </FlexRowContainer>
-        <FlexRowContainer>
-          <Button onClick={() => toggleChange(true)} type='button' variant='blue'>
+        <NavSeparator orientation='horizontal' thickness='4px' size='100%' />
+
+        <InfoContainer
+          canHide={false}
+          initShowState={true}
+          infoSubtitle='Available Deposit Today:'
+          fontDataSize='16px'
+          styleProps={{ buttonHeight: '35px', buttonWidth: 'auto', buttonPadding: '6px' }}>
+          {login.balance}
+        </InfoContainer>
+
+        <FlexRowContainer flexGap='5px'>
+          <Button onClick={() => toggleChange(true)} variant='blue' width='100%'>
             Deposit
           </Button>
-          <Button variant='blue' type='button' onClick={ResetForm}>
+          <Button variant='blue' type='button' onClick={ResetForm} width='100%'>
             Clear
           </Button>
           {show && <DialogBox {...props} />}
         </FlexRowContainer>
-      </form>
+      </FormContainer>
     </>
   );
 };

@@ -1,5 +1,5 @@
 export { default as DialogBox } from './DialogBox/components/DialogBox';
-export * from './DialogBox/components/DialogBoxTypes.d';
+export * from './DialogBox/components/DialogBoxTypes';
 export * from './DialogBox';
 export * from './DialogBox/styles/DialogBox_Styled';
 export * from './DialogBox/styles/DialogContainer';
@@ -15,6 +15,7 @@ export { default as LinkStyled } from './LinkStyled/LinkStyled';
 export * from './NavBar/Components/NavLink/NavLinkObjectTypes.d';
 export { default as NavList } from './NavBar/Components/NavList/NavList';
 export { default as NavLogoutButton } from './NavBar/Components/NavLogoutButton/NavLogoutButton';
+export { default as InfoContainer } from './InfoContainer/InfoContainer';
 export * from './NavBar/Components/NavLogoutButton/NavLogoutButtonTypes.d';
 export * from './NavBar/Styles/NavBar_Styled';
 export * from './NavBar/Styles/NavHeader_Styled';

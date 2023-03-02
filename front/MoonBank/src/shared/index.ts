@@ -1,6 +1,6 @@
 export * from './Icons/PiggyBank';
 export { default as DialogBox } from './components/DialogBox/components/DialogBox';
-export * from './components/DialogBox/components/DialogBoxTypes.d';
+export * from './components/DialogBox/components/DialogBoxTypes';
 export * from './components/DialogBox';
 export * from './components/DialogBox/styles/DialogBox_Styled';
 export * from './components/DialogBox/styles/DialogContainer';

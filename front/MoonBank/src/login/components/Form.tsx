@@ -1,4 +1,4 @@
-import { Button, Input, Box } from '../../shared/styles';
+import { Button, Input, Box, LabelInput, Label } from '../../shared/styles';
 import { AlertNotification } from './AlertNotification';
 import { Login } from '../../shared/interfaces';
 import { Text } from '../../shared/styles';
@@ -33,35 +33,26 @@ export const Form = () => {
   };
   return (
     <>
-      <Box direction='column'>
-        <Text>EMAIL:</Text>
+      <LabelInput contentDirection='column' gap='3px'>
+        <Label width='100%'>EMAIL:</Label>
         <Input
           name='email'
           value={email}
           onChange={handleInputChange}
           type='text'
           placeholder='Email'
-          marginBottom='1rem'
-          marginTop='0.5rem'
+          width='100%'
           fontSize='12px'
         />
-      </Box>
-      <Box direction='column'>
-        <Text>PASSWORD:</Text>
-        <Input
-          name='password'
-          value={password}
-          onChange={handleInputChange}
-          type='password'
-          placeholder='Password'
-          marginTop='0.5rem'
-          marginBottom='1rem'
-        />
-      </Box>
+      </LabelInput>
+      <LabelInput contentDirection='column' gap='3px'>
+        <Label width='100%'>PASSWORD:</Label>
+        <Input name='password' value={password} onChange={handleInputChange} type='password' placeholder='Password' />
+      </LabelInput>
 
       {!checkLogin && <AlertNotification />}
 
-      <Button marginTop='1rem' onClick={handleLogUser} variant='blue'>
+      <Button onClick={handleLogUser} variant='blue'>
         Log In
       </Button>
     </>

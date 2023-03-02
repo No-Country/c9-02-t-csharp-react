@@ -6,7 +6,7 @@ const Deposit = () => {
   const { success } = useAppSelector((state) => state.login);
   return (
     <Container headerHeight='55px' onLogging={success}>
-      <Paper>
+      <Paper flexGap='25px'>
         <Title>Deposit</Title>
         <DepositForm />
       </Paper>

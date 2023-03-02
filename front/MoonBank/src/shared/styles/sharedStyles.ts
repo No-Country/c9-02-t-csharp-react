@@ -19,8 +19,8 @@ export const FlexContainer = styled.div<flexContainerProps>`
   flex-direction: ${({ direction }) => (direction ? direction : 'column')};
   align-items: center;
   justify-content: space-between;
-  gap: ${({ flexGap }) => (flexGap ? flexGap : '0.8rem')};
-  margin: ${({ marginBox }) => (marginBox ? marginBox : '1.2rem 0')};
+  gap: ${({ flexGap }) => (flexGap ? flexGap : '0px')};
+  margin: ${({ marginBox }) => (marginBox ? marginBox : '0px')};
 
   ${({ flexWidth }) =>
     flexWidth
@@ -34,9 +34,9 @@ export const FlexRowContainer = styled.div<flexRowContainerProps>`
   align-items: center;
   justify-content: space-around;
   color: var(--White);
-  gap: 0.5rem;
+  gap: ${({ flexGap }) => (flexGap ? flexGap : '0px')};
   width: 100%;
-  margin: ${({ marginBox }) => (marginBox ? marginBox : '1.2rem 0')};
+  margin: ${({ marginBox }) => (marginBox ? marginBox : '0px')};
   label {
     width: 100%;
   }

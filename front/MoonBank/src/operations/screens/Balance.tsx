@@ -5,49 +5,64 @@ import {
   Title,
   FlexContainer,
   FlexRowContainer,
-  UserInfoContainer,
   Button,
+  NavSeparator,
+  InfoContainer,
 } from '../../shared';
 import { useNavigate } from 'react-router';
 import eyeIcon from '../../shared/assets/eyeIcon.svg';
 import { useAppSelector } from '../../store/hooks';
-import ShowCbu from '../components/ShowCbu';
+import { useEffect } from 'react';
+
 export const Balance = () => {
-  const navigate = useNavigate();
   const { login } = useAppSelector((state) => state);
 
-  const navigateTo = (route: string) => {
-    navigate(`${route}`);
-  };
+  const NavigateTo = useNavigate();
+
+  useEffect(() => {
+    !login.success && NavigateTo('/', { replace: true, state: { loggedOut: true } });
+  }, []);
 
   return (
     <Container headerHeight='55px' onLogging={login.success}>
-      <Paper>
+      <Paper flexGap='20px'>
         <Title>My balance</Title>
 
-        <FlexContainer>
-          <FlexRowContainer>
-            <img src={eyeIcon} alt='eye icon' />
-            <Text>$ {login.balance}</Text>
-          </FlexRowContainer>
-          <ShowCbu cbu={login.cbU_CVU} />
-          <FlexRowContainer>
-            <Button variant='blue' onClick={() => navigateTo('/deposit')}>
+        <FlexContainer flexWidth='100%' flexGap='25px'>
+          <InfoContainer
+            canHide={true}
+            containerLayout='Together'
+            initShowState={true}
+            fontDataSize='20px'
+            fontWeight='Heavy_900'
+            styleProps={{ buttonHeight: '40px', buttonWidth: '60px', buttonPadding: '6px' }}>
+            {login.balance}
+          </InfoContainer>
+          <FlexRowContainer flexGap='5px'>
+            <Button variant='blue' onClick={() => NavigateTo('/deposit')} width='100%'>
               Deposit
             </Button>
-            <Button variant='blue' onClick={() => navigateTo('/transfer')}>
+            <Button variant='blue' onClick={() => NavigateTo('/send')} width='100%'>
               Transfer
             </Button>
           </FlexRowContainer>
 
-          <hr />
-          <hr />
-          <UserInfoContainer>
-            <div>
-              <h3>Alias:</h3>
-            </div>
-            <Text marginTop='1.2rem'>@{login.alias}</Text>
-          </UserInfoContainer>
+          <NavSeparator orientation='horizontal' thickness='4px' size='100%' />
+
+          <InfoContainer
+            infoSubtitle='Alias:'
+            canHide={false}
+            initShowState={true}
+            styleProps={{ buttonHeight: '35px', buttonWidth: 'auto', buttonPadding: '6px' }}>
+            {login.alias}
+          </InfoContainer>
+          <InfoContainer
+            infoSubtitle='CBU:'
+            canHide={true}
+            initShowState={false}
+            styleProps={{ buttonHeight: '35px', buttonWidth: 'auto', buttonPadding: '6px' }}>
+            {login.cbU_CVU}
+          </InfoContainer>
         </FlexContainer>
       </Paper>
     </Container>

@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
 import { LocationState } from '../../shared/interfaces/LocationState';
-import { FlexContainer, Container, Paper, Text } from '../../shared/styles';
+import { FlexContainer, Container, Paper, Text, Title } from '../../shared/styles';
 import { LoginAlert } from '../../shared/styles/LoginAlert';
 import { Form } from '../components';
 import { useLocation, useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
 import { useAppSelector } from '../../store/hooks';
-import { LinkStyled } from '../../shared';
+import { LinkStyled, NavSeparator } from '../../shared';
 
 export const Login = () => {
   // ---------- -------------- ---------- //
@@ -35,23 +35,27 @@ export const Login = () => {
         )
       )}
       <Container onLogging={false} headerHeight='55px'>
-        <Paper>
-          <Text size='20px' weight='700' align='center'>
+        <Paper flexGap='20px'>
+          <Title alignSelf='center' fontSize='24px'>
             Welcome back!
-          </Text>
-          <Text marginTop='12px' align='center'>
-            The Moon is waiting for your return
-          </Text>
+          </Title>
+          <Text align='center'>The Moon is waiting for your return</Text>
           <Form />
-          <Text size='9px' marginTop='1rem'>
-            Forgot your password? | Forgot your username?
-          </Text>
+          <FlexContainer flexGap='5px' direction='row'>
+            <Text fontSize='14px' align='center'>
+              Forgot your password?
+            </Text>
+            <NavSeparator orientation='vertical' thickness='5px' size='100%' />
+            <Text fontSize='14px' align='center'>
+              Forgot your username?
+            </Text>
+          </FlexContainer>
         </Paper>
 
-        <FlexContainer>
+        <FlexContainer flexGap='5px' marginBox='15px 0'>
           <LinkStyled To={'/terms-conditions'} Label='Terms and Conditions' fontSize='16px' />
           <LinkStyled To={'/security-policies'} Label='Security Policies' fontSize='16px' />
-          <Text>Support Centre</Text>
+          <LinkStyled To={'/support'} Label='Support Center' fontSize='16px' />
         </FlexContainer>
       </Container>
     </>
