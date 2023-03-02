@@ -15,6 +15,7 @@ import {
   FormContainer,
   GridContainer,
   FlexContainer,
+  InfoContainer,
 } from '../../../shared';
 import { NavSeparator } from '../../../shared';
 import { retrieveUserByCBU } from '../../../store/features/loginSlice';
@@ -125,10 +126,15 @@ const SendMoneyForm = () => {
 
         <NavSeparator orientation='horizontal' thickness='4px' size='100%' />
 
-        <FlexContainer marginBox='0' direction='column'>
-          <Text style={{ alignSelf: 'flex-start' }}>Available Transfer Today:</Text>
-          <Text style={{ alignSelf: 'flex-end' }}>$ {login.balance}</Text>
-        </FlexContainer>
+        <InfoContainer
+          canHide={false}
+          initShowState={true}
+          infoSubtitle='Available Transfer Today:'
+          fontDataSize='16px'
+          styleProps={{ buttonHeight: '35px', buttonWidth: 'auto', buttonPadding: '6px' }}>
+          {login.balance}
+        </InfoContainer>
+
         <FlexRowContainer marginBox='0' flexGap='5px'>
           <Button variant='blue' fontWeight='bold' width='100%' onClick={() => toggleChange(true)}>
             Send

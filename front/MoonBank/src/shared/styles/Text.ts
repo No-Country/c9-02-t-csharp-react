@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 
 interface Props {
+  fontSizeVar?: { min?: string; medium?: string; large?: string };
   fontSize?: string;
   weight?: string;
   align?: 'start' | 'center' | 'end' | 'justify';
@@ -46,13 +47,13 @@ export const Text = styled.p<Props>`
       : ''}
 
   @media screen and (min-width: 0px) and (max-width: 460px) {
-    font-size: 12px;
+    font-size: ${(props) => (props.fontSizeVar?.min ? props.fontSizeVar?.min : '12px')};
   }
   @media screen and (min-width: 460px) and (max-width: 660px) {
-    font-size: 13px;
+    font-size: ${(props) => (props.fontSizeVar?.medium ? props.fontSizeVar?.medium : '13px')};
   }
   @media screen and (min-width: 660px) and (max-width: 860px) {
-    font-size: 14px;
+    font-size: ${(props) => (props.fontSizeVar?.large ? props.fontSizeVar?.large : '14px')};
   }
   @media screen and (min-width: 860px) {
     font-size: ${(props) => (props.fontSize ? props.fontSize : '15px')};
