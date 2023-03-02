@@ -1,4 +1,5 @@
-import { Button, Input, Box, LabelInput, Label } from '../../shared/styles';
+import { Box, Button, Input, Label, LabelInput } from '../../shared/styles';
+
 import { AlertNotification } from './AlertNotification';
 import { Login } from '../../shared/interfaces';
 import { Text } from '../../shared/styles';
@@ -6,8 +7,8 @@ import { logUser } from '../../APIS/postRequests';
 import { setUser } from '../../store/features/loginSlice';
 import { useAppDispatch } from '../../store/hooks';
 import { useForm } from '../../shared/hooks/useForm';
-import { useState } from 'react';
 import { useNavigate } from 'react-router';
+import { useState } from 'react';
 
 export const Form = () => {
   const NavigateTo = useNavigate();
@@ -24,8 +25,8 @@ export const Form = () => {
       password,
     };
     logUser(data).then((resp) => {
-      if (!resp.data.success) {
-        setCheckLogin(false);
+      if (!resp?.data.success) {
+       return setCheckLogin(false);
       }
       dispatch(setUser(resp.data.result));
       NavigateTo('/home');
