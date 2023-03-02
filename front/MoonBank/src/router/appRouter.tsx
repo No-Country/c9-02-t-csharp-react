@@ -1,20 +1,23 @@
-import { Route, Routes, Navigate } from 'react-router-dom';
-import { Login } from '../login/screens';
 import {
-  Balance,
-  Services,
-  Deposit,
-  Rewards,
-  TransactionHistory,
-  Send,
   About,
-  AboutTerms,
   AboutSecurity,
+  AboutTerms,
+  Balance,
+  Deposit,
   Page404,
+  Rewards,
+  Send,
+  Services,
+  TransactionHistory,
 } from '../operations/screens';
-import { Profile } from '../Principal/screens';
+import { Navigate, Route, Routes } from 'react-router-dom';
+
+import { HomePage } from '../screens';
+import { Login } from '../login/screens';
 import { MoonHeader } from '../shared/components/MoonHeader';
+import { Profile } from '../Principal/screens';
 import { useAppSelector } from '../store/hooks';
+
 const AppRouter = () => {
   const { success } = useAppSelector((state) => state.login);
 
@@ -36,6 +39,7 @@ const AppRouter = () => {
         <Route path='activity' element={<TransactionHistory />} />
         <Route path='profile' element={<Profile />} />
         <Route path='send' element={<Send />} />
+        <Route path='home' element={<HomePage />} />
         <Route path='/login' element={<Navigate to={'/'} replace={true} />} />
         <Route path='*' element={<Page404 />} />
       </Routes>

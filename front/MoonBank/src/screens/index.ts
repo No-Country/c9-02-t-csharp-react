@@ -1,1 +1,1 @@
-export * from '../operations/screens/Services';
+export * from './HomePage';
