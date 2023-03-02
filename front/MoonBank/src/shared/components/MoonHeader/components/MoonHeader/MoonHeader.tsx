@@ -63,7 +63,7 @@ function MoonHeader(props: MoonHeaderProps) {
           <DialogBox
             isOpen={logoutDialogShow}
             title='Log Out?'
-            dialogType='warning'
+            dialogType='question'
             message='Are you sure to close the current session?'
             to='/login'
             onConfirmAction={() => {
