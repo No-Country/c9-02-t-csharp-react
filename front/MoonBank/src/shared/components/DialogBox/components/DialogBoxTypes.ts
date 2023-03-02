@@ -1,5 +1,5 @@
 export interface DialogStyledProp {
-  dialogType: 'information' | 'warning';
+  dialogType: 'information' | 'warning' | 'question' | 'alert';
 }
 
 export interface DialogContainerProp {
@@ -11,6 +11,8 @@ export interface DialogBoxProps extends DialogStyledProp, DialogContainerProp {
   message: string;
   extraMessage?: string;
   to: string;
+  buttonConfirmLabel?: string;
+  buttonCancelLabel?: string;
   onConfirmAction: () => void;
-  onCancelAction: () => void;
+  onCancelAction?: () => void;
 }

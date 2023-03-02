@@ -75,6 +75,7 @@ const SendMoneyForm = () => {
     title: 'Transfer completed',
     message: `Your $${amount} transfer was successfully completed.`,
     to: '/home',
+    buttonConfirmLabel: 'Accept',
     onConfirmAction: () => {
       setShowConfirmation(false);
     },

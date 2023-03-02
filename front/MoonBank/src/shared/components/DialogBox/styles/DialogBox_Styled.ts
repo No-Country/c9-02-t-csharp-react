@@ -48,13 +48,17 @@ export const DialogBox_Styled = styled.dialog<DialogStyledProp>`
       width: 35px;
       height: 35px;
       ${(props) =>
-        props.dialogType === 'information'
+        props.dialogType === 'information' || props.dialogType === 'question'
           ? css`
-              color: var(--BlueG);
+              color: var(--BlueSL);
             `
           : props.dialogType === 'warning'
           ? css`
               color: var(--Warn);
+            `
+          : props.dialogType === 'alert'
+          ? css`
+              color: var(--RedL);
             `
           : css``}
     }
@@ -87,7 +91,14 @@ export const DialogBox_Styled = styled.dialog<DialogStyledProp>`
   > .DialogBox__Actions {
     display: grid;
     gap: 0 5px;
-    grid-template-columns: 1fr 1fr;
+    ${({ dialogType }) =>
+      dialogType === 'question' || dialogType === 'warning'
+        ? css`
+            grid-template-columns: 1fr 1fr;
+          `
+        : css`
+            grid-template-columns: 1fr;
+          `}
     grid-template-rows: 45px;
     > button.DB__Btn {
       border: none;
