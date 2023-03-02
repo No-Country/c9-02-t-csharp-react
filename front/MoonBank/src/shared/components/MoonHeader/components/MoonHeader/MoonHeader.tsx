@@ -1,6 +1,5 @@
 import { IoClose, IoMenu, IoNotifications, IoNotificationsOutline } from 'react-icons/io5';
 import { setLogoutDialog, setNavbarState, toggleNavbar } from '../../../../../store/features/UISlice';
-import { userLogout } from '../../../../../store/features/loginSlice';
 import { useAppDispatch, useAppSelector } from '../../../../../store/hooks';
 
 import { DialogBox } from '../../../DialogBox';
@@ -9,6 +8,7 @@ import { MoonHeader_Styled } from '../../styles/MoonHeader_Styled';
 import { NavBar } from '../../../NavBar';
 import { useNavigate } from 'react-router';
 import { useState } from 'react';
+import { userLogout } from '../../../../../store/features/loginSlice';
 
 function MoonHeader(props: MoonHeaderProps) {
   // ---------- -------------- ---------- //
@@ -63,7 +63,7 @@ function MoonHeader(props: MoonHeaderProps) {
           <DialogBox
             isOpen={logoutDialogShow}
             title='Log Out?'
-            dialogType='information'
+            dialogType='warning'
             message='Are you sure to close the current session?'
             to='/login'
             onConfirmAction={() => {

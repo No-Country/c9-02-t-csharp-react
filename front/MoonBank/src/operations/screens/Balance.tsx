@@ -1,18 +1,17 @@
 import {
+  Button,
   Container,
-  Paper,
-  Text,
-  Title,
   FlexContainer,
   FlexRowContainer,
-  Button,
-  NavSeparator,
   InfoContainer,
+  NavSeparator,
+  Paper,
+  Title
 } from '../../shared';
-import { useNavigate } from 'react-router';
-import eyeIcon from '../../shared/assets/eyeIcon.svg';
+
 import { useAppSelector } from '../../store/hooks';
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router';
 
 export const Balance = () => {
   const { login } = useAppSelector((state) => state);
@@ -21,7 +20,7 @@ export const Balance = () => {
 
   useEffect(() => {
     !login.success && NavigateTo('/', { replace: true, state: { loggedOut: true } });
-  }, []);
+  }, [login]); 
 
   return (
     <Container headerHeight='55px' onLogging={login.success}>

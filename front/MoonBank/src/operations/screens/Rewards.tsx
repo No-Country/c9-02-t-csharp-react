@@ -20,9 +20,7 @@ const Rewards = () => {
     const data = getRewardsList();
     data.then((resp) => setRewards(resp));
   }, []);
-  useEffect(() => {
-    dispatch(retrieveUser(login.alias));
-  }, []);
+  
 
   const redeemReward = (idReward: number) => {
     RedeemReward({
@@ -30,6 +28,7 @@ const Rewards = () => {
       destinationAccountAlias: login.alias,
       idReward,
     });
+    dispatch(retrieveUser(login.alias));
   };
 
   return (

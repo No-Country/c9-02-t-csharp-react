@@ -1,27 +1,26 @@
-import { useEffect } from 'react';
-import { useAppSelector, useAppDispatch } from '../../../store/hooks';
 import {
+  Button,
   DialogBox,
   DialogBoxProps,
-  useToggle,
-  useForm,
-  TransferRequest,
-  Input,
-  Button,
   FlexRowContainer,
-  Text,
-  Label,
-  LabelInput,
   FormContainer,
   GridContainer,
-  FlexContainer,
   InfoContainer,
+  Input,
+  Label,
+  LabelInput,
+  NavSeparator,
+  TransferRequest,
+  useForm,
+  useToggle,
 } from '../../../shared';
-import { NavSeparator } from '../../../shared';
-import { retrieveUserByCBU } from '../../../store/features/loginSlice';
-import { SendMoneyFormData } from './SendMoneyFormData';
+import { useAppDispatch, useAppSelector } from '../../../store/hooks';
+import { useEffect, useState } from 'react';
+
 import { MakeTransfer } from '../../../APIS/TransactionRequests';
-import { Navigate, useNavigate } from 'react-router';
+import { SendMoneyFormData } from './SendMoneyFormData';
+import { retrieveUserByCBU } from '../../../store/features/loginSlice';
+import { useNavigate } from 'react-router';
 
 const SendMoneyForm = () => {
   // ---------- -------------- ---------- //
@@ -36,18 +35,19 @@ const SendMoneyForm = () => {
   const initialStateForm: SendMoneyFormData = { userAlias: '', amount: 1.0, message: '' };
   const { ResetForm, handleInputChange, formInputState, userAlias, amount, message } =
     useForm<SendMoneyFormData>(initialStateForm);
+
+  const [showConfirmation, setShowConfirmation] = useState(false);
+
   const dataForm: TransferRequest = {
     typeTransaction: 2,
     sourceAccountCBU_CVU: login.cbU_CVU,
-    destinationAccountCBU_CVU: '',
+    destinationAccountCBU_CVU: userAlias,
     Amount: amount,
     destinationAccountAlias: userAlias,
   };
   useEffect(() => {
-    dispatcher(retrieveUserByCBU(login.cbU_CVU));
-
     !login.success && NavigateTo('/', { replace: true, state: { loggedOut: true } });
-  }, []);
+  }, [login]);
 
   const propsDialog: DialogBoxProps = {
     dialogType: 'warning',
@@ -58,8 +58,9 @@ const SendMoneyForm = () => {
     onConfirmAction: () => {
       try {
         submitHandler(dataForm);
+        dispatcher(retrieveUserByCBU(login.cbU_CVU));
         toggleChange(false);
-        console.log('Transaccion Realizada');
+        setShowConfirmation(true);
       } catch (error) {
         console.log('Transaccion Fallida');
       }
@@ -67,6 +68,17 @@ const SendMoneyForm = () => {
     onCancelAction: () => {
       toggleChange(false);
     },
+  };
+  const propsConfirmation: DialogBoxProps = {
+    dialogType: 'information',
+    isOpen: showConfirmation,
+    title: 'Transfer completed',
+    message: `Your $${amount} transfer was successfully completed.`,
+    to: '/home',
+    onConfirmAction: () => {
+      setShowConfirmation(false);
+    },
+    onCancelAction: () => {},
   };
 
   // ---------- -------------------- ---------- //
@@ -86,7 +98,7 @@ const SendMoneyForm = () => {
       <FormContainer onSubmit={(event) => event.preventDefault()} formGap='20px'>
         <LabelInput contentDirection='column' gap='10px'>
           <Label htmlFor='userAlias' width='100%'>
-            USER ALIAS:
+            USER ALIAS OR CBU:
           </Label>
           <Input
             id='userAlias'
@@ -94,7 +106,7 @@ const SendMoneyForm = () => {
             value={userAlias}
             onChange={handleInputChange}
             type='text'
-            placeholder='user.alias.mb'
+            placeholder=''
           />
         </LabelInput>
         <GridContainer direction={'column'} directionTemplate='0.8fr 20px 1fr' width='100%'>
@@ -106,7 +118,7 @@ const SendMoneyForm = () => {
             name='amount'
             value={amount}
             onChange={handleInputChange}
-            type='text'
+            type='number'
             inputMode='numeric'
             placeholder='0.00'
             justifyInput='end'
@@ -143,6 +155,7 @@ const SendMoneyForm = () => {
             Clear
           </Button>
           {show && <DialogBox {...propsDialog} />}
+          {showConfirmation && <DialogBox {...propsConfirmation} />}
         </FlexRowContainer>
       </FormContainer>
     </>
