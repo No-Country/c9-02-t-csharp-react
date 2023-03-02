@@ -15,7 +15,7 @@ function MoonHeader(props: MoonHeaderProps) {
   // ---------- STARTING HOOKS ---------- //
   // ---------- -------------- ---------- //
   const NavigateTo = useNavigate();
-  const { success, name, lastName, rewardPoints } = useAppSelector((state) => state.login);
+  const { success, name, lastName, rewardPoints, accountUrlImage } = useAppSelector((state) => state.login);
   const dispatch = useAppDispatch();
   const { isNavToggled, logoutDialogShow } = useAppSelector((state) => state.UIReducer);
   const [NotiToggled, setNotiToggled] = useState(false);
@@ -57,7 +57,7 @@ function MoonHeader(props: MoonHeaderProps) {
             headerHeight='55px'
             name={name}
             surname={lastName}
-            userImgURL='https://upload.wikimedia.org/wikipedia/commons/5/50/User_icon-cp.svg'
+            userImgURL={accountUrlImage}
             credits={rewardPoints}
           />
           <DialogBox

@@ -44,7 +44,6 @@ export const Activity = ({
   }
   
   
-console.log(serviceTitle)
   return (
     <ItemContainer>
       <ItemActivity>

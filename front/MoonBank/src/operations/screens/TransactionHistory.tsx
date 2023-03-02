@@ -1,11 +1,12 @@
-import { Container, Paper, Title, FlexRowContainer } from '../../shared';
+import { Container, FlexRowContainer, Paper, Title } from '../../shared';
+import { getRewardsList, getTransactionHistory } from '../../APIS/getRequest';
 import { useEffect, useState } from 'react';
-import { getTransactionHistory, getRewardsList } from '../../APIS/getRequest';
-import { Transaction } from '../../shared/interfaces/Transaction';
-import { useAppSelector } from '../../store/hooks';
+
 import { Activity } from '../components';
 import { Reward } from '../../shared/interfaces/Reward';
+import { Transaction } from '../../shared/interfaces/Transaction';
 import electricIcon from '../../shared/assets/eletricIcon.svg';
+import { useAppSelector } from '../../store/hooks';
 import { useNavigate } from 'react-router';
 
 const TransactionHistory = () => {
@@ -16,7 +17,7 @@ const TransactionHistory = () => {
 
   useEffect(() => {
     !success && NavigateTo('/', { replace: true, state: { loggedOut: true } });
-    const data = getTransactionHistory(cbU_CVU);
+    const data = getTransactionHistory(cbU_CVU)
     data.then((resp) => setActivities(resp));
   }, []);
   useEffect(() => {
