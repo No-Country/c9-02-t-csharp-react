@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router';
 
 const Profile = () => {
-  const { name, lastName, alias, cbU_CVU, success, accountUrlImage } = useAppSelector((state) => state.login);
+  const { name, lastName, alias, cbU_CVU, success, accountUrlImage, email } = useAppSelector((state) => state.login);
 
   const NavigateTo = useNavigate();
 
@@ -22,7 +22,7 @@ const Profile = () => {
           <h3>
             {name} {lastName}
           </h3>
-          <span style={{ color: '#88BDFF' }}>{alias}</span>
+          <span style={{ color: '#88BDFF' }}>{email}</span>
           <img src={LinkIcon} alt='link icon' />
         </FlexContainer>
 

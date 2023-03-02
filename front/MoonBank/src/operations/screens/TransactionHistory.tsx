@@ -36,7 +36,7 @@ const TransactionHistory = () => {
           });
 
           const reward = rewards?.find((reward) => reward.idReward === activity.idReward) as Reward;
-          console.log(activity);
+         
           return !reward ? (
             <Activity
               key={activity.id}
@@ -50,7 +50,7 @@ const TransactionHistory = () => {
             />
           ) : (
             <Activity
-              key={activity.id}
+               key={activity.id}
               icon={reward.rewardUrlImage}
               quantity={reward.points}
               serviceDescription={reward.name}

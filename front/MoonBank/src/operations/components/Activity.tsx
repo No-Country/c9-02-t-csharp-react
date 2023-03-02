@@ -23,7 +23,28 @@ export const Activity = ({
   totalPoints,
 }: Props) => {
   const isEnoughPoints = typeItem === 'reward' && (totalPoints as number) >= quantity;
+  let result  
 
+  if (typeItem === 'service') {
+    result = `$ ${quantity} `;
+  } else if (typeItem === 'reward') {
+    if (serviceTitle === 'Deposit') {
+      result = `+ ${quantity} `;
+    } else {
+      result = `${quantity} px`;
+    }
+  } else if (typeItem === 'activity' ) {
+    if ( serviceTitle === 'Deposit') {
+      result = `+ ${quantity} `;
+    } else {
+      result = `- ${quantity} `;
+    }
+ 
+
+  }
+  
+  
+console.log(serviceTitle)
   return (
     <ItemContainer>
       <ItemActivity>
@@ -44,9 +65,9 @@ export const Activity = ({
           </Text>
           <Text
             fontSize='12px'
-            style={{ color: isEnoughPoints ? 'var(--LightGreen)' : 'var(--LightRed)' }}
+            style={{ color:  isEnoughPoints ? 'var(--LightGreen)' : 'var(--LightRed)'  }}
             fontSizeVar={{ large: '10px', medium: '9px', min: '8px' }}>
-            {typeItem === 'service' ? `$ ${quantity} ` : typeItem === 'reward' ? `${quantity} px` : `- ${quantity} `}
+            {result}
           </Text>
         </Box>
       </ItemActivity>
