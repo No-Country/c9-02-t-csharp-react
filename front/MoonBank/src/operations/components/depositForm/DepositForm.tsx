@@ -12,7 +12,7 @@ import {
   LabelInput,
   NavSeparator,
   useForm,
-  useToggle
+  useToggle,
 } from '../../../shared';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 
@@ -42,7 +42,6 @@ export const DepositForm = () => {
   useEffect(() => {
     !login.success && NavigateTo('/', { replace: true, state: { loggedOut: true } });
   }, [login]);
- 
 
   const submitHandler = (data: DepositRequest) => {
     MakeDeposit(data);

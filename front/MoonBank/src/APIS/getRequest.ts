@@ -7,7 +7,7 @@ export const getAccountsList = async (): Promise<Account[]> => {
   return data.result;
 };
 
-export const getAccountById = async (id: string): Promise<Account> => {
+export const getAccountById = async (id: number): Promise<Account> => {
   const { data } = await MoonApi.get(`Accounts/${id}`);
   return data.result;
 };

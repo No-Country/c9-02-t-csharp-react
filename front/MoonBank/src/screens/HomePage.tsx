@@ -1,6 +1,7 @@
 import { Activity, ServicesList } from '../operations/components';
 import { Container, Paper, Title } from '../shared/styles';
 import { getRewardsList, getServicesList, getTransactionHistory } from '../APIS/getRequest';
+import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { useEffect, useState } from "react";
 
 import { Button } from '../shared';
@@ -11,10 +12,11 @@ import { Reward } from '../shared/interfaces/Reward';
 import { Service } from '../shared';
 import { Transaction } from '../shared';
 import electricIcon from '../shared/assets/eletricIcon.svg';
-import { useAppSelector } from "../store/hooks";
+import { retrieveUserByCBU } from '../store/features/loginSlice';
 import { useNavigate } from "react-router";
 
 export const HomePage = () => {
+  const dispatch = useAppDispatch()
   const NavigateTo = useNavigate();
   const { success, balance, cbU_CVU } = useAppSelector((state) => state.login);
   const [services, setServices] = useState<Service[]>([]);
@@ -31,6 +33,8 @@ export const HomePage = () => {
     data2.then((resp) => setActivities(resp));
     const data3 = getRewardsList();
     data3.then((resp) => setRewards(resp))
+    dispatch(retrieveUserByCBU(cbU_CVU))
+    
   }, []);
   return (
     <Container headerHeight='55px' onLogging={success} >
@@ -70,7 +74,6 @@ export const HomePage = () => {
           });
 
           const reward = rewards?.find((reward) => reward.idReward === activity.idReward) as Reward;
-          console.log(activity);
           return !reward ? (
             <Activity
               key={activity.id}
