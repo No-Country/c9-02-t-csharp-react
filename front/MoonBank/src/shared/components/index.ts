@@ -1,5 +1,5 @@
 export { default as DialogBox } from './DialogBox/components/DialogBox';
-export * from './DialogBox/components/DialogBoxTypes.d';
+export * from './DialogBox/components/DialogBoxTypes';
 export * from './DialogBox';
 export * from './DialogBox/styles/DialogBox_Styled';
 export * from './DialogBox/styles/DialogContainer';

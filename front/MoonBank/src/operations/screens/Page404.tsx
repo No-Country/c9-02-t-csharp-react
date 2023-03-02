@@ -8,7 +8,7 @@ const Page404 = () => {
   return (
     <Container headerHeight='55px' onLogging={success}>
       <Paper flexGap='20px'>
-        <FlexContainer flexWidth='100%' marginBox='0px' flexGap='0px'>
+        <FlexContainer flexWidth='100%' marginBox='0px' flexGap='2px'>
           <Title alignSelf='center' fontSize='44px' textColor='var(--RedInvalid)'>
             404
           </Title>
@@ -17,7 +17,7 @@ const Page404 = () => {
           </SubTitle>
         </FlexContainer>
 
-        <FlexContainer flexWidth='100%' marginBox='0px'>
+        <FlexContainer flexWidth='100%' marginBox='0px' flexGap='2px'>
           {!success ? (
             <>
               <Title fontSize='24px' alignSelf='center' textMargin='0'>
@@ -38,7 +38,7 @@ const Page404 = () => {
               <Title fontSize='24px' alignSelf='center' textMargin='0'>
                 👋
               </Title>
-              <Text>IIt seems you are lost. ¿Or are you just looking around?</Text>
+              <Text>It seems you are lost. ¿Or are you just looking around?</Text>
               <Text>Here is a link below if you want to come back home.</Text>
               <LinkStyled To='/home' Label='Home Page' fontSize='18px' color='var(--BlueSL)' />
             </>
