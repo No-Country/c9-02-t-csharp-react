@@ -7,6 +7,7 @@ export interface Account {
   balance: number;
   rewardPoints: number;
   success: boolean;
+  accountUrlImage: string;
 }
 
 export interface Login {

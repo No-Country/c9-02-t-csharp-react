@@ -1,24 +1,12 @@
-import ShowCbu from '../../operations/components/ShowCbu';
-import {
-  Container,
-  Paper,
-  Title,
-  FlexContainer,
-  Avatar,
-  Text,
-  UserInfoContainer,
-  FlexRowContainer,
-  NavSeparator,
-  InfoContainer,
-} from '../../shared';
+import { Container, Paper, Title, FlexContainer, Avatar, NavSeparator, InfoContainer } from '../../shared';
 import { useAppSelector } from '../../store/hooks';
-import PenIcon from '../../shared/Icons/PenIcon.svg';
 import LinkIcon from '../../shared/Icons/LinkIcon.svg';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router';
 
 const Profile = () => {
-  const { name, lastName, alias, cbU_CVU, success } = useAppSelector((state) => state.login);
+  const { name, lastName, alias, cbU_CVU, success, accountUrlImage } = useAppSelector((state) => state.login);
+
   const NavigateTo = useNavigate();
 
   useEffect(() => {
@@ -30,7 +18,7 @@ const Profile = () => {
       <Paper flexGap='20px'>
         <Title>Profile</Title>
         <FlexContainer flexGap='3px'>
-          <Avatar src='https://i.pravatar.cc' alt='' />
+          <Avatar src={accountUrlImage} alt='profile picture' />
           <h3>
             {name} {lastName}
           </h3>
