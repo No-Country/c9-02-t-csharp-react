@@ -1,5 +1,5 @@
 export interface Service {
-  idAccountService: number;
+  idService: number;
   name: string;
   amount: number;
   urlFotoService?: number;
