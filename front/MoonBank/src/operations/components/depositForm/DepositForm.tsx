@@ -1,24 +1,25 @@
-import { useAppSelector, useAppDispatch } from '../../../store/hooks';
-import { MakeDeposit } from '../../../APIS/TransactionRequests';
-import { useEffect } from 'react';
 import {
+  Button,
+  DepositRequest,
   DialogBox,
   DialogBoxProps,
-  useToggle,
-  useForm,
-  DepositRequest,
-  Input,
-  Button,
   FlexRowContainer,
-  Text,
   FormContainer,
-  LabelInput,
-  Label,
   GridContainer,
-  NavSeparator,
   InfoContainer,
+  Input,
+  Label,
+  LabelInput,
+  NavSeparator,
+  Text,
+  useForm,
+  useToggle,
 } from '../../../shared';
+import { useAppDispatch, useAppSelector } from '../../../store/hooks';
+
+import { MakeDeposit } from '../../../APIS/TransactionRequests';
 import { retrieveUser } from '../../../store/features/loginSlice';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router';
 
 export const DepositForm = () => {
@@ -42,7 +43,7 @@ export const DepositForm = () => {
   useEffect(() => {
     !login.success && NavigateTo('/', { replace: true, state: { loggedOut: true } });
     dispatch(retrieveUser(login.alias));
-  }, []);
+  }, [login]);
 
   const submitHandler = (data: DepositRequest) => {
     MakeDeposit(data);
