@@ -14,6 +14,7 @@ const initialState: Account = {
   lastName: '',
   success: false,
   rewardPoints: 0,
+  accountUrlImage: ''
 };
 
 // const dispatch = useAppDispatch()
