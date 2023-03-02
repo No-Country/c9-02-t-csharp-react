@@ -6,6 +6,7 @@ type GridContainerProps = {
   height?: string;
   directionTemplate?: string;
   directionAuto?: string;
+  gridGap?: string;
 };
 
 export const GridContainer = styled.div<GridContainerProps>`
@@ -14,6 +15,13 @@ export const GridContainer = styled.div<GridContainerProps>`
   height: ${({ height }) => (height ? height : 'min-content')};
   align-items: center;
   justify-items: center;
+
+  ${({ gridGap }) => css`
+    ${gridGap &&
+    css`
+      gap: ${gridGap};
+    `}
+  `}
 
   ${({ direction, directionTemplate, directionAuto }) =>
     direction === 'row'
