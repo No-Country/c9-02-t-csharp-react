@@ -23,25 +23,29 @@ export const Activity = ({
   totalPoints,
 }: Props) => {
   const isEnoughPoints = typeItem === 'reward' && (totalPoints as number) >= quantity;
-  let result  
+  
+  let result;
+let color;
 
-  if (typeItem === 'service') {
+switch (typeItem) {
+  case 'service':
     result = `$ ${quantity} `;
-  } else if (typeItem === 'reward') {
-    if (serviceTitle === 'Deposit') {
-      result = `+ ${quantity} `;
-    } else {
-      result = `${quantity} px`;
-    }
-  } else if (typeItem === 'activity' ) {
-    if ( serviceTitle === 'Deposit') {
-      result = `+ ${quantity} `;
-    } else {
-      result = `- ${quantity} `;
-    }
- 
+    color = 'var(--LightRed)';
+    break;
+  case 'reward':
+    result = serviceTitle === 'Deposit' ? `+ ${quantity} ` : `${quantity} px`;
+    color = serviceTitle === 'Deposit' ? 'var(--LightGreen)' : 'var(--LightRed)';
+    break;
+  case 'activity':
+    result = serviceTitle === 'Deposit' ? `+ ${quantity} ` : `- ${quantity} `;
+    color = serviceTitle === 'Deposit' ? 'var(--LightGreen)' : 'var(--LightRed)';
+    break;
+  default:
+    result = '';
+    color = '';
+}
 
-  }
+
   
   
   return (
@@ -64,7 +68,7 @@ export const Activity = ({
           </Text>
           <Text
             fontSize='12px'
-            style={{ color:  isEnoughPoints ? 'var(--LightGreen)' : 'var(--LightRed)'  }}
+            style={{ color:  isEnoughPoints ? 'var(--LightGreen)' : `${color}` }}
             fontSizeVar={{ large: '10px', medium: '9px', min: '8px' }}>
             {result}
           </Text>
