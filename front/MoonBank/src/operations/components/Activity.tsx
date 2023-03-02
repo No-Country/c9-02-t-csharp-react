@@ -1,4 +1,4 @@
-import { Box, Button, ItemActivity, Text, ItemContainer } from '../../shared/styles';
+import { Box, Button, ItemActivity, ItemContainer, Text } from '../../shared/styles';
 
 interface Props {
   icon: string;
@@ -8,6 +8,7 @@ interface Props {
   quantity: number;
   typeItem: 'reward' | 'service' | 'activity';
   totalPoints?: number;
+  idService?: number;
   transaction?: () => void;
 }
 
