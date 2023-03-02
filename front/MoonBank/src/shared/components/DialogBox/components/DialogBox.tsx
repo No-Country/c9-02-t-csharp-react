@@ -1,9 +1,10 @@
+import { IoHelpCircle, IoWarning } from 'react-icons/io5';
+
+import { DialogBoxProps } from './DialogBoxTypes';
+import { DialogBox_Styled } from '../styles/DialogBox_Styled';
+import { DialogContainer } from '../styles/DialogContainer';
 import { MouseEventHandler } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { DialogBox_Styled } from '../styles/DialogBox_Styled';
-import { DialogBoxProps } from './DialogBoxTypes';
-import { IoHelpCircle, IoWarning } from 'react-icons/io5';
-import { DialogContainer } from '../styles/DialogContainer';
 
 const DialogBox = (props: DialogBoxProps) => {
   const { onConfirmAction, onCancelAction } = props;
@@ -48,9 +49,11 @@ const DialogBox = (props: DialogBoxProps) => {
           <button className='DB__Btn DB__BtnConfirm' onClick={DialogConfirmHandler}>
             Confirm
           </button>
-          <button className='DB__Btn DB__BtnCancel' onClick={DialogCancelHandler}>
-            Cancel
-          </button>
+          {props.dialogType !== 'information' && (
+            <button className='DB__Btn DB__BtnCancel' onClick={DialogCancelHandler}>
+              Cancel
+            </button>
+          )}
         </div>
       </DialogBox_Styled>
     </DialogContainer>

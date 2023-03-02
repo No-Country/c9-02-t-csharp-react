@@ -22,7 +22,7 @@ const initialState: Account = {
 export const retrieveUser = createAsyncThunk('loginForm/retrieve', async (alias: string): Promise<Account> => {
   
   const account = await getAccountByAlias(alias);
-  
+  setUser(account)
   return account;
 });
 

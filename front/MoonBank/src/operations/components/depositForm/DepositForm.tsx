@@ -11,9 +11,8 @@ import {
   Label,
   LabelInput,
   NavSeparator,
-  Text,
   useForm,
-  useToggle,
+  useToggle
 } from '../../../shared';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 
@@ -42,11 +41,12 @@ export const DepositForm = () => {
   };
   useEffect(() => {
     !login.success && NavigateTo('/', { replace: true, state: { loggedOut: true } });
-    dispatch(retrieveUser(login.alias));
   }, [login]);
+ 
 
   const submitHandler = (data: DepositRequest) => {
     MakeDeposit(data);
+    dispatch(retrieveUser(login.alias));
     toggleChange(false);
     console.log('subido');
   };
@@ -56,7 +56,7 @@ export const DepositForm = () => {
     title: 'Confirm transfer',
     message: 'Would you like to confirm this transaction?',
     extraMessage: 'This action cannot be reverted after confirmation!',
-    to: '/deposit',
+    to: '/home',
     onConfirmAction: () => submitHandler(dataForm),
     onCancelAction: () => toggleChange(false),
   };
@@ -72,7 +72,7 @@ export const DepositForm = () => {
             name='cardNumber'
             value={cardNumber}
             onChange={handleInputChange}
-            type='text'
+            type='number'
             placeholder='***** ***** *****'
             fontSize='12px'
           />
@@ -130,7 +130,7 @@ export const DepositForm = () => {
             name='amount'
             value={amount}
             onChange={handleInputChange}
-            type='text'
+            type='number'
             placeholder='150,0'
             fontSize='12px'
           />

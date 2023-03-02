@@ -35,7 +35,7 @@ export const ServicesList = ({ services }: Props) => {
     title: 'Confirm transfer',
     message: 'Would you like to confirm this transaction?',
     extraMessage: 'This action cannot be reverted after confirmation!',
-    to: '/balance',
+    to: '/home',
     onConfirmAction: () => handlePerform(),
     onCancelAction: () => toggleChange(false),
   };
