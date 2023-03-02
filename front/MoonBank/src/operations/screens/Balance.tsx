@@ -8,19 +8,27 @@ import {
   Paper,
   Title
 } from '../../shared';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
 
-import { useAppSelector } from '../../store/hooks';
+import { retrieveUserByCBU } from '../../store/features/loginSlice';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router';
 
 export const Balance = () => {
+  const dispatch = useAppDispatch()
   const { login } = useAppSelector((state) => state);
 
   const NavigateTo = useNavigate();
 
   useEffect(() => {
     !login.success && NavigateTo('/', { replace: true, state: { loggedOut: true } });
-  }, [login]); 
+  }, []); 
+  
+  useEffect(() => {
+    dispatch(retrieveUserByCBU(login.cbU_CVU))
+  }, []); 
+
+  
 
   return (
     <Container headerHeight='55px' onLogging={login.success}>
