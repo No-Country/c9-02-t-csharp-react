@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 
 type SubTitleProps = {
   textColor?: string;
+  fontSize?: string;
   alignSelf?:
     | 'auto'
     | 'baseline'
@@ -17,8 +18,9 @@ type SubTitleProps = {
 };
 
 export const SubTitle = styled.h3<SubTitleProps>`
-  ${({ alignSelf, textColor }) => css`
+  ${({ alignSelf, textColor, fontSize }) => css`
     align-self: ${alignSelf ? alignSelf : 'flex-start'};
     color: ${textColor ? textColor : 'var(--White)'};
+    font-size: ${fontSize ? fontSize : '17px'};
   `}
 `;

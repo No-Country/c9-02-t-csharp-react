@@ -15,6 +15,7 @@ export interface InfoContainerProps extends ShowHideButtonProps {
   infoSubtitle?: string;
   initShowState?: boolean;
   fontDataSize?: string;
+  fontSubtitleSize?: string;
   fontWeight?:
     | 'Thin_100'
     | 'ExtraLight_200'
