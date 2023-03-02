@@ -1,11 +1,12 @@
+import { Container, Paper, Reward, Title } from '../../shared';
 import { useEffect, useState } from 'react';
-import { Container, Paper, Title, Reward } from '../../shared';
-import { getRewardsList } from '../../APIS/getRequest';
+
 import { Activity } from '../components/Activity';
-import { useAppSelector } from '../../store/hooks';
 import { RedeemReward } from '../../APIS/TransactionRequests';
-import { useAppDispatch } from '../../store/hooks';
+import { getRewardsList } from '../../APIS/getRequest';
 import { retrieveUser } from '../../store/features/loginSlice';
+import { useAppDispatch } from '../../store/hooks';
+import { useAppSelector } from '../../store/hooks';
 import { useNavigate } from 'react-router';
 
 const Rewards = () => {
