@@ -1,4 +1,5 @@
 import { DepositRequest, PayRequest, RedeemRewardRequest, TransferRequest } from '../shared/interfaces';
+
 import MoonApi from './Axios';
 
 export const MakeDeposit = async (depositReq: DepositRequest) => {
@@ -11,7 +12,8 @@ export const MakeDeposit = async (depositReq: DepositRequest) => {
 
 export const PayService = async (payReq: PayRequest) => {
   try {
-    await MoonApi.post('Transactions/MakeTransaction', payReq);
+    console.log(payReq)
+    return await MoonApi.post('Transactions/MakeTransaction', payReq);
   } catch (error) {
     console.log(error);
   }

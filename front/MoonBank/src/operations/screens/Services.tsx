@@ -1,11 +1,9 @@
 import { Container, Paper, Title } from '../../shared/styles';
 import { useEffect, useState } from 'react';
 
-import { Activity } from '../components';
 import { Service } from '../../shared/interfaces';
-import electricIcon from '../../shared/assets/eletricIcon.svg';
+import { ServicesList } from '../components';
 import { getServicesList } from '../../APIS/getRequest';
-import { setIconService } from '../../shared/utils';
 import { useAppSelector } from '../../store/hooks';
 import { useNavigate } from 'react-router';
 
@@ -24,18 +22,7 @@ export const Services = () => {
     <Container headerHeight='55px' onLogging={success}>
       <Paper>
         <Title>Services</Title>
-
-        {services.map((service, index) => (
-          <Activity
-            key={index}
-            icon={setIconService(service.idService)!}
-            quantity={service.amount}
-            serviceDescription={`Montly ${service.name} tax`}
-            serviceTitle={service.name}
-            transaction={() => {}}
-            typeItem='service'
-          />
-        ))}
+        <ServicesList services={services} />
       </Paper>
     </Container>
   );

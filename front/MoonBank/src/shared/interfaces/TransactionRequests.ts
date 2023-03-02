@@ -9,6 +9,8 @@ export interface PayRequest {
   typeTransaction: 1;
   idSourceAccount: number;
   idService: number;
+  destinationAccountCBU_CVU: string;
+
 }
 
 export interface TransferRequest {
