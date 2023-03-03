@@ -25,12 +25,12 @@ namespace Services
         }
 
 
-        public ResponseDTO GetTransactionsHistory(int idAccount)
+        public ResponseDTO GetTransactionsHistory(string CBU_CVU)
         {
             ResponseDTO response = new ResponseDTO();
             try
             {
-                response.Result = _transactionRepository.GetTransactionsHistory(idAccount);
+                response.Result = _transactionRepository.GetTransactionsHistory(CBU_CVU);
                 response.Success = true;
             }
             catch (TransactionExceptions transactionException)

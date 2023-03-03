@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "/M7vPyu+0BxqINwAkCJnw+TYfX6J6ypf5Sl0fy7q3av9v/QUb6ptWe/JAA7jjE1dCMUnQYK5x4lqThtE74+hbw==",
+  "dgSpecHash": "OXHeXlLq8M2D6AacynnUlEvEBzcucKo8Ryi0+n22P/UsppRRBmfBqS7QL0hzMY99lw+UhdDf7ZMJ2uZp7+nO6w==",
   "success": true,
   "projectFilePath": "C:\\Users\\Windows11\\Desktop\\MoonBank\\c9-02-t-csharp-react\\back\\MoonBankAPI\\DataAccess\\DataAccess.csproj",
   "expectedPackageFiles": [
@@ -33,6 +33,7 @@
     "C:\\Users\\Windows11\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\Windows11\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\Windows11\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
+    "C:\\Users\\Windows11\\.nuget\\packages\\newtonsoft.json\\13.0.2\\newtonsoft.json.13.0.2.nupkg.sha512",
     "C:\\Users\\Windows11\\.nuget\\packages\\system.collections.immutable\\6.0.0\\system.collections.immutable.6.0.0.nupkg.sha512",
     "C:\\Users\\Windows11\\.nuget\\packages\\system.configuration.configurationmanager\\4.7.0\\system.configuration.configurationmanager.4.7.0.nupkg.sha512",
     "C:\\Users\\Windows11\\.nuget\\packages\\system.diagnostics.diagnosticsource\\6.0.0\\system.diagnostics.diagnosticsource.6.0.0.nupkg.sha512",

@@ -5,12 +5,14 @@ C:\Users\Windows11\Desktop\MoonBank\c9-02-t-csharp-react\back\MoonBankAPI\MoonBa
 C:\Users\Windows11\Desktop\MoonBank\c9-02-t-csharp-react\back\MoonBankAPI\MoonBankAPI\obj\Release\net6.0\PubTmp\Out\MoonBankAPI.runtimeconfig.json
 C:\Users\Windows11\Desktop\MoonBank\c9-02-t-csharp-react\back\MoonBankAPI\MoonBankAPI\obj\Release\net6.0\PubTmp\Out\MoonBankAPI.pdb
 C:\Users\Windows11\Desktop\MoonBank\c9-02-t-csharp-react\back\MoonBankAPI\MoonBankAPI\obj\Release\net6.0\PubTmp\Out\Microsoft.Data.SqlClient.dll
+C:\Users\Windows11\Desktop\MoonBank\c9-02-t-csharp-react\back\MoonBankAPI\MoonBankAPI\obj\Release\net6.0\PubTmp\Out\Microsoft.DotNet.PlatformAbstractions.dll
 C:\Users\Windows11\Desktop\MoonBank\c9-02-t-csharp-react\back\MoonBankAPI\MoonBankAPI\obj\Release\net6.0\PubTmp\Out\Microsoft.EntityFrameworkCore.dll
 C:\Users\Windows11\Desktop\MoonBank\c9-02-t-csharp-react\back\MoonBankAPI\MoonBankAPI\obj\Release\net6.0\PubTmp\Out\Microsoft.EntityFrameworkCore.Abstractions.dll
 C:\Users\Windows11\Desktop\MoonBank\c9-02-t-csharp-react\back\MoonBankAPI\MoonBankAPI\obj\Release\net6.0\PubTmp\Out\Microsoft.EntityFrameworkCore.Relational.dll
 C:\Users\Windows11\Desktop\MoonBank\c9-02-t-csharp-react\back\MoonBankAPI\MoonBankAPI\obj\Release\net6.0\PubTmp\Out\Microsoft.EntityFrameworkCore.SqlServer.dll
 C:\Users\Windows11\Desktop\MoonBank\c9-02-t-csharp-react\back\MoonBankAPI\MoonBankAPI\obj\Release\net6.0\PubTmp\Out\Microsoft.Extensions.Caching.Memory.dll
 C:\Users\Windows11\Desktop\MoonBank\c9-02-t-csharp-react\back\MoonBankAPI\MoonBankAPI\obj\Release\net6.0\PubTmp\Out\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\Windows11\Desktop\MoonBank\c9-02-t-csharp-react\back\MoonBankAPI\MoonBankAPI\obj\Release\net6.0\PubTmp\Out\Microsoft.Extensions.DependencyModel.dll
 C:\Users\Windows11\Desktop\MoonBank\c9-02-t-csharp-react\back\MoonBankAPI\MoonBankAPI\obj\Release\net6.0\PubTmp\Out\Microsoft.Identity.Client.dll
 C:\Users\Windows11\Desktop\MoonBank\c9-02-t-csharp-react\back\MoonBankAPI\MoonBankAPI\obj\Release\net6.0\PubTmp\Out\Microsoft.IdentityModel.JsonWebTokens.dll
 C:\Users\Windows11\Desktop\MoonBank\c9-02-t-csharp-react\back\MoonBankAPI\MoonBankAPI\obj\Release\net6.0\PubTmp\Out\Microsoft.IdentityModel.Logging.dll
@@ -19,6 +21,7 @@ C:\Users\Windows11\Desktop\MoonBank\c9-02-t-csharp-react\back\MoonBankAPI\MoonBa
 C:\Users\Windows11\Desktop\MoonBank\c9-02-t-csharp-react\back\MoonBankAPI\MoonBankAPI\obj\Release\net6.0\PubTmp\Out\Microsoft.IdentityModel.Tokens.dll
 C:\Users\Windows11\Desktop\MoonBank\c9-02-t-csharp-react\back\MoonBankAPI\MoonBankAPI\obj\Release\net6.0\PubTmp\Out\Microsoft.OpenApi.dll
 C:\Users\Windows11\Desktop\MoonBank\c9-02-t-csharp-react\back\MoonBankAPI\MoonBankAPI\obj\Release\net6.0\PubTmp\Out\Microsoft.Win32.SystemEvents.dll
+C:\Users\Windows11\Desktop\MoonBank\c9-02-t-csharp-react\back\MoonBankAPI\MoonBankAPI\obj\Release\net6.0\PubTmp\Out\Newtonsoft.Json.dll
 C:\Users\Windows11\Desktop\MoonBank\c9-02-t-csharp-react\back\MoonBankAPI\MoonBankAPI\obj\Release\net6.0\PubTmp\Out\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\Windows11\Desktop\MoonBank\c9-02-t-csharp-react\back\MoonBankAPI\MoonBankAPI\obj\Release\net6.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\Windows11\Desktop\MoonBank\c9-02-t-csharp-react\back\MoonBankAPI\MoonBankAPI\obj\Release\net6.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerUI.dll

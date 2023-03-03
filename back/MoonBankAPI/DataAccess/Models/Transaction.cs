@@ -5,7 +5,9 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace DataAccess.Models
@@ -16,10 +18,10 @@ namespace DataAccess.Models
         public int IdTransaction { get; set; }
 
         [Required]
-        [EnumDataType(typeof(TypeTransaction))]
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         public TypeTransaction TypeTransaction { get; set; }
 
-        [EnumDataType(typeof(TypeDeposit))]
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         public TypeDeposit? TypeDeposit { get; set; }
 
         [Required]
@@ -47,7 +49,6 @@ namespace DataAccess.Models
 
     public enum TypeTransaction
     {
-       
         Deposit,
         PayService,
         Transfer,

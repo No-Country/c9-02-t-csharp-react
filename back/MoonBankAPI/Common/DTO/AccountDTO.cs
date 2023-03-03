@@ -21,7 +21,6 @@ namespace Common.DTO
         public string LastName { get; set; }
 
         [Required]
-        [JsonIgnore]
         public string Email { get; set; }
 
         [Required]
@@ -31,11 +30,11 @@ namespace Common.DTO
         public string Alias { get; set; }
 
         public string CBU_CVU { get; set; }
-
-        
+       
         public decimal? Balance { get; set; }
-
-        
+     
         public int RewardPoints { get; set; }
+
+        public string AccountUrlImage { get; set; }
     }
 }

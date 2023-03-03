@@ -22,6 +22,7 @@ namespace MoonBankAPI.Controllers
         public ActionResult<ResponseDTO> GetAllRewards()
         {
             var response = _rewardService.GetAllRewards();
+
             return Ok(response);
         }
 
@@ -29,6 +30,7 @@ namespace MoonBankAPI.Controllers
         public ActionResult<ResponseDTO> GetRewardById(int idReward)
         {
             var response = _rewardService.GetRewardById(idReward);
+
             if (response.Success)
             {
                 return Ok(response);
