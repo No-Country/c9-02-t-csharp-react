@@ -1,7 +1,10 @@
 import { Box, Button, ItemActivity, ItemContainer, Text } from '../../shared/styles';
 
+import arrowGreenIcon from '../../shared/assets/arrowInIcon.svg'
+import arrowRedIcon from '../../shared/assets/arrowOutIcon.svg'
+
 interface Props {
-  icon: string;
+  icon?: string;
   serviceTitle: string;
   serviceDescription: string;
   date?: string;
@@ -10,6 +13,9 @@ interface Props {
   totalPoints?: number;
   idService?: number;
   transaction?: () => void;
+  idDestinationAccount?: number;
+  typeTransaction?: string;
+  idAccount?: number
 }
 
 export const Activity = ({
@@ -21,33 +27,40 @@ export const Activity = ({
   transaction,
   typeItem,
   totalPoints,
+  idDestinationAccount,
+  typeTransaction,
+  idAccount
 }: Props) => {
   const isEnoughPoints = typeItem === 'reward' && (totalPoints as number) >= quantity;
-  
+
   let result;
-let color;
+  let color;
 
-switch (typeItem) {
-  case 'service':
-    result = `$ ${quantity} `;
-    color = 'var(--LightRed)';
-    break;
-  case 'reward':
-    result = serviceTitle === 'Deposit' ? `+ ${quantity} ` : `${quantity} px`;
-    color = serviceTitle === 'Deposit' ? 'var(--LightGreen)' : 'var(--LightRed)';
-    break;
-  case 'activity':
-    result = serviceTitle === 'Deposit' ? `+ ${quantity} ` : `- ${quantity} `;
-    color = serviceTitle === 'Deposit' ? 'var(--LightGreen)' : 'var(--LightRed)';
-    break;
-  default:
-    result = '';
-    color = '';
-}
+  switch (typeTransaction) {
+    case 'PayService':
+      result = `$ ${quantity} `;
+      color = 'var(--LightRed)';
+      serviceDescription = ''
+      break;
+    case 'Reward':
+      result = ` ${quantity} px`;
+      color =  'var(--LightRed)';
+      break;
+    case 'Deposit':
+      result = `$ ${quantity} `
+      color =  'var(--LightGreen)' 
+      break;
+    case 'Transfer':
+      result = `$ ${quantity} `
+      color = idDestinationAccount === idAccount ? 'var(--LightGreen)' : 'var(--LightRed)'
+      icon = idDestinationAccount === idAccount ? arrowGreenIcon : arrowRedIcon
+      serviceDescription = ''
+      break
+    default:
+      result = '';
+      color = '';
+  }
 
-
-  
-  
   return (
     <ItemContainer>
       <ItemActivity>
@@ -68,7 +81,7 @@ switch (typeItem) {
           </Text>
           <Text
             fontSize='12px'
-            style={{ color:  isEnoughPoints ? 'var(--LightGreen)' : `${color}` }}
+            style={{ color: isEnoughPoints ? 'var(--LightGreen)' : `${color}` }}
             fontSizeVar={{ large: '10px', medium: '9px', min: '8px' }}>
             {result}
           </Text>
