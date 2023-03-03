@@ -61,7 +61,7 @@ export const ServicesList = ({ services }: Props) => {
       {services.map((service, index) => (
         <Activity
           key={index}
-          icon={setIconService(service.idService)!}
+          // icon={setIconService(service.idService)!}
           quantity={service.amount}
           serviceDescription={`Monthly ${service.name} tax`}
           serviceTitle={service.name}
