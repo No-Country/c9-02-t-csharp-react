@@ -51,7 +51,7 @@ export const ServicesList = ({ services }: Props) => {
           key={index}
           icon={setIconService(service.idService)!}
           quantity={service.amount}
-          serviceDescription={`Montly ${service.name} tax`}
+          serviceDescription={`Monthly ${service.name} tax`}
           serviceTitle={service.name}
           transaction={() => setTransaction(service.idService)}
           typeItem='service'
