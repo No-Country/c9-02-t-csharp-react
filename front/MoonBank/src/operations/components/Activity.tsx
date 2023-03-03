@@ -1,7 +1,8 @@
 import { Box, Button, ItemActivity, ItemContainer, Text } from '../../shared/styles';
 
-import arrowGreenIcon from '../../shared/assets/arrowInIcon.svg'
-import arrowRedIcon from '../../shared/assets/arrowOutIcon.svg'
+import arrowGreenIcon from '../../shared/assets/arrowInIcon.svg';
+import arrowRedIcon from '../../shared/assets/arrowOutIcon.svg';
+import { setIconService } from '../../shared/utils';
 
 interface Props {
   icon?: string;
@@ -15,7 +16,7 @@ interface Props {
   transaction?: () => void;
   idDestinationAccount?: number;
   typeTransaction?: string;
-  idAccount?: number
+  idAccount?: number;
 }
 
 export const Activity = ({
@@ -29,7 +30,8 @@ export const Activity = ({
   totalPoints,
   idDestinationAccount,
   typeTransaction,
-  idAccount
+  idAccount,
+  idService,
 }: Props) => {
   const isEnoughPoints = typeItem === 'reward' && (totalPoints as number) >= quantity;
 
@@ -40,23 +42,26 @@ export const Activity = ({
     case 'PayService':
       result = `$ ${quantity} `;
       color = 'var(--LightRed)';
-      serviceDescription = ''
+      serviceDescription = '';
+      icon = typeItem === 'activity' ? arrowRedIcon : setIconService(idService!);
       break;
     case 'Reward':
       result = ` ${quantity} px`;
-      color =  'var(--LightRed)';
+      color = 'var(--LightRed)';
+      icon = arrowRedIcon;
       break;
     case 'Deposit':
-      result = `$ ${quantity} `
-      color = 'var(--LightGreen)' 
-      serviceDescription = ''
+      result = `$ ${quantity} `;
+      color = 'var(--LightGreen)';
+      serviceDescription = '';
+      icon = arrowGreenIcon;
       break;
     case 'Transfer':
-      result = `$ ${quantity} `
-      color = idDestinationAccount === idAccount ? 'var(--LightGreen)' : 'var(--LightRed)'
-      icon = idDestinationAccount === idAccount ? arrowGreenIcon : arrowRedIcon
-      serviceDescription = ''
-      break
+      result = `$ ${quantity} `;
+      color = idDestinationAccount === idAccount ? 'var(--LightGreen)' : 'var(--LightRed)';
+      icon = idDestinationAccount === idAccount ? arrowGreenIcon : arrowRedIcon;
+      serviceDescription = '';
+      break;
     default:
       result = '';
       color = '';

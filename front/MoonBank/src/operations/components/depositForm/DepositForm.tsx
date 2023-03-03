@@ -26,7 +26,7 @@ export const DepositForm = () => {
   const dispatch = useAppDispatch();
   const { login } = useAppSelector((state) => state);
   const { show, toggleChange } = useToggle();
-  const [showDialogConfirmation, setShowDialogConfirmation] = useState(false)
+  const [showDialogConfirmation, setShowDialogConfirmation] = useState(false);
   const { handleInputChange, ResetForm, cardNumber, cardExpireDate, cardCvc, cardHolderName, amount } = useForm({
     cardNumber: '',
     cardExpireDate: '',
@@ -48,7 +48,7 @@ export const DepositForm = () => {
     MakeDeposit(data);
     dispatch(retrieveUser(login.alias));
     toggleChange(false);
-    setShowDialogConfirmation(true)
+    setShowDialogConfirmation(true);
   };
   const props: DialogBoxProps = {
     dialogType: 'warning',
@@ -58,8 +58,8 @@ export const DepositForm = () => {
     extraMessage: 'This action cannot be reverted after confirmation!',
     to: '',
     onConfirmAction: () => {
-      setShowDialogConfirmation(true)
-      submitHandler(dataForm)
+      setShowDialogConfirmation(true);
+      submitHandler(dataForm);
     },
     onCancelAction: () => toggleChange(false),
   };
@@ -70,8 +70,8 @@ export const DepositForm = () => {
     title: 'Successful deposit',
     message: `Your deposit of $ ${amount} has been successfully completed.`,
     to: '/home',
-    onConfirmAction: () => setShowDialogConfirmation(false)
-  } 
+    onConfirmAction: () => setShowDialogConfirmation(false),
+  };
 
   return (
     <>

@@ -8,4 +8,5 @@ export { default as SendMoneyForm } from './SendMoneyForm/SendMoneyForm';
 export * from './SendMoneyForm/SendMoneyFormData';
 export * from './ServicesList/ServicesList';
 export { default as ShowCbu } from './ShowCbu';
+export * from './TransactionsList/TransactionsList';
 export * from './depositForm/DepositForm';
