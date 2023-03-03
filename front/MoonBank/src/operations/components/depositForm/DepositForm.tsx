@@ -120,7 +120,7 @@ export const DepositForm = () => {
         </GridContainer>
 
         <LabelInput contentDirection='column'>
-          <Label width='100%'>CARD HOLDER NAME</Label>
+          <Label width='100%'>CARD HOLDER NAME:</Label>
           <Input
             name='cardHolderName'
             value={cardHolderName}
@@ -135,7 +135,6 @@ export const DepositForm = () => {
 
         <FlexRowContainer withAmount>
           <Label fontSize='15px' width='100%'>
-            {' '}
             Amount to Deposit $
           </Label>
           <Input
@@ -153,10 +152,10 @@ export const DepositForm = () => {
         <InfoContainer
           canHide={false}
           initShowState={true}
-          infoSubtitle='Available Deposit Today:'
+          infoSubtitle='Deposit Limit per Transaction:'
           fontDataSize='16px'
           styleProps={{ buttonHeight: '35px', buttonWidth: 'auto', buttonPadding: '6px' }}>
-          {login.balance}
+          {`$ 50000`}
         </InfoContainer>
 
         <FlexRowContainer flexGap='5px'>

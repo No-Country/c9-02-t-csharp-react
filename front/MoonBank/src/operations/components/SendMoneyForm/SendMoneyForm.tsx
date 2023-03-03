@@ -142,10 +142,19 @@ const SendMoneyForm = () => {
         <InfoContainer
           canHide={false}
           initShowState={true}
-          infoSubtitle='Available Transfer Today:'
+          infoSubtitle='Available Balance to Transfer:'
           fontDataSize='16px'
           styleProps={{ buttonHeight: '35px', buttonWidth: 'auto', buttonPadding: '6px' }}>
-          {login.balance}
+          {`$ ${login.balance.toString()}`}
+        </InfoContainer>
+
+        <InfoContainer
+          canHide={false}
+          initShowState={true}
+          infoSubtitle='Transfer Limit per Transaction:'
+          fontDataSize='16px'
+          styleProps={{ buttonHeight: '35px', buttonWidth: 'auto', buttonPadding: '6px' }}>
+          {`$ 50000`}
         </InfoContainer>
 
         <FlexRowContainer marginBox='0' flexGap='5px'>
