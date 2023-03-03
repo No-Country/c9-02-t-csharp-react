@@ -2,7 +2,7 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <_PublishTargetUrl>ftp://192.52.242.121/www.MoonBank.somee.com</_PublishTargetUrl>
-    <History>True|2023-03-01T23:26:02.3422248Z;True|2023-02-27T23:55:09.2993150-03:00;False|2023-02-27T23:42:00.8205492-03:00;False|2023-02-27T23:39:52.9013888-03:00;False|2023-02-27T23:32:18.4488916-03:00;False|2023-02-27T23:29:02.4822932-03:00;True|2023-02-27T22:06:32.7446356-03:00;False|2023-02-27T22:05:11.1466920-03:00;False|2023-02-27T22:01:01.4720694-03:00;False|2023-02-27T20:22:32.6156545-03:00;False|2023-02-27T20:18:47.9551412-03:00;False|2023-02-27T20:18:11.3645346-03:00;False|2023-02-27T20:17:28.5056666-03:00;False|2023-02-27T20:14:58.2010896-03:00;False|2023-02-27T20:12:36.0566725-03:00;False|2023-02-27T20:11:54.8818406-03:00;False|2023-02-27T20:10:24.0119157-03:00;False|2023-02-27T20:10:14.2916068-03:00;</History>
+    <History>True|2023-03-03T20:50:55.1222514Z;True|2023-03-03T13:35:26.2825804-03:00;False|2023-03-03T13:32:27.0340467-03:00;False|2023-03-03T13:07:36.8012677-03:00;False|2023-03-03T12:55:41.9151471-03:00;False|2023-03-03T12:32:13.8480467-03:00;False|2023-03-03T12:31:46.4945889-03:00;False|2023-03-03T12:15:40.9721508-03:00;False|2023-03-03T11:49:06.1477712-03:00;False|2023-03-02T22:19:09.6785071-03:00;False|2023-03-02T17:28:42.3725030-03:00;False|2023-03-02T16:04:56.4700730-03:00;False|2023-03-02T15:56:33.5795546-03:00;False|2023-03-02T13:47:25.8417879-03:00;False|2023-03-02T13:27:54.0033137-03:00;False|2023-03-02T01:21:15.7254641-03:00;False|2023-03-01T23:03:18.7491143-03:00;False|2023-03-01T22:18:37.5659054-03:00;False|2023-03-01T22:15:25.8094331-03:00;False|2023-03-01T22:12:49.0858822-03:00;True|2023-03-01T20:26:02.3422248-03:00;True|2023-02-27T23:55:09.2993150-03:00;False|2023-02-27T23:42:00.8205492-03:00;False|2023-02-27T23:39:52.9013888-03:00;False|2023-02-27T23:32:18.4488916-03:00;False|2023-02-27T23:29:02.4822932-03:00;True|2023-02-27T22:06:32.7446356-03:00;False|2023-02-27T22:05:11.1466920-03:00;False|2023-02-27T22:01:01.4720694-03:00;False|2023-02-27T20:22:32.6156545-03:00;False|2023-02-27T20:18:47.9551412-03:00;False|2023-02-27T20:18:11.3645346-03:00;False|2023-02-27T20:17:28.5056666-03:00;False|2023-02-27T20:14:58.2010896-03:00;False|2023-02-27T20:12:36.0566725-03:00;False|2023-02-27T20:11:54.8818406-03:00;False|2023-02-27T20:10:24.0119157-03:00;False|2023-02-27T20:10:14.2916068-03:00;</History>
     <LastFailureDetails />
     <TimeStampOfAssociatedLegacyPublishXmlFile />
     <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAxxJa4xG1D0CjO8Q3FY11TQAAAAACAAAAAAAQZgAAAAEAACAAAACdFr65/iEGlCFvJZH03DvSvuGmsBpYHxjoCkCw+e38swAAAAAOgAAAAAIAACAAAAAr3joK6ovxs5ZU5m2RhWeC9YGgxtVUpQhEkCs0UlJUOCAAAADfKl+PqJeFMSRCCCfAGOZSlumvPCg06IRqYWN2s8m9dEAAAADyqNso6IrzU2Kn+Yl6TxXkUDB8gPHAIrY/DM+/6rDqLbf3rtsjG1k2TzApjGGEA+6PHBg8cu/9n5bQCEEXMO8T</EncryptedPassword>
@@ -12,7 +12,7 @@
       <publishTime>02/06/2023 22:54:50</publishTime>
     </File>
     <File Include="appsettings.json">
-      <publishTime>03/01/2023 20:22:50</publishTime>
+      <publishTime>03/03/2023 12:11:46</publishTime>
     </File>
     <File Include="Common.dll">
       <publishTime>03/01/2023 20:24:40</publishTime>
@@ -84,16 +84,16 @@
       <publishTime>11/15/2019 05:36:56</publishTime>
     </File>
     <File Include="MoonBankAPI.deps.json">
-      <publishTime>03/01/2023 20:25:00</publishTime>
+      <publishTime>03/03/2023 17:50:14</publishTime>
     </File>
     <File Include="MoonBankAPI.dll">
-      <publishTime>03/01/2023 20:24:59</publishTime>
+      <publishTime>03/03/2023 17:50:13</publishTime>
     </File>
     <File Include="MoonBankAPI.exe">
-      <publishTime>03/01/2023 20:24:59</publishTime>
+      <publishTime>03/03/2023 17:50:13</publishTime>
     </File>
     <File Include="MoonBankAPI.pdb">
-      <publishTime>03/01/2023 20:24:59</publishTime>
+      <publishTime>03/03/2023 17:50:13</publishTime>
     </File>
     <File Include="MoonBankAPI.runtimeconfig.json">
       <publishTime>02/27/2023 23:18:09</publishTime>
@@ -102,10 +102,10 @@
       <publishTime>11/23/2022 23:10:26</publishTime>
     </File>
     <File Include="Repositories.dll">
-      <publishTime>03/01/2023 20:24:43</publishTime>
+      <publishTime>03/03/2023 17:50:01</publishTime>
     </File>
     <File Include="Repositories.pdb">
-      <publishTime>03/01/2023 20:24:43</publishTime>
+      <publishTime>03/03/2023 17:50:01</publishTime>
     </File>
     <File Include="runtimes/unix/lib/netcoreapp3.0/System.Drawing.Common.dll">
       <publishTime>11/15/2019 05:56:36</publishTime>
@@ -144,10 +144,10 @@
       <publishTime>11/15/2019 05:53:46</publishTime>
     </File>
     <File Include="Services.dll">
-      <publishTime>03/01/2023 20:01:27</publishTime>
+      <publishTime>03/03/2023 12:15:18</publishTime>
     </File>
     <File Include="Services.pdb">
-      <publishTime>03/01/2023 20:01:27</publishTime>
+      <publishTime>03/03/2023 12:15:18</publishTime>
     </File>
     <File Include="Swashbuckle.AspNetCore.Swagger.dll">
       <publishTime>10/16/2021 09:54:10</publishTime>
@@ -180,7 +180,7 @@
       <publishTime>11/15/2019 05:56:52</publishTime>
     </File>
     <File Include="web.config">
-      <publishTime>03/01/2023 20:25:00</publishTime>
+      <publishTime>03/03/2023 17:50:14</publishTime>
     </File>
   </ItemGroup>
 </Project>

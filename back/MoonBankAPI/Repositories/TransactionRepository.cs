@@ -42,7 +42,7 @@ namespace Repositories
                     Amount = x.Amount,
                     IdSourceAccount = x.IdSourceAccount,
                     IdDestinationAccount = x.IdDestinationAccount,
-                    
+                    IdService= x.IdService,
                     IdReward = x.IdReward
                 })
                 .ToList();
@@ -92,8 +92,19 @@ namespace Repositories
             }
         }
 
-        public void MakeDeposit(TransactionDTO transactionDTO)
+        public void MakeDeposit(TransactionDTO transactionDTO) // hacer estos metodos internos privados 
         {
+            
+            if (transactionDTO.Amount > 50000)
+            {
+                throw new TransactionExceptions("The amount entered is greater than $50000, which is the allowed limit.");
+            }
+
+            if (transactionDTO.Amount < 0)
+            {
+                throw new TransactionExceptions("You can not deposit a negative amount.");
+            }
+
             var destinationAccount = _context.Accounts.FirstOrDefault(a => a.CBU_CVU == transactionDTO.DestinationAccountCBU_CVU || a.Alias == transactionDTO.DestinationAccountAlias);
 
             if (destinationAccount == null)
@@ -101,10 +112,7 @@ namespace Repositories
                 throw new TransactionExceptions("Destination Account not found.");
             }
 
-            if (transactionDTO.Amount > 50000)
-            {
-                throw new TransactionExceptions("The amount entered is greater than $50000, which is the allowed limit.");
-            }
+           
 
             destinationAccount.Balance += transactionDTO.Amount;
 
@@ -148,7 +156,7 @@ namespace Repositories
             var transaction = new DataAccess.Models.Transaction
             {
                 IdSourceAccount = sourceAccount.IdAccount,
-                IdService = transactionDTO.IdService,
+                IdService = service.IdService,
                 TypeTransaction = DataAccess.Models.TypeTransaction.PayService,
                 Amount = service.Amount,
                 Date = DateTime.Now
@@ -163,6 +171,11 @@ namespace Repositories
             if (transactionDTO.Amount > 50000)
             {
                 throw new TransactionExceptions("Entered amount exceeds the allowed limit.");
+            }
+
+            if (transactionDTO.Amount < 0)
+            {
+                throw new TransactionExceptions("You can not transfer a negative amount.");
             }
 
             var sourceAccount = _context.Accounts.FirstOrDefault(a => a.CBU_CVU == transactionDTO.SourceAccountCBU_CVU);
@@ -195,6 +208,7 @@ namespace Repositories
                 IdSourceAccount = sourceAccount.IdAccount,
                 IdDestinationAccount = destinationAccount.IdAccount,
                 Amount = transactionDTO.Amount,
+                TypeDeposit= (DataAccess.Models.TypeDeposit?)transactionDTO.TypeDeposit,
                 Date = DateTime.Now
             };
 
