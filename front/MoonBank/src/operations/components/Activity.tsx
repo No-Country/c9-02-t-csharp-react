@@ -48,7 +48,8 @@ export const Activity = ({
       break;
     case 'Deposit':
       result = `$ ${quantity} `
-      color =  'var(--LightGreen)' 
+      color = 'var(--LightGreen)' 
+      serviceDescription = ''
       break;
     case 'Transfer':
       result = `$ ${quantity} `
