@@ -16,6 +16,7 @@ export const Services = () => {
     !success && NavigateTo('/', { replace: true, state: { loggedOut: true } });
     const data = getServicesList();
     data.then((resp) => setServices(resp));
+
   }, []);
 
   return (

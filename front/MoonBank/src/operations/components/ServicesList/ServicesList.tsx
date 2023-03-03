@@ -16,6 +16,8 @@ export const ServicesList = ({ services }: Props) => {
   const { login } = useAppSelector((state) => state);
   const { show, toggleChange } = useToggle();
   const [idService, setIdService] = useState(0);
+  const [showDialogConfirmation, setShowDialogConfirmation] = useState(false)
+
 
   const data: PayRequest = {
     idService,
@@ -27,6 +29,7 @@ export const ServicesList = ({ services }: Props) => {
     PayService(data);
     dispatch(retrieveUserByCBU(login.cbU_CVU));
     toggleChange(false);
+    setShowDialogConfirmation(true)
   };
 
   const props: DialogBoxProps = {
@@ -35,10 +38,19 @@ export const ServicesList = ({ services }: Props) => {
     title: 'Confirm transfer',
     message: 'Would you like to confirm this transaction?',
     extraMessage: 'This action cannot be reverted after confirmation!',
-    to: '/home',
+    to: '',
     onConfirmAction: () => handlePerform(),
     onCancelAction: () => toggleChange(false),
   };
+
+  const confirmProps: DialogBoxProps = {
+    dialogType: 'information',
+    isOpen: showDialogConfirmation,
+    title: 'Successful payment',
+    message: `Your service payment has been successful.`,
+    to: '/home',
+    onConfirmAction: () => setShowDialogConfirmation(false)
+  } 
 
   const setTransaction = (idService: number) => {
     setIdService(idService);
@@ -56,9 +68,12 @@ export const ServicesList = ({ services }: Props) => {
           transaction={() => setTransaction(service.idService)}
           typeItem='service'
           idService={service.idService}
+          typeTransaction='PayService'
         />
       ))}
       {show && <DialogBox {...props} />}
+      {showDialogConfirmation && <DialogBox {...confirmProps} />}
+
     </>
   );
 };

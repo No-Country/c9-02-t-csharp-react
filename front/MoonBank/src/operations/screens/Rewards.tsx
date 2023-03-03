@@ -45,6 +45,7 @@ const Rewards = () => {
             transaction={() => redeemReward(reward.idReward)}
             typeItem='reward'
             totalPoints={login.rewardPoints}
+            typeTransaction='Reward'
           />
         ))}
       </Paper>

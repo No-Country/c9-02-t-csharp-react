@@ -15,10 +15,10 @@ import {
   useToggle,
 } from '../../../shared';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
+import { useEffect, useState } from 'react';
 
 import { MakeDeposit } from '../../../APIS/TransactionRequests';
 import { retrieveUser } from '../../../store/features/loginSlice';
-import { useEffect } from 'react';
 import { useNavigate } from 'react-router';
 
 export const DepositForm = () => {
@@ -26,6 +26,7 @@ export const DepositForm = () => {
   const dispatch = useAppDispatch();
   const { login } = useAppSelector((state) => state);
   const { show, toggleChange } = useToggle();
+  const [showDialogConfirmation, setShowDialogConfirmation] = useState(false)
   const { handleInputChange, ResetForm, cardNumber, cardExpireDate, cardCvc, cardHolderName, amount } = useForm({
     cardNumber: '',
     cardExpireDate: '',
@@ -47,7 +48,7 @@ export const DepositForm = () => {
     MakeDeposit(data);
     dispatch(retrieveUser(login.alias));
     toggleChange(false);
-    console.log('subido');
+    setShowDialogConfirmation(true)
   };
   const props: DialogBoxProps = {
     dialogType: 'warning',
@@ -55,10 +56,22 @@ export const DepositForm = () => {
     title: 'Confirm transfer',
     message: 'Would you like to confirm this transaction?',
     extraMessage: 'This action cannot be reverted after confirmation!',
-    to: '/home',
-    onConfirmAction: () => submitHandler(dataForm),
+    to: '',
+    onConfirmAction: () => {
+      setShowDialogConfirmation(true)
+      submitHandler(dataForm)
+    },
     onCancelAction: () => toggleChange(false),
   };
+
+  const confirmProps: DialogBoxProps = {
+    dialogType: 'information',
+    isOpen: showDialogConfirmation,
+    title: 'Successful deposit',
+    message: `Your deposit of $ ${amount} has been successfully completed.`,
+    to: '/home',
+    onConfirmAction: () => setShowDialogConfirmation(false)
+  } 
 
   return (
     <>
@@ -154,6 +167,7 @@ export const DepositForm = () => {
             Clear
           </Button>
           {show && <DialogBox {...props} />}
+          {showDialogConfirmation && <DialogBox {...confirmProps} />}
         </FlexRowContainer>
       </FormContainer>
     </>
