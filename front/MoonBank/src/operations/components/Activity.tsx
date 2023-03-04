@@ -48,7 +48,7 @@ export const Activity = ({
     case 'Reward':
       result = ` ${quantity} px`;
       color = 'var(--LightRed)';
-      icon = arrowRedIcon;
+      // icon = arrowRedIcon;
       break;
     case 'Deposit':
       result = `$ ${quantity} `;

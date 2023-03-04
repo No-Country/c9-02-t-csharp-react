@@ -1,4 +1,4 @@
-import { Button, FlexContainer, FlexRowContainer, InfoContainer, Service, Transaction } from '../shared';
+import { Button, FlexContainer, FlexRowContainer, InfoContainer, Service, Transaction, useIsLoading } from '../shared';
 import { Container, Paper, Title } from '../shared/styles';
 import { ServicesList, TransactionsList } from '../operations/components';
 import { getRewardsList, getServicesList, getTransactionHistory } from '../APIS/getRequest';
@@ -13,13 +13,14 @@ export const HomePage = () => {
   const dispatch = useAppDispatch();
   const NavigateTo = useNavigate();
   const { success, balance, cbU_CVU, alias } = useAppSelector((state) => state.login);
+  const {isLoading, setIsLoading} = useIsLoading(false)
   const [services, setServices] = useState<Service[]>([]);
   const [activities, setActivities] = useState<Transaction[]>();
   const [rewards, setRewards] = useState<Reward[]>();
 
   useEffect(() => {
     !success && NavigateTo('/', { replace: true, state: { loggedOut: true } });
-
+    setIsLoading(true)
     const data = getServicesList();
     data.then((resp) => setServices(resp.slice(0, 3)));
     const data2 = getTransactionHistory(cbU_CVU);
@@ -27,9 +28,10 @@ export const HomePage = () => {
     const data3 = getRewardsList();
     data3.then((resp) => setRewards(resp));
     dispatch(retrieveUserByCBU(cbU_CVU));
+    setIsLoading(false)
   }, []);
   return (
-    <Container headerHeight='55px' onLogging={success}>
+    <Container headerHeight='55px' onLogging={success}>  
       <Paper>
         <Title>My Balance</Title>
         <FlexContainer flexWidth='100%' flexGap='25px'>
