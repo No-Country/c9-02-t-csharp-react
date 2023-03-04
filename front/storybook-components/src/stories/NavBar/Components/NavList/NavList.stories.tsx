@@ -2,11 +2,12 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { withRouter } from 'storybook-addon-react-router-v6';
 import NavList from './NavList';
 import { NavListElements } from './NavListElements';
+import GlobalStyleDecorator from '../../../../shared/decorators/GlobalStyleDecorator';
 
 export default {
   title: 'UI/Navigation/Moon NavList',
   component: NavList,
-  decorators: [withRouter],
+  decorators: [withRouter, GlobalStyleDecorator],
   args: {
     children: NavListElements,
   },

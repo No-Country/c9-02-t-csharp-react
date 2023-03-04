@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const NavBar_Styled = styled.div<{ headerHeight: string }>`
+  position: fixed;
   padding: 0;
   display: flex;
   flex-direction: column;
@@ -12,7 +13,9 @@ export const NavBar_Styled = styled.div<{ headerHeight: string }>`
   @media screen and (min-width: 700px) {
     width: 320px;
   }
-  height: ${(props) => props.headerHeight};
-  background: #262626;
-  box-shadow: 0 0 10px #483475;
+  z-index: 150;
+  height: calc(100vh - ${(props) => props.headerHeight});
+  top: ${(props) => props.headerHeight};
+  background: var(--Dark);
+  box-shadow: 0 0 10px var(--PurpleD);
 `;

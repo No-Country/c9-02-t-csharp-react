@@ -2,11 +2,12 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { withRouter } from 'storybook-addon-react-router-v6';
 import NavLinkObject from './NavLinkObject';
 import { IoHomeOutline, IoHome } from 'react-icons/io5';
+import GlobalStyleDecorator from '../../../../shared/decorators/GlobalStyleDecorator';
 
 export default {
   title: 'UI/Navigation/Moon NavLink',
   component: NavLinkObject,
-  decorators: [withRouter],
+  decorators: [withRouter, GlobalStyleDecorator],
   parameters: {
     backgrounds: {
       default: 'MoonBank Menu',

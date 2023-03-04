@@ -1,16 +1,29 @@
-import { Box, Container, ItemActivity, Paper, Text } from '../../shared/styles';
+import { Container, Paper, Title } from '../../shared/styles';
+import { useEffect, useState } from 'react';
 
-import { Activity } from '../components';
-import electricIcon from '../../shared/assets/eletricIcon.svg'
-import waterIcon from '../../shared/assets/waterIcon.svg'
+import { Service } from '../../shared/interfaces';
+import { ServicesList } from '../components';
+import { getServicesList } from '../../APIS/getRequest';
+import { useAppSelector } from '../../store/hooks';
+import { useNavigate } from 'react-router';
 
 export const Services = () => {
+  const NavigateTo = useNavigate();
+  const { success } = useAppSelector((state) => state.login);
+  const [services, setServices] = useState<Service[]>([]);
+
+  useEffect(() => {
+    !success && NavigateTo('/', { replace: true, state: { loggedOut: true } });
+    const data = getServicesList();
+    data.then((resp) => setServices(resp));
+
+  }, []);
+
   return (
-    <Container>
+    <Container headerHeight='55px' onLogging={success}>
       <Paper>
-        <Text weight='700'>Services</Text>
-        <Activity icon={waterIcon} date='March 2023' quantity={15.00} serviceTitle='SPS Water Service' serviceDescription='Monthly Water Tax'/>
-        <Activity date='March 2023' icon={ electricIcon} quantity={31.89} serviceDescription='Montly Electricity tax' serviceTitle='ENEE'/>
+        <Title>Services</Title>
+        <ServicesList services={services} />
       </Paper>
     </Container>
   );

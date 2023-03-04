@@ -1,126 +1,174 @@
-import { Input, Button, FlexRowContainer, Text } from '../../../shared/styles';
-import { useForm } from '../../../shared/hooks';
-import { MakeDeposit } from '../../../APIS/TransactionRequests';
+import {
+  Button,
+  DepositRequest,
+  DialogBox,
+  DialogBoxProps,
+  FlexRowContainer,
+  FormContainer,
+  GridContainer,
+  InfoContainer,
+  Input,
+  Label,
+  LabelInput,
+  NavSeparator,
+  useForm,
+  useToggle,
+} from '../../../shared';
+import { useAppDispatch, useAppSelector } from '../../../store/hooks';
+import { useEffect, useState } from 'react';
 
-// this screen has to receive the balance from the user Slice
+import { MakeDeposit } from '../../../APIS/TransactionRequests';
+import { retrieveUser } from '../../../store/features/loginSlice';
+import { useNavigate } from 'react-router';
+
 export const DepositForm = () => {
-  const {
-    handleInputChange,
-    ResetForm,
-    cardNumber,
-    cardExpireDate,
-    cardCvc,
-    cardHolderName,
-    amount,
-    idDestinationAccount,
-  } = useForm({
+  const NavigateTo = useNavigate();
+  const dispatch = useAppDispatch();
+  const { login } = useAppSelector((state) => state);
+  const { show, toggleChange } = useToggle();
+  const [showDialogConfirmation, setShowDialogConfirmation] = useState(false);
+  const { handleInputChange, ResetForm, cardNumber, cardExpireDate, cardCvc, cardHolderName, amount } = useForm({
     cardNumber: '',
     cardExpireDate: '',
     cardCvc: '',
     cardHolderName: '',
     amount: 0,
-    idDestinationAccount: 1,
   });
-
-  const submitHandler = () => {
-    MakeDeposit({
-      typeTransaction: 0,
-      typeDeposit: 0,
-      amount,
-      idDestinationAccount,
-    });
+  const dataForm: DepositRequest = {
+    typeTransaction: 0,
+    typeDeposit: 0,
+    amount,
+    destinationAccountCBU_CVU: login.cbU_CVU,
   };
+  useEffect(() => {
+    !login.success && NavigateTo('/', { replace: true, state: { loggedOut: true } });
+  }, [login]);
+
+  const submitHandler = (data: DepositRequest) => {
+    MakeDeposit(data);
+    dispatch(retrieveUser(login.alias));
+    toggleChange(false);
+    setShowDialogConfirmation(true);
+  };
+  const props: DialogBoxProps = {
+    dialogType: 'warning',
+    isOpen: show,
+    title: 'Confirm transfer',
+    message: 'Would you like to confirm this transaction?',
+    extraMessage: 'This action cannot be reverted after confirmation!',
+    to: '',
+    onConfirmAction: () => {
+      setShowDialogConfirmation(true);
+      submitHandler(dataForm);
+    },
+    onCancelAction: () => toggleChange(false),
+  };
+
+  const confirmProps: DialogBoxProps = {
+    dialogType: 'information',
+    isOpen: showDialogConfirmation,
+    title: 'Successful deposit',
+    message: `Your deposit of $ ${amount} has been successfully completed.`,
+    to: '/home',
+    onConfirmAction: () => setShowDialogConfirmation(false),
+  };
+
   return (
     <>
-      <form onSubmit={submitHandler}>
-        <label>CARD NUMBER</label>
-        <Input
-          name='cardNumber'
-          value={cardNumber}
-          onChange={handleInputChange}
-          type='text'
-          placeholder='***** ***** *****'
-          marginBottom='1rem'
-          marginTop='1rem'
-          fontSize='12px'
-        />
+      <FormContainer onSubmit={(e) => e.preventDefault()} formGap='20px'>
+        <LabelInput contentDirection='column' gap='10px'>
+          <Label htmlFor='userAlias' width='100%'>
+            CARD NUMBER:
+          </Label>
+          <Input
+            name='cardNumber'
+            value={cardNumber}
+            onChange={handleInputChange}
+            type='number'
+            placeholder='***** ***** *****'
+            fontSize='12px'
+          />
+        </LabelInput>
 
-        <FlexRowContainer>
-          <label>
-            EXPIRE DATE
+        <GridContainer direction={'column'} directionTemplate='1fr 1fr' width='100%' gridGap='4px'>
+          <LabelInput contentDirection='column' gap='10px'>
+            <Label htmlFor='amount' width='100%'>
+              EXPIRE DATE:
+            </Label>
             <Input
               name='cardExpireDate'
               value={cardExpireDate}
               onChange={handleInputChange}
-              type='date'
               placeholder='**/**'
-              marginBottom='1rem'
+              inputMode='numeric'
+              pattern='^\d{2,2}\/\d{2,2}$'
             />
-          </label>
-          <label>
-            CVC
+          </LabelInput>
+          <LabelInput contentDirection='column' gap='10px'>
+            <Label width='100%'>CVC:</Label>
             <Input
               name='cardCvc'
               value={cardCvc}
               onChange={handleInputChange}
               type='number'
+              inputMode='numeric'
               placeholder='***'
-              marginBottom='1rem'
+              height='100%;'
+              pattern='(?:^\d{3,3}$)'
             />
-          </label>
-        </FlexRowContainer>
-        <label>CARD HOLDER NAME</label>
-        <Input
-          name='cardHolderName'
-          value={cardHolderName}
-          onChange={handleInputChange}
-          type='text'
-          placeholder='NAME'
-          marginBottom='1rem'
-          marginTop='1rem'
-          fontSize='12px'
-        />
+          </LabelInput>
+        </GridContainer>
 
-        <label>ID DESTINATION ACCOUNT</label>
-        <Input
-          name='idDestinationAccount'
-          value={idDestinationAccount}
-          onChange={handleInputChange}
-          type='text'
-          placeholder='Destination account'
-          marginBottom='1rem'
-          marginTop='1rem'
-          fontSize='12px'
-        />
-
-        <FlexRowContainer withAmount>
-          <Text> Amount to Deposit $</Text>
-
+        <LabelInput contentDirection='column'>
+          <Label width='100%'>CARD HOLDER NAME:</Label>
           <Input
-            name='amount'
-            value={amount}
+            name='cardHolderName'
+            value={cardHolderName}
             onChange={handleInputChange}
             type='text'
-            placeholder='150,0'
+            placeholder='NAME'
             marginBottom='1rem'
             marginTop='1rem'
             fontSize='12px'
           />
+        </LabelInput>
+
+        <FlexRowContainer withAmount>
+          <Label fontSize='15px' width='100%'>
+            Amount to Deposit $
+          </Label>
+          <Input
+            name='amount'
+            value={amount}
+            onChange={handleInputChange}
+            type='number'
+            placeholder='150,0'
+            fontSize='12px'
+          />
         </FlexRowContainer>
 
-        <hr />
-        <FlexRowContainer space='between'>
-          <Text style={{ alignSelf: 'flex-start' }}>Available Deposit Today</Text>
-          <Text marginTop='1.2rem' style={{ alignSelf: 'flex-end' }}>
-            $ 7500
-            {/* add balance here */}
-          </Text>
+        <NavSeparator orientation='horizontal' thickness='4px' size='100%' />
+
+        <InfoContainer
+          canHide={false}
+          initShowState={true}
+          infoSubtitle='Deposit Limit per Transaction:'
+          fontDataSize='16px'
+          styleProps={{ buttonHeight: '35px', buttonWidth: 'auto', buttonPadding: '6px' }}>
+          {`$ 50000`}
+        </InfoContainer>
+
+        <FlexRowContainer flexGap='5px'>
+          <Button onClick={() => toggleChange(true)} variant='blue' width='100%'>
+            Deposit
+          </Button>
+          <Button variant='blue' type='button' onClick={ResetForm} width='100%'>
+            Clear
+          </Button>
+          {show && <DialogBox {...props} />}
+          {showDialogConfirmation && <DialogBox {...confirmProps} />}
         </FlexRowContainer>
-        <FlexRowContainer>
-          <Button type='submit'>Deposit</Button>
-          <Button onClick={ResetForm}>Clear</Button>
-        </FlexRowContainer>
-      </form>
+      </FormContainer>
     </>
   );
 };

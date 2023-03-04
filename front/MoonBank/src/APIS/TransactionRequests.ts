@@ -1,19 +1,36 @@
 import { DepositRequest, PayRequest, RedeemRewardRequest, TransferRequest } from '../shared/interfaces';
+
 import MoonApi from './Axios';
 
 export const MakeDeposit = async (depositReq: DepositRequest) => {
-  await MoonApi.post('api/Transactions/MakeTransaction', depositReq);
+  try {
+    await MoonApi.post('Transactions/MakeTransaction', depositReq);
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export const PayService = async (payReq: PayRequest) => {
-  await MoonApi.post('api/Transactions/MakeTransaction', payReq);
+  try {
+    console.log(payReq)
+    return await MoonApi.post('Transactions/MakeTransaction', payReq);
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export const MakeTransfer = async (transferReq: TransferRequest) => {
-  await MoonApi.post('api/Transactions/MakeTransaction', transferReq);
+  try {
+    await MoonApi.post('Transactions/MakeTransaction', transferReq);
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export const RedeemReward = async (redeemReq: RedeemRewardRequest) => {
-    await MoonApi.post('api/Transactions/MakeTransaction', redeemReq);
-  };
-  
+  try {
+    await MoonApi.post('Transactions/MakeTransaction', redeemReq);
+  } catch (error) {
+    console.log(error);
+  }
+};

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 type directions = 'column' | 'row';
 type align = 'flex-start' | 'center' | 'flex-end';
@@ -12,6 +12,7 @@ interface Props {
   alignContent?: align;
   background?: string;
   borderRadius?: string;
+  alert?: boolean;
 }
 
 export const Box = styled.div<Props>`
@@ -26,4 +27,13 @@ export const Box = styled.div<Props>`
   margin-top: ${(props) => props.marginTop};
   background: ${(props) => props.background};
   border-radius: ${(props) => props.borderRadius};
+
+  ${(props) =>
+    props.alert &&
+    css`
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    `}
 `;

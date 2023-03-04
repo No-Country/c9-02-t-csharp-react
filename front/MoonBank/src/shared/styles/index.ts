@@ -1,3 +1,5 @@
+export * from './Alert';
+export * from './Avatar';
 export * from './Box';
 export * from './Button';
 export * from './Container';
@@ -6,6 +8,12 @@ export * from './ItemActivity';
 export * from './Paper';
 export * from './Text';
 export * from './Title';
+export * from './SubTitle';
 export { default as globalStyles } from './globalStyles';
 export * from './index';
 export * from './sharedStyles';
+export * from './Label';
+export * from './LabelInput';
+export * from './FormContainter';
+export * from './GridContainer';
+export * from './Image';

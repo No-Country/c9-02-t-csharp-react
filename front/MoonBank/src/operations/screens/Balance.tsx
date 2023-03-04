@@ -1,55 +1,75 @@
 import {
+  Button,
   Container,
-  Paper,
-  Text,
-  Title,
   FlexContainer,
   FlexRowContainer,
-  UserInfoContainer,
-  Button,
-} from '../../shared/styles';
-import eyeIcon from '../../shared/assets/eyeIcon.svg';
-import hideEyeIcon from '../../shared/assets/hideEyeIcon.svg';
+  InfoContainer,
+  NavSeparator,
+  Paper,
+  Title
+} from '../../shared';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
 
-// type Props = {
-//   amount: number;
-//   alias: string;
-//   cbu: string;
-// };
+import { retrieveUserByCBU } from '../../store/features/loginSlice';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router';
 
 export const Balance = () => {
+  const dispatch = useAppDispatch()
+  const { login } = useAppSelector((state) => state);
+
+  const NavigateTo = useNavigate();
+
+  useEffect(() => {
+    !login.success && NavigateTo('/', { replace: true, state: { loggedOut: true } });
+  }, []); 
+  
+  useEffect(() => {
+    dispatch(retrieveUserByCBU(login.cbU_CVU))
+  }, []); 
+
+  
+
   return (
-    <Container>
-      <Paper>
+    <Container headerHeight='55px' onLogging={login.success}>
+      <Paper flexGap='20px'>
         <Title>My balance</Title>
 
-        <FlexContainer>
-          <FlexRowContainer>
-            <img src={eyeIcon} alt='eye icon' />
-            <Text>$ 45,820.17</Text>
+        <FlexContainer flexWidth='100%' flexGap='25px'>
+          <InfoContainer
+            canHide={true}
+            containerLayout='Together'
+            initShowState={true}
+            fontDataSize='20px'
+            fontWeight='Heavy_900'
+            styleProps={{ buttonHeight: '40px', buttonWidth: '60px', buttonPadding: '6px' }}>
+            {login.balance}
+          </InfoContainer>
+          <FlexRowContainer flexGap='5px'>
+            <Button variant='blue' onClick={() => NavigateTo('/deposit')} width='100%'>
+              Deposit
+            </Button>
+            <Button variant='blue' onClick={() => NavigateTo('/send')} width='100%'>
+              Transfer
+            </Button>
           </FlexRowContainer>
 
-          <FlexRowContainer>
-            <Button>Deposit</Button>
-            <Button>Transfer</Button>
-          </FlexRowContainer>
+          <NavSeparator orientation='horizontal' thickness='4px' size='100%' />
 
-          <hr />
-          <UserInfoContainer>
-            <div>
-              <h3>Alias:</h3>
-            </div>
-            <Text marginTop='1.2rem'>@sortOmega</Text>
-          </UserInfoContainer>
-          <UserInfoContainer>
-            <div>
-              <h3>CBU:</h3>
-            </div>
-            <FlexRowContainer space='between'>
-              <img src={hideEyeIcon} alt='eye icon' />
-              <Text>**************</Text>
-            </FlexRowContainer>
-          </UserInfoContainer>
+          <InfoContainer
+            infoSubtitle='Alias:'
+            canHide={false}
+            initShowState={true}
+            styleProps={{ buttonHeight: '35px', buttonWidth: 'auto', buttonPadding: '6px' }}>
+            {login.alias}
+          </InfoContainer>
+          <InfoContainer
+            infoSubtitle='CBU:'
+            canHide={true}
+            initShowState={false}
+            styleProps={{ buttonHeight: '35px', buttonWidth: 'auto', buttonPadding: '6px' }}>
+            {login.cbU_CVU}
+          </InfoContainer>
         </FlexContainer>
       </Paper>
     </Container>

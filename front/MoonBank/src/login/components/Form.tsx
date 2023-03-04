@@ -1,45 +1,61 @@
-import { Button, Input } from '../../shared/styles';
+import { Box, Button, Input, Label, LabelInput } from '../../shared/styles';
+
 import { AlertNotification } from './AlertNotification';
-import { SwitchButton } from './SwitchButton';
+import { Login } from '../../shared/interfaces';
+import { Text } from '../../shared/styles';
+import { logUser } from '../../APIS/postRequests';
+import { setUser } from '../../store/features/loginSlice';
+import { useAppDispatch } from '../../store/hooks';
 import { useForm } from '../../shared/hooks/useForm';
+import { useNavigate } from 'react-router';
+import { useState } from 'react';
 
 export const Form = () => {
-  const { handleInputChange, moonToken, password, username } = useForm({
-    username: '',
+  const NavigateTo = useNavigate();
+  const dispatch = useAppDispatch();
+  const [checkLogin, setCheckLogin] = useState(true);
+  const { handleInputChange, password, email } = useForm({
+    email: '',
     password: '',
-    moonToken: '',
   });
+
+  const handleLogUser = () => {
+    const data: Login = {
+      email,
+      password,
+    };
+    logUser(data).then((resp) => {
+      if (!resp?.data.success) {
+       return setCheckLogin(false);
+      }
+      dispatch(setUser(resp.data.result));
+      NavigateTo('/home');
+    });
+  };
   return (
     <>
-      <Input
-        name='username'
-        value={username}
-        onChange={handleInputChange}
-        type='text'
-        placeholder='Username'
-        marginBottom='1rem'
-        marginTop='1rem'
-        fontSize='12px'
-      />
-      <Input
-        name='password'
-        value={password}
-        onChange={handleInputChange}
-        type='password'
-        placeholder='Password'
-        marginBottom='1rem'
-      />
-      <Input
-        name='moonToken'
-        value={moonToken}
-        onChange={handleInputChange}
-        type='text'
-        placeholder='Moon Token'
-        marginBottom='1rem'
-      />
-      <SwitchButton />
-      <AlertNotification /> 
-      <Button marginTop='1rem'>Log In</Button>
+      <LabelInput contentDirection='column' gap='3px'>
+        <Label width='100%'>EMAIL:</Label>
+        <Input
+          name='email'
+          value={email}
+          onChange={handleInputChange}
+          type='text'
+          placeholder='Email'
+          width='100%'
+          fontSize='12px'
+        />
+      </LabelInput>
+      <LabelInput contentDirection='column' gap='3px'>
+        <Label width='100%'>PASSWORD:</Label>
+        <Input name='password' value={password} onChange={handleInputChange} type='password' placeholder='Password' />
+      </LabelInput>
+
+      {!checkLogin && <AlertNotification />}
+
+      <Button onClick={handleLogUser} variant='blue'>
+        Log In
+      </Button>
     </>
   );
 };

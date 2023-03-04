@@ -2,11 +2,12 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { withRouter } from 'storybook-addon-react-router-v6';
 import { NavListElements } from './Components/NavList/NavListElements';
 import NavBar from './NavBar';
+import GlobalStyleDecorator from '../../shared/decorators/GlobalStyleDecorator';
 
 export default {
   title: 'UI/Navigation/MoonBank Navbar',
   component: NavBar,
-  decorators: [withRouter],
+  decorators: [withRouter, GlobalStyleDecorator],
   args: {
     headerHeight: 'calc( 100vh - 55px )',
     children: NavListElements,

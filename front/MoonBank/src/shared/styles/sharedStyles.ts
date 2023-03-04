@@ -1,38 +1,53 @@
 import styled, { css } from 'styled-components';
 
+interface flexContainerProps {
+  marginBox?: string;
+  flexGap?: string;
+  direction?: 'column' | 'row';
+  flexWidth?: string;
+}
+
 interface flexRowContainerProps {
   space?: 'between' | 'around';
   withAmount?: boolean;
+  marginBox?: string;
+  flexGap?: string;
 }
 
-export const FlexContainer = styled.div`
+export const FlexContainer = styled.div<flexContainerProps>`
   display: flex;
-  flex-direction: column;
+  flex-direction: ${({ direction }) => (direction ? direction : 'column')};
   align-items: center;
   justify-content: space-between;
-  gap: 0.8rem;
-  margin: 1.2rem 0;
+  gap: ${({ flexGap }) => (flexGap ? flexGap : '0px')};
+  margin: ${({ marginBox }) => (marginBox ? marginBox : '0px')};
+
+  ${({ flexWidth }) =>
+    flexWidth
+      ? css`
+          width: ${flexWidth};
+        `
+      : ''}
 `;
 export const FlexRowContainer = styled.div<flexRowContainerProps>`
   display: flex;
   align-items: center;
   justify-content: space-around;
   color: var(--White);
-  gap: 0.5rem;
+  gap: ${({ flexGap }) => (flexGap ? flexGap : '0px')};
   width: 100%;
-  margin: 1.2rem 0;
-label {
-  width: 100%;
-}
+  margin: ${({ marginBox }) => (marginBox ? marginBox : '0px')};
+  label {
+    width: 100%;
+  }
   ${(props) =>
     props.space === 'between' &&
     css`
       justify-content: space-between;
-
     `}
 
-    ${(props) =>
-    props.withAmount  &&
+  ${(props) =>
+    props.withAmount &&
     css`
       justify-content: space-between;
 

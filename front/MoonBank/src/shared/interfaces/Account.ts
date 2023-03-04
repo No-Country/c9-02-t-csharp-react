@@ -1,16 +1,16 @@
 export interface Account {
-  id: number;
   name: string;
   lastName: string;
   email: string;
-  password: string;
   alias: string;
-  cbu_cvu: number;
+  cbU_CVU: string;
   balance: number;
   rewardPoints: number;
+  success: boolean;
+  accountUrlImage: string;
 }
 
 export interface Login {
-  email: 'string';
-  password: 'string';
+  email: string;
+  password: string;
 }

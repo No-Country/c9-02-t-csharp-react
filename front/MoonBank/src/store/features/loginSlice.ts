@@ -1,34 +1,69 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { PayloadAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { getAccountByAlias, getAccountByCBU, getAccountById } from '../../APIS/getRequest';
+
 import { Account } from '../../shared/interfaces';
+import { AppDispatch } from '../store';
+import { useAppDispatch } from '../hooks';
 
-
-interface LoginState extends Account {
-  isLoggedIn: boolean;
-}
-const initialState: LoginState = {
-  isLoggedIn: false,
-  id: -1,
-  name: "",
-  lastName: "",
-  email: "",
-  password: "",
-  alias:  "",
-  cbu_cvu: 0,
+const initialState: Account = {
+  alias: '',
   balance: 0,
+  cbU_CVU: '',
+  email: '',
+  name: '',
+  lastName: '',
+  success: false,
   rewardPoints: 0,
+  accountUrlImage: ''
 };
 
+// const dispatch = useAppDispatch()
+
+export const retrieveUser = createAsyncThunk('loginForm/retrieve', async (alias: string): Promise<Account> => {
+  
+  const account = await getAccountByAlias(alias);
+  setUser(account)
+  return account;
+});
+
+export const retrieveUserByCBU = createAsyncThunk(
+  'loginForm/retrieveUserCBU',
+  async (CBU_CVU: string): Promise<Account> => {
+    const account = await getAccountByCBU(CBU_CVU);
+    setUser(account)
+    return account;
+  }
+);
 export const LoginSlice = createSlice({
   name: 'loginForm',
   initialState,
   reducers: {
-    setLogin: (state, action:PayloadAction<Account>) => {
-      state.isLoggedIn = true;
-state = {...initialState,}
-      
+    setUser: (state, action: PayloadAction<Account>) => {
+      return {
+        ...action.payload,
+        success: true,
+      };
     },
+    userLogout: (_state) => {
+      return { ...initialState, success: false };
+    },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(retrieveUser.fulfilled, (state, action: PayloadAction<Account>) => {
+        return {
+          ...action.payload,
+          success: true,
+        };
+      })
+      .addCase(retrieveUserByCBU.fulfilled, (_state, action: PayloadAction<Account>) => {
+        return {
+          ...action.payload,
+          success: true,
+        };
+      });
   },
 });
 
-export const { setLogin } = LoginSlice.actions;
+export const { setUser, userLogout } = LoginSlice.actions;
 export default LoginSlice.reducer;
