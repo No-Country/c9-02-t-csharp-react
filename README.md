@@ -124,7 +124,7 @@ When making a reward exchange, the user will need to provide the following detai
 
 **Luciano Fernández**
 [![GitHub Icon](https://icons.iconarchive.com/icons/pictogrammers/material/48/github-icon.png)](https://github.com/FZ-developer) 
-[![LinkedIn Icon](https://icons.iconarchive.com/icons/limav/flat-gradient-social/48/Linkedin-icon.png)](https://www.linkedin.com/in/fzdeveloper) 
+[![LinkedIn Icon](https://icons.iconarchive.com/icons/limav/flat-gradient-social/48/Linkedin-icon.png)](https://www.linkedin.com/in/fz-developer) 
 
 +
 +
