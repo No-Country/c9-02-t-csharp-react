@@ -96,7 +96,7 @@ When making a reward exchange, the user will need to provide the following detai
 
 **☁️ Server** 
 
-    o Microsoft SQL Server
+    o       Microsoft SQL Server
 
 
 **🎭 UI/UX**
